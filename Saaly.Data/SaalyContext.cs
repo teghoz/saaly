@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Saaly.Data.Configurations;
+using Saaly.Models;
+using Saaly.Models.Interfaces;
 
 namespace Saaly.Data
 {

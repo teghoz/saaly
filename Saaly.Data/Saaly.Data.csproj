@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Saaly.Models\Saaly.Models.csproj" />
     <ProjectReference Include="..\SaalyModels\Saaly.Models.csproj" />
   </ItemGroup>
 
