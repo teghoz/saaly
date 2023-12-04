@@ -1,0 +1,15 @@
+Saaly.Data/obj/
+Saaly/.vs/
+Saaly/bin/
+Saaly/obj/
+SaalyInfrastucture/obj/
+SaalyInfrastucture/bin/
+SaalyModels/obj/
+SaalyServices/obj/
+SaalyShared/obj/
+SaalyUser/bin/
+SaalyUser/obj/
+SaalyShared/bin/
+SaalyServices/bin/
+SaalyModels/bin/
+Saaly.Data/bin/
