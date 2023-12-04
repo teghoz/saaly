@@ -13,3 +13,14 @@ SaalyShared/bin/
 SaalyServices/bin/
 SaalyModels/bin/
 Saaly.Data/bin/
+Saaly.Infrastucture/obj/
+Saaly.Models/obj/
+Saaly.Models/bin/
+Saaly.Services/bin/
+Saaly.Services/obj/
+Saaly.Shared/bin/
+Saaly.Shared/obj/
+Saaly.User/obj/
+Saaly.User/bin/
+Saaly.Infrastucture/bin/
+.vs/
