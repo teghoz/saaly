@@ -1,4 +1,4 @@
-﻿using Saaly.Models;
+﻿using Saaly.Models.Bases;
 using Saaly.Models.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 

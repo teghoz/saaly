@@ -1,4 +1,4 @@
-﻿using Saaly.Models;
+﻿using Saaly.Models.Bases;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,6 +17,6 @@ namespace SaalyModels
         public Guid BillUnitGuid { get; set; }
         [ForeignKey("BillUnitGuid")]
         public virtual EntityBillUnit? BillUnit { get; set; }
-        public List<EntityBillCodeCurrencyRates>? CurrencyRates { get; set; }
+        public List<EntityBillCodeCurrencyRate>? CurrencyRates { get; set; }
     }
 }

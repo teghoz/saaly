@@ -1,4 +1,4 @@
-﻿using Saaly.Models;
+﻿using Saaly.Models.Bases;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -33,7 +33,7 @@ namespace SaalyModels
         public Guid? Parent { get; set; }
         [ForeignKey("ProjectGuid")]
         public virtual EntityProject? Project { get; set; }
-        public virtual ICollection<EntityTaskCurrencyRates> BillRates { get; set; }
+        public virtual ICollection<EntityTaskCurrencyRate> BillRates { get; set; }
         //public virtual TaskCurrencyRates TaskCurrencyRates { get; set; }
         [ForeignKey("BillUnitGuid")]
         public virtual EntityBillUnit? BillUnit { get; set; }

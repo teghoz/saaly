@@ -8,15 +8,12 @@ using Saaly.Models.Interfaces;
 
 namespace Saaly.Data
 {
-    public class SaalyContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>, IDataProtectionKeyContext
+    public partial class SaalyContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>, IDataProtectionKeyContext
     {
         public SaalyContext(DbContextOptions<SaalyContext> options)
         : base(options)
         {
         }
-
-        public DbSet<DataProtectionKey> DataProtectionKeys { get; set; }
-        public DbSet<Admin> Admins { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

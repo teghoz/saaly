@@ -3,7 +3,7 @@ using Saaly.Models.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Saaly.Models
+namespace Saaly.Models.Bases
 {
     public class SaalyBase : IAuditable
     {

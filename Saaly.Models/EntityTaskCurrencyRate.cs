@@ -1,9 +1,9 @@
-﻿using Saaly.Models;
+﻿using Saaly.Models.Bases;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SaalyModels
 {
-    public class EntityTaskCurrencyRates : EntityBase
+    public class EntityTaskCurrencyRate : EntityBase
     {
         public Guid CurrencyGuid { get; set; }
         public Guid TaskGuid { get; set; }

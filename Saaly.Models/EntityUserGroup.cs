@@ -1,4 +1,4 @@
-﻿using Saaly.Models;
+﻿using Saaly.Models.Bases;
 using System.ComponentModel;
 
 namespace SaalyModels

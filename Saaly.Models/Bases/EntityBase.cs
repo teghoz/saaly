@@ -1,7 +1,7 @@
 ﻿using SaalyModels;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Saaly.Models
+namespace Saaly.Models.Bases
 {
     public class EntityBase : SaalyBase
     {

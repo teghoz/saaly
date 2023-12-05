@@ -3,14 +3,16 @@ using System.ComponentModel;
 
 namespace SaalyModels
 {
-    public class EntityUserDepartment : EntityBase
+    public class EntityClientGroup : EntityBase
     {
-        [DisplayName("Name")]
         public string Name { get; set; }
         [DisplayName("Description")]
         public string? Description { get; set; }
+        [DisplayName("Groups Has Capacity")]
+        public bool HasMaximumCapacity { get; set; }
+        public int MaximumCapacity { get; set; }
         [DisplayName("Code")]
         public string Code { get; set; }
-        public ICollection<EntityUserDepartmentClaim>? Claims { get; set; }
+        public ICollection<EntityClientGroupClient>? Clients { get; set; }
     }
 }

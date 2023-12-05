@@ -2,7 +2,7 @@
 
 namespace SaalyModels
 {
-    public class EntityBillCodeCurrencyRates : EntityBillCode
+    public class EntityBillCodeCurrencyRate : EntityBillCode
     {
         public Guid EntityCurrencyGuid { get; set; }
         public decimal BillCostRate { get; set; }
