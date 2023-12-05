@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SaalyModels;
+using Saaly.Models.EntityModels;
 
 namespace Saaly.Data.Configurations
 {

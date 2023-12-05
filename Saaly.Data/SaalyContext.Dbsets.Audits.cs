@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SaalyModels;
+using Saaly.Models.Audits;
 
 namespace Saaly.Data
 {

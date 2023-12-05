@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using SaalyModels;
+using Saaly.Models.EntityModels;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models
