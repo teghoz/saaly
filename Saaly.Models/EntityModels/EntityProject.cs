@@ -1,10 +1,11 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityProject : EntityBase
+    public class EntityProject : EntityBase, IHistoricalAuditable
     {
         [Required]
         [DisplayName("Name")]

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Saaly.Models.Interfaces;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityClientGroupClient
+    public class EntityClientGroupClient : IHistoricalAuditable
     {
         public Guid GroupGuid { get; set; }
         public Guid ClientGuid { get; set; }

@@ -1,9 +1,10 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityUserGroupUser : EntityBase
+    public class EntityUserGroupUser : EntityBase, IHistoricalAuditable
     {
         public Guid EntityUserGroupGuid { get; set; }
         public Guid EntityUserGroupUserGuid { get; set; }

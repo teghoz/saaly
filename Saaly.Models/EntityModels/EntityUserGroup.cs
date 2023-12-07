@@ -1,9 +1,10 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using System.ComponentModel;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityUserGroup : EntityBase
+    public class EntityUserGroup : EntityBase, IHistoricalAuditable
     {
         [DisplayName("Group")]
         public string Name { get; set; }

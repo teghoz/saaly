@@ -1,10 +1,11 @@
 ﻿using Saaly.Models.Bases;
 using Saaly.Models.Enums;
+using Saaly.Models.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityLocation : EntityBase
+    public class EntityLocation : EntityBase, IHistoricalAuditable
     {
         public string? Title { get; set; }
         public string? Slug { get; set; }

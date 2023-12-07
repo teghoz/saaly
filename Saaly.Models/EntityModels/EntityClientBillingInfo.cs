@@ -1,10 +1,11 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using SaalyModels;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityClientBillingInfo : EntityBase
+    public class EntityClientBillingInfo : EntityBase, IHistoricalAuditable
     {
         public Guid? ContactGuid { get; set; }
         [ForeignKey("ContactGuid")]

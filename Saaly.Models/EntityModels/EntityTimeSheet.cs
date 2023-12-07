@@ -1,10 +1,11 @@
 ﻿using Saaly.Models.Bases;
 using Saaly.Models.Enums;
+using Saaly.Models.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityTimeSheet : EntityBase
+    public class EntityTimeSheet : EntityBase, IHistoricalAuditable
     {
         public DateTime Date { get; set; }
         public string Day { get; set; }

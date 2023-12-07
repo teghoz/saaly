@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using Saaly.Models.EntityModels;
+﻿using Saaly.Models.EntityModels;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.Bases
 {

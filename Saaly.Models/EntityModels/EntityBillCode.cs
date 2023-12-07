@@ -1,11 +1,12 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityBillCode : EntityBase
+    public class EntityBillCode : EntityBase, IHistoricalAuditable
     {
         [Required]
         [DisplayName("Code Name")]

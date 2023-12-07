@@ -1,7 +1,6 @@
 ﻿using Saaly.Models.Bases;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Saaly.Models.EntityModels
+namespace Saaly.Models.Audits
 {
     public class AuditEntityUserGroupUser : EntityBase
     {

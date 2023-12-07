@@ -1,4 +1,5 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using SaalyModels;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityClient : EntityBase
+    public class EntityClient : EntityBase, IHistoricalAuditable
     {
         [Required]
         [DisplayName("Client Name")]

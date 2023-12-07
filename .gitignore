@@ -24,3 +24,7 @@ Saaly.User/obj/
 Saaly.User/bin/
 Saaly.Infrastucture/bin/
 .vs/
+Saaly.Data.Tests/bin/
+Saaly.Data.Tests/obj/
+Saaly.Tests/bin/
+Saaly.Tests/obj/

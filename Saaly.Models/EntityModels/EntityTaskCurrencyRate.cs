@@ -1,9 +1,10 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityTaskCurrencyRate : EntityBase
+    public class EntityTaskCurrencyRate : EntityBase, IHistoricalAuditable
     {
         public Guid CurrencyGuid { get; set; }
         public Guid TaskGuid { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using SaalyModels;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityUser : EntityBase
+    public class EntityUser : EntityBase, IHistoricalAuditable
     {
         public Guid? ContactGuid { get; set; }
         [ForeignKey("ContactGuid")]
@@ -30,6 +31,6 @@ namespace Saaly.Models.EntityModels
         public virtual EntityUserDepartment? EntityUserDepartment { get; set; }
         [ForeignKey("BillCodeGuid")]
         public virtual EntityBillCode? EntityBillCode { get; set; }
-        public virtual List<AuditEntityUserGroupUser>? Groups { get; set; }
+        public virtual List<EntityUserGroupUser>? Groups { get; set; }
     }
 }

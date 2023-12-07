@@ -1,9 +1,10 @@
 ﻿using Saaly.Models.Bases;
+using Saaly.Models.Interfaces;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityExpense : EntityBase
+    public class EntityExpense : EntityBase, IHistoricalAuditable
     {
         public int ID { get; set; }
         public Guid? WorkGuid { get; set; }

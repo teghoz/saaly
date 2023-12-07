@@ -1,9 +1,10 @@
-﻿using System.ComponentModel;
+﻿using Saaly.Models.Interfaces;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityBillUnit : Entity
+    public class EntityBillUnit : Entity, IHistoricalAuditable
     {
         [Required]
         public string Name { get; set; }
