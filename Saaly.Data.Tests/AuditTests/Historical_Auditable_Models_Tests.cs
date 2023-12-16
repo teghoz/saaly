@@ -1,10 +1,5 @@
-﻿using NUnit.Framework;
-using Saaly.Models;
+﻿using Saaly.Models;
 using Saaly.Models.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace Saaly.Data.Tests.AuditTests
 {
@@ -29,7 +24,7 @@ namespace Saaly.Data.Tests.AuditTests
             var concreteTypes = types.Where(t => typeof(IHistoricalAuditable).IsAssignableFrom(t) && !t.IsInterface && !t.IsAbstract);
 
             string phraseToMatch = "Audit";
-            var typesStartingWithPhrase = types.Where(t => t.Name.StartsWith(phraseToMatch, StringComparison.InvariantCultureIgnoreCase));           
+            var typesStartingWithPhrase = types.Where(t => t.Name.StartsWith(phraseToMatch, StringComparison.InvariantCultureIgnoreCase));
 
             foreach (var type in concreteTypes)
             {

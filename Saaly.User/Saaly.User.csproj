@@ -8,4 +8,8 @@
     <DockerfileContext>..\Saaly</DockerfileContext>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Saaly.Data\Saaly.Data.csproj" />
+  </ItemGroup>
+
 </Project>

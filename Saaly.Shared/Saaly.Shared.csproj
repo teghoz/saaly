@@ -10,4 +10,8 @@
     <Folder Include="Enums\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="9.0.0-prerelease" />
+  </ItemGroup>
+
 </Project>
