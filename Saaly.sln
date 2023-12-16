@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly", "Saaly\Saaly.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Models", "Saaly.Models\Saaly.Models.csproj", "{6576246B-CF88-42D8-BCA9-1294DAD0914A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Infrastucture", "Saaly.Infrastucture\Saaly.Infrastucture.csproj", "{89012187-D39B-40B9-9156-6C5EA9CA4408}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Infrastructure", "Saaly.Infrastructure\Saaly.Infrastructure.csproj", "{89012187-D39B-40B9-9156-6C5EA9CA4408}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Shared", "Saaly.Shared\Saaly.Shared.csproj", "{FC4B3321-CFD5-4BE3-AE79-575C80794278}"
 EndProject
@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Data.Tests", "Saaly.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.User.Tests", "Saaly.User.Tests\Saaly.User.Tests.csproj", "{061BC114-9A77-4360-858F-532767D5FEBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saaly.Services.Tests", "Saaly.Services.Tests\Saaly.Services.Tests.csproj", "{9CED520F-4D73-4D0C-A744-4E0153200501}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Services.Tests", "Saaly.Services.Tests\Saaly.Services.Tests.csproj", "{9CED520F-4D73-4D0C-A744-4E0153200501}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saaly.Infrastructure.Extensions", "Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj", "{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{9CED520F-4D73-4D0C-A744-4E0153200501}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CED520F-4D73-4D0C-A744-4E0153200501}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CED520F-4D73-4D0C-A744-4E0153200501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

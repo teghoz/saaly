@@ -31,3 +31,9 @@ Saaly.Tests/obj/
 Saaly.User.Tests/obj/
 Saaly.Service.Tests/obj/
 Saaly.Services.Tests/obj/
+Saaly.Infrastructure.Extensions/obj/
+Saaly.Infrastructure/obj/
+Saaly.Services.Tests/bin/
+Saaly.User.Tests/bin/
+Saaly.Infrastructure/bin/
+Saaly.Infrastructure.Extensions/bin/
