@@ -27,14 +27,14 @@ namespace Saaly.Pages
         public int EntityCount { get; set; }
         public int PaginationSkip
         {
-            get 
+            get
             {
                 if (Skip.HasValue)
                 {
                     return Skip.Value == 0 ? 1 : Skip.Value;
                 }
                 return 0;
-            }  
+            }
         }
 
         public int QuerySkip

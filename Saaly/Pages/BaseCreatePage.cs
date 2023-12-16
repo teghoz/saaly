@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
-using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
 using Saaly.Models.Bases;
 using Saaly.Shared.Interfaces;

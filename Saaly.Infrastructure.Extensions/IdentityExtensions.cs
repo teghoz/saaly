@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,7 +44,7 @@ namespace Saaly.Infrastructure.Extensions
 
             return services;
         }
-        public static IServiceCollection AddCookieIdentity(this IServiceCollection services, Action<CustomIdentityOption> customIdentityOptions, Action<IServiceCollection> extraRegistrations) 
+        public static IServiceCollection AddCookieIdentity(this IServiceCollection services, Action<CustomIdentityOption> customIdentityOptions, Action<IServiceCollection> extraRegistrations)
         {
             var identityOptions = new CustomIdentityOption();
             customIdentityOptions?.Invoke(identityOptions);

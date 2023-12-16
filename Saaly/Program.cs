@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Saaly.Extensions;
 using Saaly.Infrastructure.Extensions;
 using Saaly.Infrastucture.Configurations;
@@ -25,7 +23,7 @@ builder.Services.AddCookieIdentity(options =>
         option.AccessDeniedPath = "/Identity/Account/AccessDenied";
         option.SlidingExpiration = true;
     };
-}, 
+},
 (s) =>
 {
     s.AddPermissions();

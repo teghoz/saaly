@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Saaly.Infrastructure.Extensions.Requirements;
-using System.Threading.Tasks;
 
 namespace Saaly.Infrastructure.Extensions.Handlers
 {

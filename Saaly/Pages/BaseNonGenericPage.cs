@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Saaly.Data;
 using Saaly.Models;
-using Saaly.Models.Bases;
 
 namespace Saaly.Pages
 {
