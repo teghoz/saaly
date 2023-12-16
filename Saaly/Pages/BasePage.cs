@@ -27,12 +27,26 @@ namespace Saaly.Pages
         public int EntityCount { get; set; }
         public int PaginationSkip
         {
-            get => Skip.Value == 0 ? 1 : Skip.Value;
+            get 
+            {
+                if (Skip.HasValue)
+                {
+                    return Skip.Value == 0 ? 1 : Skip.Value;
+                }
+                return 0;
+            }  
         }
 
         public int QuerySkip
         {
-            get => (Skip.Value - 1 < 0 ? 0 : Skip.Value - 1) * Take.Value;
+            get
+            {
+                if (Skip.HasValue && Take.HasValue)
+                {
+                    return (Skip.Value - 1 < 0 ? 0 : Skip.Value - 1) * Take.Value;
+                }
+                return 0;
+            }
         }
         [BindProperty(SupportsGet = true)] public int? Skip { get; set; } = 1;
         [BindProperty(SupportsGet = true)] public int? Take { get; set; } = SaalyConfig.Instance.General.DefaultPageCount;

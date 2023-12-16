@@ -25,7 +25,7 @@ namespace Saaly.Pages
         }
 
         [BindProperty]
-        public T Model { get; set; }
+        public T? Model { get; set; }
 
         public virtual async Task<IActionResult> OnGetAsync(Guid? guid)
         {
