@@ -34,11 +34,10 @@ namespace Saaly.Infrastructure.Extensions
                         options.Lockout.AllowedForNewUsers = true;
 
                         // User settings.
-                        //options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
                         options.User.AllowedUserNameCharacters = SaalyConfig.Instance.Password.AllowedCharacters;
                         options.User.RequireUniqueEmail = false;
                     })
-                    .AddRoles<IdentityRole>()
+                    .AddRoles<IdentityRole<Guid>>()
                     .AddEntityFrameworkStores<SaalyContext>()
                     .AddDefaultTokenProviders();
 
@@ -49,7 +48,6 @@ namespace Saaly.Infrastructure.Extensions
             var identityOptions = new CustomIdentityOption();
             customIdentityOptions?.Invoke(identityOptions);
 
-            //services.AddYoodaloPermissions();
             extraRegistrations.Invoke(services);
             services.ConfigureApplicationCookie(identityOptions.AuthenticationOptions);
 

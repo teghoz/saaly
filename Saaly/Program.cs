@@ -9,7 +9,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSaalyContext(options =>
 {
-    options.ConnectionString = "";
+    options.ConnectionString = SaalyConfig.Instance.Database.ConnectionString;
 });
 
 builder.Services.AddCookieIdentity(options =>
@@ -19,7 +19,7 @@ builder.Services.AddCookieIdentity(options =>
         option.Cookie.HttpOnly = true;
         option.ExpireTimeSpan = TimeSpan.FromMinutes(15);
         option.Cookie.Name = SaalyConfig.Instance.ProjectName;
-        option.LoginPath = "/Login";
+        option.LoginPath = "/Identity/Account/Login";
         option.AccessDeniedPath = "/Identity/Account/AccessDenied";
         option.SlidingExpiration = true;
     };
@@ -44,8 +44,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseSession();
 app.MapRazorPages();
 
 app.Run();

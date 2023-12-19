@@ -32,7 +32,7 @@ namespace Saaly.Pages
             {
                 RedirectToPage("./Identity/Account/Login");
             }
-            //APIBaseUrl = _applicationSettings.APIDomain;
+
             BaseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
 
             if (User != null)
@@ -40,7 +40,8 @@ namespace Saaly.Pages
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null && user.AdminGuid != Guid.Empty)
                 {
-                    Admin = await _context.Admins.AsNoTracking()
+                    Admin = await _context.Admins
+                        .AsNoTracking()
                         .Include(u => u.Contact)
                         .Where(m => m.Guid == user.AdminGuid)
                         .FirstOrDefaultAsync();

@@ -3,8 +3,9 @@ using System.ComponentModel;
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityUserGroup : EntityBase
+    public class AuditEntityUserGroup : AuditEntityBase
     {
+        public Guid EntityUserGroupGuid { get; set; }
         [DisplayName("Group")]
         public string Name { get; set; }
         [DisplayName("Groups Description")]

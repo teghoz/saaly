@@ -1,13 +1,11 @@
 ﻿using Saaly.Models.Bases;
-using System.ComponentModel.DataAnnotations;
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityTask : SaalyBase
+    public class AuditEntityTask : AuditEntityBase
     {
-        [Required]
+        public Guid EntityTaskGuid { get; set; }
         public string Name { get; set; }
-        [Required]
         public string? Description { get; set; }
         public decimal? BudgetHours { get; set; }
         public DateTime StartDate { get; set; }
