@@ -17,6 +17,7 @@ namespace Saaly.Data
         public DbSet<AuditEntityExpense> AuditEntityExpenses { get; set; }
         public DbSet<AuditEntityGender> AuditEntityGenders { get; set; }
         public DbSet<AuditEntityJob> AuditEntityJobs { get; set; }
+        public DbSet<AuditLocation> AuditLocations { get; set; }
         public DbSet<AuditEntityLocation> AuditEntityLocations { get; set; }
         public DbSet<AuditEntityProject> AuditEntityProjects { get; set; }
         public DbSet<AuditEntityTask> AuditEntityTasks { get; set; }

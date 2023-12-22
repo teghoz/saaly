@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
@@ -74,6 +73,34 @@ namespace Saaly.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tblAuditLocations",
+                columns: table => new
+                {
+                    Guid = table.Column<Guid>(type: "uuid", nullable: false),
+                    LocationGuid = table.Column<Guid>(type: "uuid", nullable: false),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Slug = table.Column<string>(type: "text", nullable: true),
+                    ParentGuid = table.Column<Guid>(type: "uuid", nullable: true),
+                    Depth = table.Column<int>(type: "integer", nullable: false),
+                    SortOrder = table.Column<int>(type: "integer", nullable: false),
+                    MapData = table.Column<string>(type: "text", nullable: true),
+                    ChangeType = table.Column<int>(type: "integer", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    ModifiedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    DeletedByUser = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tblAuditLocations", x => x.Guid);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tblDataProtectionKeys",
                 columns: table => new
                 {
@@ -106,6 +133,37 @@ namespace Saaly.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_tblEntities", x => x.Guid);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tblLocation",
+                columns: table => new
+                {
+                    Guid = table.Column<Guid>(type: "uuid", nullable: false),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Slug = table.Column<string>(type: "text", nullable: true),
+                    ParentGuid = table.Column<Guid>(type: "uuid", nullable: true),
+                    Depth = table.Column<int>(type: "integer", nullable: false),
+                    SortOrder = table.Column<int>(type: "integer", nullable: false),
+                    MapData = table.Column<string>(type: "text", nullable: true),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    ModifiedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    DeletedByUser = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tblLocation", x => x.Guid);
+                    table.ForeignKey(
+                        name: "FK_tblLocation_tblLocation_ParentGuid",
+                        column: x => x.ParentGuid,
+                        principalTable: "tblLocation",
+                        principalColumn: "Guid");
                 });
 
             migrationBuilder.CreateTable(
@@ -895,44 +953,6 @@ namespace Saaly.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblEntityLocation",
-                columns: table => new
-                {
-                    Guid = table.Column<Guid>(type: "uuid", nullable: false),
-                    Title = table.Column<string>(type: "text", nullable: true),
-                    Slug = table.Column<string>(type: "text", nullable: true),
-                    ParentGuid = table.Column<Guid>(type: "uuid", nullable: true),
-                    Depth = table.Column<int>(type: "integer", nullable: false),
-                    SortOrder = table.Column<int>(type: "integer", nullable: false),
-                    MapData = table.Column<string>(type: "text", nullable: true),
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    CreatedByUser = table.Column<Guid>(type: "uuid", nullable: true),
-                    ModifiedByUser = table.Column<Guid>(type: "uuid", nullable: true),
-                    DeletedByUser = table.Column<Guid>(type: "uuid", nullable: true),
-                    EntityGuid = table.Column<Guid>(type: "uuid", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tblEntityLocation", x => x.Guid);
-                    table.ForeignKey(
-                        name: "FK_tblEntityLocation_tblEntities_EntityGuid",
-                        column: x => x.EntityGuid,
-                        principalTable: "tblEntities",
-                        principalColumn: "Guid",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_tblEntityLocation_tblEntityLocation_ParentGuid",
-                        column: x => x.ParentGuid,
-                        principalTable: "tblEntityLocation",
-                        principalColumn: "Guid");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "tblEntityUserDepartments",
                 columns: table => new
                 {
@@ -995,6 +1015,44 @@ namespace Saaly.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "tblEntityLocation",
+                columns: table => new
+                {
+                    Guid = table.Column<Guid>(type: "uuid", nullable: false),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    Slug = table.Column<string>(type: "text", nullable: true),
+                    ParentGuid = table.Column<Guid>(type: "uuid", nullable: true),
+                    Depth = table.Column<int>(type: "integer", nullable: false),
+                    SortOrder = table.Column<int>(type: "integer", nullable: false),
+                    MapData = table.Column<string>(type: "text", nullable: true),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    ModifiedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    DeletedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    EntityGuid = table.Column<Guid>(type: "uuid", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tblEntityLocation", x => x.Guid);
+                    table.ForeignKey(
+                        name: "FK_tblEntityLocation_tblEntities_EntityGuid",
+                        column: x => x.EntityGuid,
+                        principalTable: "tblEntities",
+                        principalColumn: "Guid",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_tblEntityLocation_tblLocation_ParentGuid",
+                        column: x => x.ParentGuid,
+                        principalTable: "tblLocation",
+                        principalColumn: "Guid");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "tblEntityBillCode",
                 columns: table => new
                 {
@@ -1031,47 +1089,6 @@ namespace Saaly.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "tblContacts",
-                columns: table => new
-                {
-                    Guid = table.Column<Guid>(type: "uuid", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: true),
-                    LastName = table.Column<string>(type: "text", nullable: true),
-                    Code = table.Column<string>(type: "text", nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    Email = table.Column<string>(type: "text", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
-                    WhatsappNumber = table.Column<string>(type: "text", nullable: true),
-                    GenderGuid = table.Column<Guid>(type: "uuid", nullable: true),
-                    Address = table.Column<string>(type: "text", nullable: true),
-                    Website = table.Column<string>(type: "text", nullable: true),
-                    LocationGuid = table.Column<Guid>(type: "uuid", nullable: true),
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    CreatedByUser = table.Column<Guid>(type: "uuid", nullable: true),
-                    ModifiedByUser = table.Column<Guid>(type: "uuid", nullable: true),
-                    DeletedByUser = table.Column<Guid>(type: "uuid", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_tblContacts", x => x.Guid);
-                    table.ForeignKey(
-                        name: "FK_tblContacts_tblEntityGender_GenderGuid",
-                        column: x => x.GenderGuid,
-                        principalTable: "tblEntityGender",
-                        principalColumn: "Guid");
-                    table.ForeignKey(
-                        name: "FK_tblContacts_tblEntityLocation_LocationGuid",
-                        column: x => x.LocationGuid,
-                        principalTable: "tblEntityLocation",
-                        principalColumn: "Guid");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "tblEntityUserDepartmentClaim",
                 columns: table => new
                 {
@@ -1104,6 +1121,53 @@ namespace Saaly.Data.Migrations
                         principalTable: "tblEntityUserDepartments",
                         principalColumn: "Guid",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "tblContacts",
+                columns: table => new
+                {
+                    Guid = table.Column<Guid>(type: "uuid", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    Code = table.Column<string>(type: "text", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "text", nullable: true),
+                    WhatsappNumber = table.Column<string>(type: "text", nullable: true),
+                    GenderGuid = table.Column<Guid>(type: "uuid", nullable: true),
+                    Address = table.Column<string>(type: "text", nullable: true),
+                    Website = table.Column<string>(type: "text", nullable: true),
+                    LocationGuid = table.Column<Guid>(type: "uuid", nullable: true),
+                    EntityLocationGuid = table.Column<Guid>(type: "uuid", nullable: true),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Modified = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Deleted = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    CreatedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    ModifiedByUser = table.Column<Guid>(type: "uuid", nullable: true),
+                    DeletedByUser = table.Column<Guid>(type: "uuid", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_tblContacts", x => x.Guid);
+                    table.ForeignKey(
+                        name: "FK_tblContacts_tblEntityGender_GenderGuid",
+                        column: x => x.GenderGuid,
+                        principalTable: "tblEntityGender",
+                        principalColumn: "Guid");
+                    table.ForeignKey(
+                        name: "FK_tblContacts_tblEntityLocation_EntityLocationGuid",
+                        column: x => x.EntityLocationGuid,
+                        principalTable: "tblEntityLocation",
+                        principalColumn: "Guid");
+                    table.ForeignKey(
+                        name: "FK_tblContacts_tblLocation_LocationGuid",
+                        column: x => x.LocationGuid,
+                        principalTable: "tblLocation",
+                        principalColumn: "Guid");
                 });
 
             migrationBuilder.CreateTable(
@@ -1897,6 +1961,11 @@ namespace Saaly.Data.Migrations
                 column: "EntityGuid");
 
             migrationBuilder.CreateIndex(
+                name: "IX_tblContacts_EntityLocationGuid",
+                table: "tblContacts",
+                column: "EntityLocationGuid");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_tblContacts_GenderGuid",
                 table: "tblContacts",
                 column: "GenderGuid");
@@ -2106,6 +2175,11 @@ namespace Saaly.Data.Migrations
                 table: "tblEntityWorkAssignments",
                 column: "JobGuid");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_tblLocation_ParentGuid",
+                table: "tblLocation",
+                column: "ParentGuid");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_tblEntityClient_tblEntityClientBillingInfo_EntityClientBill~",
                 table: "tblEntityClient",
@@ -2222,6 +2296,9 @@ namespace Saaly.Data.Migrations
                 name: "tblAuditEntityWorkAssignments");
 
             migrationBuilder.DropTable(
+                name: "tblAuditLocations");
+
+            migrationBuilder.DropTable(
                 name: "tblDataProtectionKeys");
 
             migrationBuilder.DropTable(
@@ -2283,6 +2360,9 @@ namespace Saaly.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "tblEntityLocation");
+
+            migrationBuilder.DropTable(
+                name: "tblLocation");
 
             migrationBuilder.DropTable(
                 name: "tblEntities");

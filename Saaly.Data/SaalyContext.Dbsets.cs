@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Saaly.Models;
-using SaalyModels;
 
 namespace Saaly.Data
 {

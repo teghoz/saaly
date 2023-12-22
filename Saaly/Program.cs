@@ -5,7 +5,21 @@ using Saaly.Infrastucture.Configurations;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
+
+var mvcBuilder = builder.Services.AddRazorPages(options =>
+{
+    options.Conventions.AllowAnonymousToFolder("/Identity/Account");
+    options.Conventions.AllowAnonymousToAreaFolder("Identity", "/Account");
+    options.Conventions.AuthorizeAreaPage("Identity", "/Accounts/Manage");
+
+}).AddSessionStateTempDataProvider();
+
+if (builder.Environment.IsDevelopment())
+{
+    mvcBuilder.AddRazorRuntimeCompilation();
+}
+
+
 
 builder.Services.AddSaalyContext(options =>
 {
@@ -29,6 +43,8 @@ builder.Services.AddCookieIdentity(options =>
     s.AddPermissions();
 });
 
+builder.Services.AddControllers();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,10 +59,13 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseCookiePolicy();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession();
 app.MapRazorPages();
+app.MapControllers();
+
+await app.SeedUser();
 
 app.Run();

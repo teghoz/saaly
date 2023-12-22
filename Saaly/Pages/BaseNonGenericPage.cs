@@ -30,7 +30,7 @@ namespace Saaly.Pages
             if (!context.HttpContext.User.IsInRole("Admin") ||
                 !context.HttpContext.User.Identity.IsAuthenticated)
             {
-                RedirectToPage("./Identity/Account/Login");
+                RedirectToPage("Account/Login", new { area = "Identity" });
             }
 
             BaseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
@@ -57,13 +57,17 @@ namespace Saaly.Pages
             if (!context.HttpContext.User.IsInRole("Admin") ||
                 !context.HttpContext.User.Identity.IsAuthenticated)
             {
-                RedirectToPage("./Identity/Account/Login");
+                context.Result = RedirectToPage("Account/Login", new { area = "Identity" });
             }
-            var page = context.HandlerInstance as PageModel;
-            if (page == null) return;
-            page.ViewData["AuthenticatedUser"] = Admin?.Contact?.FullName ?? "";
-            page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
-            var resultContext = await next();
+            else
+            {
+                var page = context.HandlerInstance as PageModel;
+                if (page == null) return;
+                page.ViewData["AuthenticatedUser"] = Admin?.Contact?.FullName ?? "";
+                page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
+                page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
+                var resultContext = await next();
+            }
         }
     }
 }

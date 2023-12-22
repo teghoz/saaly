@@ -12,7 +12,7 @@ using Saaly.Data;
 namespace Saaly.Data.Migrations
 {
     [DbContext(typeof(SaalyContext))]
-    [Migration("20231219212850_InitialMigration")]
+    [Migration("20231221235022_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -1775,6 +1775,148 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblAuditEntityWorkAssignments");
                 });
 
+            modelBuilder.Entity("Saaly.Models.Audits.AuditLocation", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Depth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("LocationGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("MapData")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ParentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("text");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.ToTable("tblAuditLocations");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Contact", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("EntityLocationGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("GenderGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("LocationGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Website")
+                        .HasColumnType("text");
+
+                    b.Property<string>("WhatsappNumber")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityLocationGuid");
+
+                    b.HasIndex("GenderGuid");
+
+                    b.HasIndex("LocationGuid");
+
+                    b.ToTable("tblContacts");
+                });
+
             modelBuilder.Entity("Saaly.Models.EntityModels.Entity", b =>
                 {
                     b.Property<Guid>("Guid")
@@ -2897,17 +3039,11 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityWorkAssignments");
                 });
 
-            modelBuilder.Entity("SaalyModels.Contact", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.Location", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
-
-                    b.Property<string>("Address")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Code")
-                        .HasColumnType("text");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -2915,23 +3051,14 @@ namespace Saaly.Data.Migrations
                     b.Property<Guid?>("CreatedByUser")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<DateTime?>("Deleted")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Email")
-                        .HasColumnType("text");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("text");
-
-                    b.Property<Guid?>("GenderGuid")
-                        .HasColumnType("uuid");
+                    b.Property<int>("Depth")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2942,11 +3069,8 @@ namespace Saaly.Data.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("LastName")
+                    b.Property<string>("MapData")
                         .HasColumnType("text");
-
-                    b.Property<Guid?>("LocationGuid")
-                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("Modified")
                         .HasColumnType("timestamp with time zone");
@@ -2954,22 +3078,23 @@ namespace Saaly.Data.Migrations
                     b.Property<Guid?>("ModifiedByUser")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("PhoneNumber")
+                    b.Property<Guid?>("ParentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Slug")
                         .HasColumnType("text");
 
-                    b.Property<string>("Website")
-                        .HasColumnType("text");
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer");
 
-                    b.Property<string>("WhatsappNumber")
+                    b.Property<string>("Title")
                         .HasColumnType("text");
 
                     b.HasKey("Guid");
 
-                    b.HasIndex("GenderGuid");
+                    b.HasIndex("ParentGuid");
 
-                    b.HasIndex("LocationGuid");
-
-                    b.ToTable("tblContacts");
+                    b.ToTable("tblLocation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -3025,7 +3150,7 @@ namespace Saaly.Data.Migrations
 
             modelBuilder.Entity("Saaly.Models.Admin", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -3082,7 +3207,7 @@ namespace Saaly.Data.Migrations
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClient", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -3099,7 +3224,7 @@ namespace Saaly.Data.Migrations
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientBillingInfo", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -3290,6 +3415,27 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
+            modelBuilder.Entity("Saaly.Models.Contact", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.EntityLocation", "EntityLocation")
+                        .WithMany()
+                        .HasForeignKey("EntityLocationGuid");
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityGender", "Gender")
+                        .WithMany()
+                        .HasForeignKey("GenderGuid");
+
+                    b.HasOne("Saaly.Models.EntityModels.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationGuid");
+
+                    b.Navigation("EntityLocation");
+
+                    b.Navigation("Gender");
+
+                    b.Navigation("Location");
+                });
+
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>
                 {
                     b.HasOne("Saaly.Models.EntityModels.EntityBillUnit", "BillUnit")
@@ -3349,7 +3495,7 @@ namespace Saaly.Data.Migrations
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityClient", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -3372,7 +3518,7 @@ namespace Saaly.Data.Migrations
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientBillingInfo", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -3436,7 +3582,7 @@ namespace Saaly.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Saaly.Models.EntityModels.EntityLocation", "Parent")
+                    b.HasOne("Saaly.Models.EntityModels.Location", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentGuid");
 
@@ -3524,7 +3670,7 @@ namespace Saaly.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -3648,19 +3794,13 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityUser");
                 });
 
-            modelBuilder.Entity("SaalyModels.Contact", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.Location", b =>
                 {
-                    b.HasOne("Saaly.Models.EntityModels.EntityGender", "Gender")
+                    b.HasOne("Saaly.Models.EntityModels.Location", "Parent")
                         .WithMany()
-                        .HasForeignKey("GenderGuid");
+                        .HasForeignKey("ParentGuid");
 
-                    b.HasOne("Saaly.Models.EntityModels.EntityLocation", "Location")
-                        .WithMany()
-                        .HasForeignKey("LocationGuid");
-
-                    b.Navigation("Gender");
-
-                    b.Navigation("Location");
+                    b.Navigation("Parent");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>

@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
@@ -24,20 +24,16 @@
     <link rel="icon" type="image/png" sizes="192x192" href="~/assets/media/favicons/favicon-192x192.png">
     <link rel="apple-touch-icon" sizes="180x180" href="~/assets/media/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
-
     <!-- Stylesheets -->
     <!-- OneUI framework -->
     <link rel="stylesheet" id="css-main" href="~/assets/css/oneui.min.css">
 
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Saaly.styles.css" asp-append-version="true" />
-
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="~/assets/css/themes/amethyst.min.css"> -->
     <!-- END Stylesheets -->
-  </head>
+</head>
 
-  <body>
+<body>
     <!-- Page Container -->
     <!--
       Available classes for #page-container:
@@ -84,51 +80,17 @@
 
         'sidebar-dark page-header-dark dark-mode'   Enable dark mode (light sidebar/header is not supported with dark mode)
     -->
-    <div id="page-container" class="sidebar-o sidebar-dark enable-page-overlay side-scroll page-header-fixed @ViewData["MAIN_CONTENT_LAYOUT"]">
-      <!-- Side Overlay-->
-        <partial name="_Layout.Aside" />
-      <!-- END Side Overlay -->
+    <div id="page-container">
 
-
-      <!-- Sidebar -->
-      <partial name="_Layout.Sidebar" />
-      <!-- END Sidebar -->
-
-      <!-- Header -->
-      <partial name="_Layout.Header" />
-      <!-- END Header -->
-
-      <!-- Main Container -->
-      <main id="main-container">
-        <!-- Hero -->
-        @await RenderSectionAsync("Hero", required: true)       
-        <!-- END Hero -->
-
-        <!-- Page Content -->
-        <div class="content">
+        <!-- Main Container -->
+        <main id="main-container">
+            <!-- Page Content -->
             @RenderBody()
-        </div>
-        <!-- END Page Content -->
-      </main>
-      <!-- END Main Container -->
-
-      <!-- Footer -->
-      <footer id="page-footer" class="bg-body-light">
-        <div class="content py-3">
-          <div class="row fs-sm">
-            <div class="col-sm-6 order-sm-2 py-1 text-center text-sm-end">
-              Crafted with <i class="fa fa-heart text-danger"></i> by <a class="fw-semibold" href="https://pixelcave.com" target="_blank">pixelcave</a>
-            </div>
-            <div class="col-sm-6 order-sm-1 py-1 text-center text-sm-start">
-              <a class="fw-semibold" href="https://pixelcave.com/products/oneui" target="_blank">OneUI 5.8</a> &copy; <span data-toggle="year-copy"></span>
-            </div>
-          </div>
-        </div>
-      </footer>
-      <!-- END Footer -->
+            <!-- END Page Content -->
+        </main>
+        <!-- END Main Container -->
     </div>
     <!-- END Page Container -->
-
     <!--
         OneUI JS
 
@@ -137,12 +99,13 @@
     -->
     <script src="~/assets/js/oneui.app.min.js"></script>
 
-    <!-- Page JS Plugins -->
-    <script src="~/assets/js/plugins/chart.js/chart.umd.js"></script>
+    <!-- jQuery (required for jQuery Validation plugin) -->
+    <script src="~/assets/js/lib/jquery.min.js"></script>
 
-    <!-- Page JS Code -->
-    <script src="~/assets/js/pages/be_pages_dashboard.min.js"></script>
+    <!-- Page JS Plugins -->
+    <script src="~/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
-    <script src="~/js/site.js" asp-append-version="true"></script>
-  </body>
+    <!-- Page JS Code -->
+    <script src="~/assets/js/pages/op_auth_signin.min.js"></script>
+</body>
 </html>

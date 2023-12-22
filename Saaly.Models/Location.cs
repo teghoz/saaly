@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
-    public class EntityLocation : EntityBase, IHistoricalAuditable
+    public class Location : SaalyBase, IHistoricalAuditable
     {
         public string? Title { get; set; }
         public string? Slug { get; set; }

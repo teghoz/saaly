@@ -1,5 +1,4 @@
 ﻿using Saaly.Models.Bases;
-using SaalyModels;
 using System.ComponentModel;
 
 namespace Saaly.Models.Audits
