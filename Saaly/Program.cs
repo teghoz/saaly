@@ -1,6 +1,13 @@
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Saaly.Data.Interfaces;
+using Saaly.Data.Repositories;
 using Saaly.Extensions;
 using Saaly.Infrastructure.Extensions;
 using Saaly.Infrastucture.Configurations;
+using Saaly.Models;
+using Saaly.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +25,6 @@ if (builder.Environment.IsDevelopment())
 {
     mvcBuilder.AddRazorRuntimeCompilation();
 }
-
-
 
 builder.Services.AddSaalyContext(options =>
 {
@@ -43,6 +48,16 @@ builder.Services.AddCookieIdentity(options =>
     s.AddPermissions();
 });
 
+builder.Services.AddScoped(typeof(IRepository<Admin>), typeof(AdminEFRepositiory));
+builder.Services.AddScoped<IAdminService, AdminService>();
+builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddScoped(x =>
+{
+    var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
+    var factory = x.GetRequiredService<IUrlHelperFactory>();
+    return factory.GetUrlHelper(actionContext);
+});
 builder.Services.AddControllers();
 
 var app = builder.Build();

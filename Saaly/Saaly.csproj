@@ -27,11 +27,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj" />
+    <ProjectReference Include="..\Saaly.Services\Saaly.Services.csproj" />
     <ProjectReference Include="..\Saaly.Shared\Saaly.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
