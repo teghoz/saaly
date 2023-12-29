@@ -1,9 +1,10 @@
 ﻿using Saaly.Models.Bases;
 
-namespace SaalyModels
+namespace Saaly.Models.Audits
 {
-    public class AuditEntityWorkAssignment : EntityBase
+    public class AuditEntityWorkAssignment : AuditEntityBase
     {
+        public Guid EntityWorkAssignmentGuid { get; set; }
         public Guid JobGuid { get; set; }
         public string JobName { get; set; }
         public Guid EntityUserGuid { get; set; }

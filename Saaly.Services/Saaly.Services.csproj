@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Saaly.Data\Saaly.Data.csproj" />
+  </ItemGroup>
+
 </Project>

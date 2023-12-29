@@ -3,8 +3,9 @@ using Saaly.Models.Enums;
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityLocation : EntityBase
+    public class AuditEntityLocation : AuditEntityBase
     {
+        public Guid EntityLocationGuid { get; set; }
         public string? Title { get; set; }
         public string? Slug { get; set; }
         public Guid? ParentGuid { get; set; }

@@ -30,9 +30,9 @@ namespace Saaly.Pages
             if (!context.HttpContext.User.IsInRole("Admin") ||
                 !context.HttpContext.User.Identity.IsAuthenticated)
             {
-                RedirectToPage("./Identity/Account/Login");
+                RedirectToPage("Account/Login", new { area = "Identity" });
             }
-            //APIBaseUrl = _applicationSettings.APIDomain;
+
             BaseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
 
             if (User != null)
@@ -40,7 +40,8 @@ namespace Saaly.Pages
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null && user.AdminGuid != Guid.Empty)
                 {
-                    Admin = await _context.Admins.AsNoTracking()
+                    Admin = await _context.Admins
+                        .AsNoTracking()
                         .Include(u => u.Contact)
                         .Where(m => m.Guid == user.AdminGuid)
                         .FirstOrDefaultAsync();
@@ -56,13 +57,17 @@ namespace Saaly.Pages
             if (!context.HttpContext.User.IsInRole("Admin") ||
                 !context.HttpContext.User.Identity.IsAuthenticated)
             {
-                RedirectToPage("./Identity/Account/Login");
+                context.Result = RedirectToPage("Account/Login", new { area = "Identity" });
             }
-            var page = context.HandlerInstance as PageModel;
-            if (page == null) return;
-            page.ViewData["AuthenticatedUser"] = Admin?.Contact?.FullName ?? "";
-            page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
-            var resultContext = await next();
+            else
+            {
+                var page = context.HandlerInstance as PageModel;
+                if (page == null) return;
+                page.ViewData["AuthenticatedUser"] = Admin?.Contact?.FullName ?? "";
+                page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
+                page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
+                var resultContext = await next();
+            }
         }
     }
 }

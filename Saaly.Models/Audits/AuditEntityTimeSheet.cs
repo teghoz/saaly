@@ -3,8 +3,9 @@ using Saaly.Models.Enums;
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityTimeSheet : EntityBase
+    public class AuditEntityTimeSheet : AuditEntityBase
     {
+        public Guid EntityTimeSheetGuid { get; set; }
         public DateTime Date { get; set; }
         public string Day { get; set; }
         public Guid ClientGuid { get; set; }

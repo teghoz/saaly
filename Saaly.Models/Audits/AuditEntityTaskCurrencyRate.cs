@@ -2,8 +2,9 @@
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityTaskCurrencyRate : EntityBase
+    public class AuditEntityTaskCurrencyRate : AuditEntityBase
     {
+        public Guid EntityTaskCurrencyRateGuid { get; set; }
         public Guid CurrencyGuid { get; set; }
         public Guid TaskGuid { get; set; }
         //public string BillCodeID { get; set; }

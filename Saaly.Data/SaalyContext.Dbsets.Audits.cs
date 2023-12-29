@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Saaly.Models.Audits;
-using SaalyModels;
 
 namespace Saaly.Data
 {
@@ -18,15 +17,17 @@ namespace Saaly.Data
         public DbSet<AuditEntityExpense> AuditEntityExpenses { get; set; }
         public DbSet<AuditEntityGender> AuditEntityGenders { get; set; }
         public DbSet<AuditEntityJob> AuditEntityJobs { get; set; }
+        public DbSet<AuditLocation> AuditLocations { get; set; }
         public DbSet<AuditEntityLocation> AuditEntityLocations { get; set; }
-        public DbSet<AuditEntityProject> AuditEntityProject { get; set; }
+        public DbSet<AuditEntityProject> AuditEntityProjects { get; set; }
         public DbSet<AuditEntityTask> AuditEntityTasks { get; set; }
+        public DbSet<AuditEntityTaskCurrencyRate> AuditEntityTaskCurrencyRates { get; set; }
         public DbSet<AuditEntityTimeSheet> AuditEntityTimeSheet { get; set; }
         public DbSet<AuditEntityUser> AuditEntityUsers { get; set; }
         public DbSet<AuditEntityUserDepartment> AuditEntityUserDepartments { get; set; }
         public DbSet<AuditEntityUserDepartmentClaim> AuditEntityUserDepartmentClaims { get; set; }
         public DbSet<AuditEntityUserGroup> AuditEntityUserGroups { get; set; }
-        public DbSet<AuditEntityUserGroupUser> AuditEntityUserGroupUser { get; set; }
+        public DbSet<AuditEntityUserGroupUser> AuditEntityUserGroupUsers { get; set; }
         public DbSet<AuditEntityWorkAssignment> AuditEntityWorkAssignments { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Saaly.Models.EntityModels
         public int SortOrder { get; set; }
         public string? MapData { get; set; }
         [ForeignKey("ParentGuid")]
-        public virtual EntityLocation? Parent { get; set; }
+        public virtual Location? Parent { get; set; }
         public string GetLocation()
         {
             var fullLocation = Parent?.Title ?? string.Empty;

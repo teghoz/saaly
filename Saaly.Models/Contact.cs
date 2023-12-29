@@ -3,7 +3,7 @@ using Saaly.Models.EntityModels;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SaalyModels
+namespace Saaly.Models
 {
     public class Contact : SaalyBase
     {
@@ -20,8 +20,11 @@ namespace SaalyModels
         [Url]
         public string? Website { get; set; }
         public Guid? LocationGuid { get; set; }
+        public Guid? EntityLocationGuid { get; set; }
         [ForeignKey("LocationGuid")]
-        public virtual EntityLocation? Location { get; set; }
+        public virtual Location? Location { get; set; }
+        [ForeignKey("EntityLocationGuid")]
+        public virtual EntityLocation? EntityLocation { get; set; }
         [ForeignKey("GenderGuid")]
         public virtual EntityGender? Gender { get; set; }
     }

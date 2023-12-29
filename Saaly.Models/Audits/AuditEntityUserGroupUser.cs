@@ -2,9 +2,9 @@
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityUserGroupUser : EntityBase
+    public class AuditEntityUserGroupUser : AuditEntityBase
     {
-        public Guid EntityUserGroupGuid { get; set; }
         public Guid EntityUserGroupUserGuid { get; set; }
+        public Guid EntityUserGroupGuid { get; set; }
     }
 }

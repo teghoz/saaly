@@ -2,8 +2,9 @@
 
 namespace Saaly.Models.Audits
 {
-    public class AuditEntityUserDepartmentClaim : EntityBase
+    public class AuditEntityUserDepartmentClaim : AuditEntityBase
     {
+        public Guid EntityUserDepartmentClaimGuid { get; set; }
         public Guid EntityUserDepartmentGuid { get; set; }
         public string? Name { get; set; }
     }

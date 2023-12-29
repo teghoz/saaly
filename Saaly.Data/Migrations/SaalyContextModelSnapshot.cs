@@ -313,7 +313,1528 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblAspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("SaalyModels.Contact", b =>
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntity", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Types")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Guid");
+
+                    b.ToTable("tblAuditEntities");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillCode", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("BillUnitGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityBillCodeGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityBillCode");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillCodeCurrencyRate", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("BillCostRate")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<decimal>("BillRate")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityBillCodeCurrencyRateGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityBillCodeGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityCurrencyGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityBillCodeCurrencyRate");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillUnit", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityBillUnitGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityBillUnit");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClient", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("ContactGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("EntityClientBillingInfoGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("ManagementCompany")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ContactGuid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityClient");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientBillingInfo", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid?>("ContactGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityClientBillingInfoGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ContactGuid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityClientBillingInfo");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientGroup", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityClientGroupGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("HasMaximumCapacity")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("MaximumCapacity")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityClientGroup");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientGroupClient", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityClientGroupClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("GroupGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.ToTable("tblAuditEntityClientGroupClient");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityCurrency", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityCurrencyGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("FractionalUnit")
+                        .HasColumnType("text");
+
+                    b.Property<string>("FullName")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("IsoCode")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ShortName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Symbol")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityCurrency");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityExpense", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityExpenseGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("WorkGuid")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityExpense");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityGender", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGenderGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityGender");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityJob", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityJobGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityJob");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityLocation", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Depth")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityLocationGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("MapData")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ParentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("text");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityLocation");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityProject", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("BudgetHours")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityProjectGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsChargable")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("ProjectID")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityProject");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTask", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal?>("AuditFees")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<Guid>("BillUnitGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal?>("BudgetHours")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityTaskGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsChargable")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("Parent")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ProjectGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityTasks");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTaskCurrencyRate", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CurrencyGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityTaskCurrencyRateGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("TaskCostRate")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<Guid>("TaskGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("TaskRate")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityTaskCurrencyRate");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTimeSheet", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("AssigmentDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityTimeSheetGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("WorkGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<double>("WorkedHours")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityTimeSheet");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUser", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("BillCodeGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("ContactGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("DepartmentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid?>("ManagerGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityUser");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserDepartment", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserDepartmentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityUserDepartments");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserDepartmentClaim", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserDepartmentClaimGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserDepartmentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityUserDepartmentClaim");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserGroup", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserGroupGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("HasMaximumCapacity")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("MaximumCapacity")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityUserGroup");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserGroupUser", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserGroupGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserGroupUserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityUserGroupUser");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityWorkAssignment", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("AssigmentDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("AssignedHours")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityWorkAssignmentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsAssigned")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("JobGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("JobName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblAuditEntityWorkAssignments");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditLocation", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ChangeType")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Depth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("LocationGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("MapData")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ParentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("text");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.ToTable("tblAuditLocations");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Contact", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -342,6 +1863,9 @@ namespace Saaly.Data.Migrations
 
                     b.Property<string>("Email")
                         .HasColumnType("text");
+
+                    b.Property<Guid?>("EntityLocationGuid")
+                        .HasColumnType("uuid");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
@@ -381,14 +1905,16 @@ namespace Saaly.Data.Migrations
 
                     b.HasKey("Guid");
 
+                    b.HasIndex("EntityLocationGuid");
+
                     b.HasIndex("GenderGuid");
 
                     b.HasIndex("LocationGuid");
 
-                    b.ToTable("tblContact");
+                    b.ToTable("tblContacts");
                 });
 
-            modelBuilder.Entity("SaalyModels.Entity", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.Entity", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -426,12 +1952,10 @@ namespace Saaly.Data.Migrations
 
                     b.HasKey("Guid");
 
-                    b.ToTable("tblEntity");
-
-                    b.UseTptMappingStrategy();
+                    b.ToTable("tblEntities");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityBillCode", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -484,11 +2008,121 @@ namespace Saaly.Data.Migrations
                     b.HasIndex("EntityGuid");
 
                     b.ToTable("tblEntityBillCode");
-
-                    b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityClient", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCodeCurrencyRate", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<decimal>("BillCostRate")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<decimal>("BillRate")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityBillCodeGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityCurrencyGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityBillCodeGuid");
+
+                    b.HasIndex("EntityCurrencyGuid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblEntityBillCodeCurrencyRate");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillUnit", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblEntityBillUnit");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClient", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -548,7 +2182,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityClient");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityClientBillingInfo", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientBillingInfo", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -601,7 +2235,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityClientBillingInfo");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityCurrency", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityCurrency", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -662,7 +2296,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityCurrency");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityGender", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityGender", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -711,7 +2345,58 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityGender");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityLocation", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityJob", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblEntityJob");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityLocation", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -774,7 +2459,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityLocation");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityProject", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityProject", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -847,7 +2532,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityProject");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityTask", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTask", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -929,10 +2614,10 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("ProjectGuid");
 
-                    b.ToTable("tblEntityTask");
+                    b.ToTable("tblEntityTasks");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityTaskCurrencyRates", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTaskCurrencyRate", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -990,10 +2675,10 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("TaskGuid");
 
-                    b.ToTable("tblEntityTaskCurrencyRates");
+                    b.ToTable("tblEntityTaskCurrencyRate");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUser", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUser", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -1060,7 +2745,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityUser");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserDepartment", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartment", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -1111,10 +2796,10 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityUserDepartment");
+                    b.ToTable("tblEntityUserDepartments");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserDepartmentClaim", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartmentClaim", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -1165,7 +2850,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityUserDepartmentClaim");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserGroup", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserGroup", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -1225,7 +2910,7 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityUserGroup");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserGroupUser", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserGroupUser", b =>
                 {
                     b.Property<Guid>("Guid")
                         .ValueGeneratedOnAdd()
@@ -1278,44 +2963,135 @@ namespace Saaly.Data.Migrations
                     b.ToTable("tblEntityUserGroupUser");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityBillUnit", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityWorkAssignment", b =>
                 {
-                    b.HasBaseType("SaalyModels.Entity");
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime?>("AssigmentDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<decimal>("AssignedHours")
+                        .HasPrecision(18, 6)
+                        .HasColumnType("numeric(18,6)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityUserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsAssigned")
+                        .HasColumnType("boolean");
+
+                    b.Property<Guid>("JobGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("JobName")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.ToTable("tbltblEntity");
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.HasIndex("EntityUserGuid");
+
+                    b.HasIndex("JobGuid");
+
+                    b.ToTable("tblEntityWorkAssignments");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityBillCodeCurrencyRates", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.Location", b =>
                 {
-                    b.HasBaseType("SaalyModels.EntityBillCode");
-
-                    b.Property<decimal>("BillCostRate")
-                        .HasPrecision(18, 6)
-                        .HasColumnType("numeric(18,6)");
-
-                    b.Property<decimal>("BillRate")
-                        .HasPrecision(18, 6)
-                        .HasColumnType("numeric(18,6)");
-
-                    b.Property<Guid>("EntityBillCodeGuid")
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("EntityCurrencyGuid")
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
                         .HasColumnType("uuid");
 
-                    b.HasIndex("EntityBillCodeGuid");
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.HasIndex("EntityCurrencyGuid");
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
 
-                    b.ToTable("tbltblEntityBillCode");
+                    b.Property<int>("Depth")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("MapData")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("ParentGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("text");
+
+                    b.Property<int>("SortOrder")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ParentGuid");
+
+                    b.ToTable("tblLocation");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -1371,7 +3147,7 @@ namespace Saaly.Data.Migrations
 
             modelBuilder.Entity("Saaly.Models.Admin", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
@@ -1384,7 +3160,7 @@ namespace Saaly.Data.Migrations
                         .WithMany()
                         .HasForeignKey("AdminGuid");
 
-                    b.HasOne("SaalyModels.EntityUser", "User")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "User")
                         .WithMany()
                         .HasForeignKey("EntityUserGuid");
 
@@ -1393,30 +3169,279 @@ namespace Saaly.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SaalyModels.Contact", b =>
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillCode", b =>
                 {
-                    b.HasOne("SaalyModels.EntityGender", "Gender")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillCodeCurrencyRate", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillUnit", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClient", b =>
+                {
+                    b.HasOne("Saaly.Models.Contact", "Contact")
+                        .WithMany()
+                        .HasForeignKey("ContactGuid");
+
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Contact");
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientBillingInfo", b =>
+                {
+                    b.HasOne("Saaly.Models.Contact", "Contact")
+                        .WithMany()
+                        .HasForeignKey("ContactGuid");
+
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Contact");
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientGroup", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityCurrency", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityExpense", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityGender", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityJob", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityLocation", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityProject", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTask", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTaskCurrencyRate", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTimeSheet", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUser", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserDepartment", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserDepartmentClaim", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserGroup", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserGroupUser", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Audits.AuditEntityWorkAssignment", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.Contact", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.EntityLocation", "EntityLocation")
+                        .WithMany()
+                        .HasForeignKey("EntityLocationGuid");
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityGender", "Gender")
                         .WithMany()
                         .HasForeignKey("GenderGuid");
 
-                    b.HasOne("SaalyModels.EntityLocation", "Location")
+                    b.HasOne("Saaly.Models.EntityModels.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationGuid");
+
+                    b.Navigation("EntityLocation");
 
                     b.Navigation("Gender");
 
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityBillCode", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>
                 {
-                    b.HasOne("SaalyModels.EntityBillUnit", "BillUnit")
+                    b.HasOne("Saaly.Models.EntityModels.EntityBillUnit", "BillUnit")
                         .WithMany()
                         .HasForeignKey("BillUnitGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1427,17 +3452,55 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityClient", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCodeCurrencyRate", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.EntityModels.EntityBillCode", "EntityBillCode")
+                        .WithMany("CurrencyRates")
+                        .HasForeignKey("EntityBillCodeGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityCurrency", "Currency")
+                        .WithMany()
+                        .HasForeignKey("EntityCurrencyGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Currency");
+
+                    b.Navigation("Entity");
+
+                    b.Navigation("EntityBillCode");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillUnit", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClient", b =>
+                {
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
-                    b.HasOne("SaalyModels.EntityClientBillingInfo", "EntityClientBillingInfo")
+                    b.HasOne("Saaly.Models.EntityModels.EntityClientBillingInfo", "EntityClientBillingInfo")
                         .WithMany()
                         .HasForeignKey("EntityClientBillingInfoGuid");
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1450,19 +3513,19 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityClientBillingInfo");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityClientBillingInfo", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientBillingInfo", b =>
                 {
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
-                    b.HasOne("SaalyModels.EntityClient", "EntityClient")
+                    b.HasOne("Saaly.Models.EntityModels.EntityClient", "EntityClient")
                         .WithMany()
                         .HasForeignKey("EntityClientGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1475,9 +3538,9 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityClient");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityCurrency", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityCurrency", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1486,9 +3549,9 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityGender", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityGender", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1497,15 +3560,26 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityLocation", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityJob", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityLocation", "Parent")
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityLocation", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.Location", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentGuid");
 
@@ -1514,15 +3588,15 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityProject", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityProject", b =>
                 {
-                    b.HasOne("SaalyModels.EntityClient", "Client")
+                    b.HasOne("Saaly.Models.EntityModels.EntityClient", "Client")
                         .WithMany()
                         .HasForeignKey("ClientGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1533,21 +3607,21 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityTask", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTask", b =>
                 {
-                    b.HasOne("SaalyModels.EntityBillUnit", "BillUnit")
+                    b.HasOne("Saaly.Models.EntityModels.EntityBillUnit", "BillUnit")
                         .WithMany()
                         .HasForeignKey("BillUnitGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityProject", "Project")
+                    b.HasOne("Saaly.Models.EntityModels.EntityProject", "Project")
                         .WithMany()
                         .HasForeignKey("ProjectGuid");
 
@@ -1558,21 +3632,21 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Project");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityTaskCurrencyRates", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTaskCurrencyRate", b =>
                 {
-                    b.HasOne("SaalyModels.EntityCurrency", "Currency")
+                    b.HasOne("Saaly.Models.EntityModels.EntityCurrency", "Currency")
                         .WithMany()
                         .HasForeignKey("CurrencyGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityTask", "Task")
+                    b.HasOne("Saaly.Models.EntityModels.EntityTask", "Task")
                         .WithMany("BillRates")
                         .HasForeignKey("TaskGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1585,29 +3659,29 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Task");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUser", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUser", b =>
                 {
-                    b.HasOne("SaalyModels.EntityBillCode", "EntityBillCode")
+                    b.HasOne("Saaly.Models.EntityModels.EntityBillCode", "EntityBillCode")
                         .WithMany()
                         .HasForeignKey("BillCodeGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.Contact", "Contact")
+                    b.HasOne("Saaly.Models.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactGuid");
 
-                    b.HasOne("SaalyModels.EntityUserDepartment", "EntityUserDepartment")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUserDepartment", "EntityUserDepartment")
                         .WithMany()
                         .HasForeignKey("DepartmentGuid");
 
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityUser", "Manager")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "Manager")
                         .WithMany()
                         .HasForeignKey("ManagerGuid");
 
@@ -1622,9 +3696,9 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Manager");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserDepartment", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartment", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1633,15 +3707,15 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserDepartmentClaim", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartmentClaim", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityUserDepartment", "EntityUserDepartment")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUserDepartment", "EntityUserDepartment")
                         .WithMany("Claims")
                         .HasForeignKey("EntityUserDepartmentGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1652,9 +3726,9 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityUserDepartment");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserGroup", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserGroup", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1663,21 +3737,21 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Entity");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserGroupUser", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserGroupUser", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", "Entity")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityUserGroup", "EntityUserGroup")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUserGroup", "EntityUserGroup")
                         .WithMany()
                         .HasForeignKey("EntityUserGroupGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityUser", "EntityUser")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "EntityUser")
                         .WithMany("Groups")
                         .HasForeignKey("EntityUserGroupUserGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1690,56 +3764,58 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityUserGroup");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityBillUnit", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityWorkAssignment", b =>
                 {
-                    b.HasOne("SaalyModels.Entity", null)
-                        .WithOne()
-                        .HasForeignKey("SaalyModels.EntityBillUnit", "Guid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("SaalyModels.EntityBillCodeCurrencyRates", b =>
-                {
-                    b.HasOne("SaalyModels.EntityBillCode", "EntityBillCode")
-                        .WithMany("CurrencyRates")
-                        .HasForeignKey("EntityBillCodeGuid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SaalyModels.EntityCurrency", "Currency")
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
-                        .HasForeignKey("EntityCurrencyGuid")
+                        .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SaalyModels.EntityBillCode", null)
-                        .WithOne()
-                        .HasForeignKey("SaalyModels.EntityBillCodeCurrencyRates", "Guid")
+                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "EntityUser")
+                        .WithMany()
+                        .HasForeignKey("EntityUserGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Currency");
+                    b.HasOne("Saaly.Models.EntityModels.EntityJob", "EntityJob")
+                        .WithMany()
+                        .HasForeignKey("JobGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("EntityBillCode");
+                    b.Navigation("Entity");
+
+                    b.Navigation("EntityJob");
+
+                    b.Navigation("EntityUser");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityBillCode", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.Location", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Location", "Parent")
+                        .WithMany()
+                        .HasForeignKey("ParentGuid");
+
+                    b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>
                 {
                     b.Navigation("CurrencyRates");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityTask", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTask", b =>
                 {
                     b.Navigation("BillRates");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUser", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUser", b =>
                 {
                     b.Navigation("Groups");
                 });
 
-            modelBuilder.Entity("SaalyModels.EntityUserDepartment", b =>
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartment", b =>
                 {
                     b.Navigation("Claims");
                 });
