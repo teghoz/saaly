@@ -4,7 +4,7 @@ namespace SaalyUser.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger _logger;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
