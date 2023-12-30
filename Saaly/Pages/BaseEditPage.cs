@@ -72,7 +72,7 @@ namespace Saaly.Pages
             return RedirectToPage("./Index");
         }
 
-        private bool ModelExists(Guid guid)
+        public bool ModelExists(Guid guid)
         {
             return _entity.Any(e => e.Guid == guid);
         }

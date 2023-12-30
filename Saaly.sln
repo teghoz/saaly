@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.User.Tests", "Saaly.U
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Services.Tests", "Saaly.Services.Tests\Saaly.Services.Tests.csproj", "{9CED520F-4D73-4D0C-A744-4E0153200501}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saaly.Infrastructure.Extensions", "Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj", "{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Infrastructure.Extensions", "Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj", "{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saaly.Tasks", "Saaly.Tasks\Saaly.Tasks.csproj", "{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F8EA776-E6F7-4B01-AF9B-991BB8031F76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
