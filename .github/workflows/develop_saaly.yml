@@ -19,13 +19,13 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     - name: .NET Saaly Build
-      run: dotnet build ./Saaly/Saaly/
+      run: dotnet build ./Saaly/
     - name: .NET Saaly Data Test
-      run: dotnet test ./Saaly/Saaly.Data.Tests/
+      run: dotnet test ./Saaly.Data.Tests/
     - name: .NET Saaly Services Test
-      run: dotnet test ./Saaly/Saaly.Service.Tests/
+      run: dotnet test ./Saaly.Service.Tests/
     - name: .NET Saaly User Test
-      run: dotnet test ./Saaly/Saaly.User.Tests/
+      run: dotnet test ./Saaly.User.Tests/
     
   build:
     runs-on: 'ubuntu-latest'
