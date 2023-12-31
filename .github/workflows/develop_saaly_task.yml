@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: outside-cron(stage)
+name: Saaly Tasks (stage)
 
 on:
   pull_request:
@@ -17,11 +17,15 @@ jobs:
     - uses: actions/checkout@v3
     - uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '7.0.x'
-    - name: .NET Build
-      run: dotnet build ./RestaurantorCore/RestaurantorCore.Cron/
-    - name: .NET Test
-      run: dotnet test ./RestaurantorCore/RestaurantorCore.Cron/
+        dotnet-version: '8.0.x'
+    - name: .NET Saaly Build
+      run: dotnet build ./Saaly/
+    - name: .NET Saaly Data Test
+      run: dotnet test ./Saaly.Data.Tests/
+    - name: .NET Saaly Services Test
+      run: dotnet test ./Saaly.Services.Tests/
+    - name: .NET Saaly User Test
+      run: dotnet test ./Saaly.User.Tests/
     
   build:
     runs-on: 'ubuntu-latest'
@@ -32,19 +36,15 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    - name: Log in to registry
-      uses: docker/login-action@v1
-      with:
-        registry: https://outsidecontainers.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_511fed8550374480a1ef2c54460467a9 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_b53f959c9621441a8eee8d2ae2c67a38 }}
+    - name: Log in to Docker
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build and push container image to registry
+    - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: outsidecontainers.azurecr.io/outside-cron:develop, outsidecontainers.azurecr.io/outside-cron:${{ github.sha }}
-        file: ./.github/workflows/cron.Github.Dockerfile
+        tags: saaly-tasks:develop, saaly-tasks:${{ github.sha }}
+        file: ./.github/workflows/saaly.tasks.Github.Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -54,23 +54,13 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-    - name: 'Login via Azure CLI'
-      uses: azure/login@v1
+    - name: SSH into Ubuntu server and start container
+      uses: appleboy/ssh-action@master
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Log in to registry
-      uses: docker/login-action@v1
-      with:
-        registry: https://outsidecontainers.azurecr.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_511fed8550374480a1ef2c54460467a9 }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_b53f959c9621441a8eee8d2ae2c67a38 }}
-
-    - name: Deploy to Azure Web App
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'outside-cron'
-        slot-name: 'stage'
-        #publish-profile: ${{ secrets.AzureAppService_PublishProfile_1f373784138044649c33a19f33253694 }}
-        images: 'outsidecontainers.azurecr.io/outside-cron:develop'
+        host: ${{ secrets.SAALY_SERVER_HOST }}
+        username: ${{ secrets.SAALY_SERVER_USERNAME }}
+        key: ${{ secrets.SAALY_SERVER_SSH_KEY }}
+        port: ${{ secrets.SAALY_SERVER_SSH_PORT }}
+        script: |
+          docker pull teghoz/saaly-tasks:develop
+          docker run -d -p 5060:80 --name saaly-tasks teghoz/saaly-tasks:develop
