@@ -7,17 +7,18 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+COPY ["./Saaly.Models/Saaly.Models.csproj", "Saaly.Models/"]
+COPY ["./Saaly.Data/Saaly.Data.csproj", "Saaly.Data/"]
 COPY ["./Saaly.Infrastructure/Saaly.Infrastructure.csproj", "Saaly.Infrastructure/"]
 COPY ["./Saaly.Infrastructure.Extensions/Saaly.Infrastructure.Extensions.csproj", "Saaly.Infrastructure.Extensions/"]
 COPY ["./Saaly.Services/Saaly.Services.csproj", "Saaly.Services/"]
-COPY ["./Saaly.Data/Saaly.Data.csproj", "Saaly.Data/"]
 COPY ["./Saaly.Shared/Saaly.Shared.csproj", "Saaly.Shared/"]
-COPY ["./Saaly.Models/Saaly.Models.csproj", "Saaly.Models/"]
 COPY ["./Saaly/connection.example.json", "Saaly/connection.json"]
+COPY ["./Saaly/wwwroot", "Saaly/wwwroot/"]
 COPY ["./Saaly/Saaly.csproj", "Saaly/"]
 
 RUN dotnet restore "Saaly/Saaly.csproj"
-COPY ./Saaly ./
+COPY ./ ./
 WORKDIR "/src/Saaly"
 RUN dotnet build "Saaly.csproj" -c Release -o /app/build
 
