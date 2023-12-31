@@ -23,7 +23,7 @@ jobs:
     - name: .NET Saaly Data Test
       run: dotnet test ./Saaly.Data.Tests/
     - name: .NET Saaly Services Test
-      run: dotnet test ./Saaly.Service.Tests/
+      run: dotnet test ./Saaly.Services.Tests/
     - name: .NET Saaly User Test
       run: dotnet test ./Saaly.User.Tests/
     
