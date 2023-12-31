@@ -1,0 +1,66 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Saaly(stage)
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - develop
+  workflow_dispatch:
+
+jobs:
+  dotnetbuild:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+    - name: .NET Saaly Build
+      run: dotnet build ./Saaly/Saaly/
+    - name: .NET Saaly Data Test
+      run: dotnet test ./Saaly/Saaly.Data.Tests/
+    - name: .NET Saaly Services Test
+      run: dotnet test ./Saaly/Saaly.Service.Tests/
+    - name: .NET Saaly User Test
+      run: dotnet test ./Saaly/Saaly.User.Tests/
+    
+  build:
+    runs-on: 'ubuntu-latest'
+    needs: dotnetbuild
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to Docker
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: saaly:develop, saaly:${{ github.sha }}
+        file: ./.github/workflows/saaly.Github.Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'stage'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: SSH into Ubuntu server and start container
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SAALY_SERVER_HOST }}
+          username: ${{ secrets.SAALY_SERVER_USERNAME }}
+          key: ${{ secrets.SAALY_SERVER_SSH_KEY }}
+          port: ${{ secrets.SAALY_SERVER_SSH_PORT }}
+          script: |
+            docker pull teghoz/saaly:develop
+            docker run -d -p 8080:80 --name saaly teghoz/saaly:develop

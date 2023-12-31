@@ -1,0 +1,76 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: outside-merchant(production)
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  dotnetbuild:
+    runs-on: 'ubuntu-latest'
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '7.0.x'
+    - name: .NET Build
+      run: dotnet build ./RestaurantorCore/RestaurantorCore.Merchants/
+    - name: .NET Test
+      run: dotnet test ./RestaurantorCore/RestaurantorCore.Merchants/
+    
+  build:
+    runs-on: 'ubuntu-latest'
+    needs: dotnetbuild
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://outsidecontainers.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_511fed8550374480a1ef2c54460467a9 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b53f959c9621441a8eee8d2ae2c67a38 }}
+
+    - name: Build and push container image to registry
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: outsidecontainers.azurecr.io/outside-merchants, outsidecontainers.azurecr.io/outside-merchants:${{ github.sha }}
+        file: ./.github/workflows/merchant.Github.Dockerfile
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: 'stage'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+    steps:
+    - name: 'Login via Azure CLI'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Log in to registry
+      uses: docker/login-action@v1
+      with:
+        registry: https://outsidecontainers.azurecr.io/
+        username: ${{ secrets.AzureAppService_ContainerUsername_511fed8550374480a1ef2c54460467a9 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_b53f959c9621441a8eee8d2ae2c67a38 }}
+
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'outside-merchants'
+        slot-name: 'production'
+        #publish-profile: ${{ secrets.AzureAppService_PublishProfile_1f373784138044649c33a19f33253694 }}
+        images: 'outsidecontainers.azurecr.io/outside-merchants'
