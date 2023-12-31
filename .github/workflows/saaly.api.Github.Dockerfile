@@ -12,8 +12,7 @@ COPY ["./Saaly.Infrastructure.Extensions/Saaly.Infrastructure.Extensions.csproj"
 COPY ["./Saaly.Services/Saaly.Services.csproj", "Saaly.Services/"]
 COPY ["./Saaly.Shared/Saaly.Shared.csproj", "Saaly.Shared/"]
 COPY ["./Saaly/connection.example.json", "Saaly/connection.json"]
-COPY ["./Saaly/wwwroot", "Saaly/wwwroot/"]
-COPY ["./Saaly/Saaly.API.csproj", "Saaly.API/"]
+COPY ["./Saaly.API/Saaly.API.csproj", "Saaly.API/"]
 
 RUN dotnet restore "Saaly.API/Saaly.API.csproj"
 COPY ./ ./

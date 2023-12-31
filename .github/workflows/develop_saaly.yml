@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'stage'
+      name: 'STAGE'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
@@ -63,4 +63,4 @@ jobs:
         port: ${{ secrets.SAALY_SERVER_SSH_PORT }}
         script: |
           docker pull teghoz/saaly:develop
-          docker run -d -p 5060:80 --name saaly teghoz/saaly:develop
+          docker run -d -p 5060:80 --name saaly teghoz/saaly:develop -e ConnectionString=${{ secrets.DATABASE_CONNECTION }}
