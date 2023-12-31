@@ -43,7 +43,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        tags: saaly-api:develop, saaly-api:${{ github.sha }}
+        tags: teghoz/saaly-api:develop, teghoz/saaly-api:${{ github.sha }}
         file: ./.github/workflows/saaly.api.Github.Dockerfile
 
   deploy:
