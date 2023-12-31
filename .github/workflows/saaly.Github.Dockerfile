@@ -7,14 +7,14 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["./Saaly/Saaly.Infrastructure/Saaly.Infrastructure.csproj", "Saaly.Infrastructure/"]
-COPY ["./Saaly/Saaly.Infrastructure.Extensions/Saaly.Infrastructure.Extensions.csproj", "Saaly.Infrastructure.Extensions/"]
-COPY ["./Saaly/Saaly.Services/Saaly.Services.csproj", "Saaly.Services/"]
-COPY ["./Saaly/Saaly.Data/Saaly.Data.csproj", "Saaly.Data/"]
-COPY ["./Saaly/Saaly.Shared/Saaly.Shared.csproj", "Saaly.Shared/"]
-COPY ["./Saaly/Saaly.Models/Saaly.Models.csproj", "Saaly.Models/"]
-COPY ["./Saaly/Saaly/connection.example.json", "Saaly/connection.json"]
-COPY ["./Saaly/Saaly/Saaly.csproj", "Saaly/"]
+COPY ["./Saaly.Infrastructure/Saaly.Infrastructure.csproj", "Saaly.Infrastructure/"]
+COPY ["./Saaly.Infrastructure.Extensions/Saaly.Infrastructure.Extensions.csproj", "Saaly.Infrastructure.Extensions/"]
+COPY ["./Saaly.Services/Saaly.Services.csproj", "Saaly.Services/"]
+COPY ["./Saaly.Data/Saaly.Data.csproj", "Saaly.Data/"]
+COPY ["./Saaly.Shared/Saaly.Shared.csproj", "Saaly.Shared/"]
+COPY ["./Saaly.Models/Saaly.Models.csproj", "Saaly.Models/"]
+COPY ["./Saaly/connection.example.json", "Saaly/connection.json"]
+COPY ["./Saaly/Saaly.csproj", "Saaly/"]
 
 RUN dotnet restore "Saaly/Saaly.csproj"
 COPY ./Saaly .
