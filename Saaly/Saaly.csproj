@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Saaly.Shared\Saaly.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>
