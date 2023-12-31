@@ -61,6 +61,7 @@ jobs:
         username: ${{ secrets.SAALY_SERVER_USERNAME }}
         key: ${{ secrets.SAALY_SERVER_SSH_KEY }}
         port: ${{ secrets.SAALY_SERVER_SSH_PORT }}
+        passphrase: ${{ secrets.SAALY_SERVER_SSH_PASSPHRASE }}
         script: |
           docker pull teghoz/saaly:develop
           docker run -d -p 5060:80 --name saaly teghoz/saaly:develop -e ConnectionString=${{ secrets.DATABASE_CONNECTION }}
