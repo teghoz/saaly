@@ -17,7 +17,7 @@ COPY ["./Saaly/connection.example.json", "Saaly/connection.json"]
 COPY ["./Saaly/Saaly.csproj", "Saaly/"]
 
 RUN dotnet restore "Saaly/Saaly.csproj"
-COPY ./Saaly .
+COPY ./Saaly ./
 WORKDIR "/src/Saaly"
 RUN dotnet build "Saaly.csproj" -c Release -o /app/build
 
