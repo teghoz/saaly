@@ -68,6 +68,7 @@ jobs:
           sed -i "s|{{PLACEHOLDER_PORT}}|${{secrets.SAALY_PORT}}|g" /etc/nginx/sites-available/${{secrets.SAALY_DOMAIN}}
           certbot --nginx -d ${{secrets.SAALY_DOMAIN}}
           cp /etc/nginx/sites-available/${{secrets.SAALY_DOMAIN}} /etc/nginx/sites-enabled/${{secrets.SAALY_DOMAIN}}
+          docker rmi teghoz/saaly:develop
           docker pull teghoz/saaly:develop
           docker stop saaly
           docker rm saaly
