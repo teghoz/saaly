@@ -63,5 +63,12 @@ jobs:
         port: ${{ secrets.SAALY_SERVER_SSH_PORT }}
         passphrase: ${{ secrets.SAALY_SERVER_SSH_PASSPHRASE }}
         script: |
+          cp /etc/nginx/sites-available/site-template /etc/nginx/sites-available/${{secrets.SAALY_API_DOMAIN}}
+          sed -i "s|{{PLACEHOLDER_DOMAIN}}|${{secrets.SAALY_API_DOMAIN}}|g" /etc/nginx/sites-available/${{secrets.SAALY_API_DOMAIN}}
+          sed -i "s|{{PLACEHOLDER_PORT}}|${{secrets.SAALY_API_PORT}}|g" /etc/nginx/sites-available/${{secrets.SAALY_API_DOMAIN}}
+          certbot --nginx -d ${{secrets.SAALY_API_DOMAIN}}
+          cp /etc/nginx/sites-available/${{secrets.SAALY_API_DOMAIN}} /etc/nginx/sites-enabled/${{secrets.SAALY_API_DOMAIN}}
           docker pull teghoz/saaly-api:develop
-          docker run -d -p 5060:80 --name saaly-api teghoz/saaly-api:develop -e ConnectionString=${{ secrets.DATABASE_CONNECTION }}
+          docker run -d -p ${{secrets.SAALY_API_PORT}}:80 --name saaly-api teghoz/saaly-api:develop -e ConnectionString=${{ secrets.DATABASE_CONNECTION }}
+          nginx -t
+          systemctl reload nginx
