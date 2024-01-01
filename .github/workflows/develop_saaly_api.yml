@@ -71,6 +71,6 @@ jobs:
           docker pull teghoz/saaly-api:develop
           docker stop saaly-api
           docker rm saaly-api
-          docker run -d -p ${{secrets.SAALY_PORT}}:80 --name saaly-api -e ConnectionString=${{ secrets.DATABASE_CONNECTION }} teghoz/saaly-api:develop
+          docker run -d -p ${{secrets.SAALY_PORT}}:8080 --name saaly-api -e ConnectionString=${{ secrets.DATABASE_CONNECTION }} teghoz/saaly-api:develop
           nginx -t
           systemctl reload nginx
