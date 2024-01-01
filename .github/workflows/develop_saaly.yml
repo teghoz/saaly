@@ -69,7 +69,6 @@ jobs:
           certbot --nginx --keep -d ${{secrets.SAALY_DOMAIN}}
           cp /etc/nginx/sites-available/${{secrets.SAALY_DOMAIN}} /etc/nginx/sites-enabled/${{secrets.SAALY_DOMAIN}}
           docker rmi -f teghoz/saaly:develop
-          docker pull teghoz/saaly:develop
           docker stop saaly
           docker rm saaly
           docker run -d -p ${{secrets.SAALY_PORT}}:8080 --name saaly -e ConnectionString=${{ secrets.DATABASE_CONNECTION }} teghoz/saaly:develop
