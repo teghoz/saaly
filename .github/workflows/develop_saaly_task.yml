@@ -68,5 +68,5 @@ jobs:
           sed -i "s|{{PLACEHOLDER_PORT}}|${{secrets.SAALY_TASK_PORT}}|g" /etc/nginx/sites-available/${{secrets.SAALY_TASK_DOMAIN}}
           certbot certonly --nginx --keep -d ${{secrets.SAALY_TASK_DOMAIN}}
           cp /etc/nginx/sites-available/${{secrets.SAALY_TASK_DOMAIN}} /etc/nginx/sites-enabled/${{secrets.SAALY_TASK_DOMAIN}}
-          docker run -d -p ${{secrets.SAALY_PORT}}:8080 --name saaly-tasks -e ConnectionString='${{ secrets.DATABASE_CONNECTION }}' teghoz/saaly-tasks:develop
+          docker run -d -p ${{secrets.SAALY_TASK_PORT}}:8080 --name saaly-tasks -e ConnectionString='${{ secrets.DATABASE_CONNECTION }}' teghoz/saaly-tasks:develop
           systemctl reload nginx
