@@ -5,7 +5,6 @@ using Saaly.Services.Recaptcha;
 using Saaly.Services.Registration;
 using Saaly.Services.Requests;
 using Saaly.Shared.Helpers;
-using System;
 
 namespace SaalyUser.Pages
 {

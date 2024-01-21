@@ -1,8 +1,6 @@
 using FluentValidation;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Saaly.Data.Interfaces;
 using Saaly.Data.Repositories;
@@ -10,7 +8,6 @@ using Saaly.Extensions;
 using Saaly.Infrastructure.Extensions;
 using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
-using Saaly.Services;
 using Saaly.Services.Recaptcha;
 using Saaly.Services.Registration;
 using Saaly.Services.Validators;
