@@ -12,7 +12,7 @@ using Saaly.Data;
 namespace Saaly.Data.Migrations
 {
     [DbContext(typeof(SaalyContext))]
-    [Migration("20231221235022_InitialMigration")]
+    [Migration("20240116234034_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />

@@ -20,7 +20,7 @@ namespace Saaly.Extensions
 
             var seedRoles = async (RoleManager<IdentityRole<Guid>> roleManager) =>
             {
-                var roles = new[] { "Admin" };
+                var roles = new[] { "Admin", "User" };
 
                 foreach (var r in roles)
                 {
