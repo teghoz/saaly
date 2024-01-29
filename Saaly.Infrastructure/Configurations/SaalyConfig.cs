@@ -13,6 +13,7 @@ namespace Saaly.Infrastucture.Configurations
             Password = new PasswordConfig();
             General = new GeneralConfig();
             Socials = new SocialsConfig();
+            Messaging = new MessagingConfig();
         }
 
         public string? Environment => ConfigHelper.Instance.GetValueFromAppSettings("Environment", optional: false, defaultValue: "Staging");
@@ -23,6 +24,7 @@ namespace Saaly.Infrastucture.Configurations
         public PasswordConfig Password { get; set; }
         public GeneralConfig General { get; set; }
         public SocialsConfig Socials { get; set; }
+        public MessagingConfig Messaging { get; set; }
 
         public void Validate() { }
     }

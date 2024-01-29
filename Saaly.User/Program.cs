@@ -65,6 +65,8 @@ builder.Services.AddScoped(x =>
     return factory.GetUrlHelper(actionContext);
 });
 
+builder.Services.AddAsycnMessaging();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
