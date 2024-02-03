@@ -15,8 +15,6 @@ namespace Saaly.Infrastructure.Mailers
                 mailBag.Subject,
                 mailBag.HtmlBody,
                 isHtml: true);
-
-            throw new NotImplementedException();
         }
     }
 }

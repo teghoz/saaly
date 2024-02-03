@@ -6,6 +6,7 @@ using Saaly.Data.Interfaces;
 using Saaly.Data.Repositories;
 using Saaly.Extensions;
 using Saaly.Infrastructure.Extensions;
+using Saaly.Infrastructure.Mailers;
 using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
 using Saaly.Services.Recaptcha;
@@ -64,6 +65,8 @@ builder.Services.AddScoped(x =>
     var factory = x.GetRequiredService<IUrlHelperFactory>();
     return factory.GetUrlHelper(actionContext);
 });
+
+builder.Services.RegisterMailers();
 
 builder.Services.AddAsycnMessaging();
 
