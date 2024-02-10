@@ -1,11 +1,15 @@
 using Saaly.Infrastructure.Extensions;
+using Saaly.Shared.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddAsycnMessaging();
+builder.Services.AddAsyncMessaging(x =>
+{
+    x.AddConsumer<SendUserRegistrationEmailConsumer>();
+});
 
 var app = builder.Build();
 

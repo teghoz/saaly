@@ -12,6 +12,7 @@ using Saaly.Models;
 using Saaly.Services.Recaptcha;
 using Saaly.Services.Registration;
 using Saaly.Services.Validators;
+using Saaly.Shared.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -68,7 +69,10 @@ builder.Services.AddScoped(x =>
 
 builder.Services.RegisterMailers();
 
-builder.Services.AddAsycnMessaging();
+builder.Services.AddAsyncMessaging(x =>
+{
+    x.AddConsumer<SendUserRegistrationEmailConsumer>();
+});
 
 builder.Services.AddControllers();
 

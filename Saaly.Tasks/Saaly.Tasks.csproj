@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj" />
+    <ProjectReference Include="..\Saaly.Shared\Saaly.Shared.csproj" />
   </ItemGroup>
 
 </Project>
