@@ -67,9 +67,6 @@ namespace SaalyUser.Pages
             var validationResult = await _registrationValidator.ValidateAsync(RequestModel);
             if (!validationResult.IsValid)
             {
-                //var errors = string.Join(", ", validationResult.Errors.Select(e => e.ErrorMessage).ToList());
-                //var feedbacks = validationResult.Errors;
-
                 StatusMessage = StatusHelper.Feedbacks(m =>
                 {
                     m.FeedbackType = eFeedbackType.Custom;

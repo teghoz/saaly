@@ -1,10 +1,4 @@
 ﻿using MassTransit;
-using MassTransit.Transports;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Saaly.Infrastructure.Extensions
 {
@@ -15,7 +9,7 @@ namespace Saaly.Infrastructure.Extensions
         {
             _sendEndpointProvider = sendEndpointProvider;
         }
-        public async Task Send<T>(T message, Uri address)
+        public async Task Send<T>(T message, Uri? address)
         {
             var endpoint = await _sendEndpointProvider.GetSendEndpoint(address);
             await endpoint.Send(message);

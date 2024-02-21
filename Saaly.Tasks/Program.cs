@@ -1,4 +1,6 @@
+using MassTransit;
 using Saaly.Infrastructure.Extensions;
+using Saaly.Infrastucture.Configurations;
 using Saaly.Shared.Consumers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +11,13 @@ builder.Services.AddRazorPages();
 builder.Services.AddAsyncMessaging(x =>
 {
     x.AddConsumer<SendUserRegistrationEmailConsumer>();
+},
+(configurator, registrationContext) =>
+{
+    configurator.ReceiveEndpoint(SaalyConfig.Instance.Messaging.RegistrationQueue, ep =>
+    {
+        ep.ConfigureConsumer<SendUserRegistrationEmailConsumer>(registrationContext);
+    });
 });
 
 var app = builder.Build();

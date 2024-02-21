@@ -19,7 +19,7 @@ namespace SaalyUser.Pages
         public async Task OnGet()
         {
             var message = new SendUserRegistrationEmail("A", "B", "C");
-            await _messagingService.Send(message, new Uri(SaalyConfig.Instance.Messaging.RegistrationQueue));
+            await _messagingService.Send(message, new Uri("queue:" + SaalyConfig.Instance.Messaging.RegistrationQueue));
         }
     }
 }
