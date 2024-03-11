@@ -28,7 +28,7 @@
                     </div>
                     <div class="block-content">
                         <div class="p-sm-3 px-lg-4 px-xxl-5 py-lg-5">
-                            <h1 class="h2 mb-1">Saaly</h1>
+                            <h1 class="h2 mb-1"><a asp-asp-area="" asp-page="/Index">Saaly</a></h1>
                             <p class="fw-medium text-muted">
                                 Please fill the following details to create a new account.
                             </p>
@@ -39,28 +39,32 @@
                             <form method="POST" id="register-form">
                                 <div class="py-3">
                                     <partial name="_StatusMessage" model="Model.StatusMessage" />
-                                    <div class="mb-4">
-                                        <input class="form-control form-control-lg form-control-alt" asp-for="RequestModel.UserName" type="text" autocomplete="on" placeholder="Username" />
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control form-control-lg" asp-for="RequestModel.UserName" type="text" autocomplete="on" placeholder="Username" />
+                                        <label asp-for="RequestModel.UserName" class="form-label">Username</label>
                                     </div>
-                                    <div class="mb-4">
-                                        <input class="form-control form-control-lg form-control-alt" asp-for="RequestModel.Email" type="email" autocomplete="on" placeholder="Email" />
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control form-control-lg" asp-for="RequestModel.Email" type="email" autocomplete="on" placeholder="Email" />
+                                        <label asp-for="RequestModel.Email" class="form-label"></label>
                                     </div>
-                                    <div class="mb-4">
-                                        <input class="form-control form-control-lg form-control-alt" asp-for="RequestModel.Password" type="password" autocomplete="on" placeholder="Password" />
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control form-control-lg" asp-for="RequestModel.Password" type="password" autocomplete="on" placeholder="Password" />
+                                        <label asp-for="RequestModel.Password" class="form-label"></label>
                                     </div>
-                                    <div class="mb-4">
-                                        <input class="form-control form-control-lg form-control-alt" asp-for="RequestModel.ConfirmPassword" type="password" autocomplete="on" placeholder="Confirm Password" />
+                                    <div class="form-floating mb-4">
+                                        <input class="form-control form-control-lg" asp-for="RequestModel.ConfirmPassword" type="password" autocomplete="on" placeholder="Confirm Password" />
+                                        <label asp-for="RequestModel.ConfirmPassword" class="form-label">Confirm Password</label>
                                     </div>
-                                    <div class="mb-4">
+                                    <div class="form-floating mb-4">
                                         <div class="form-check">
-                                            <input class="form-check-input" asp-for="RequestModel.AcceptTerms" type="checkbox" value="" id="signup-terms" name="signup-terms">
+                                            <input class="form-check-input" asp-for="RequestModel.AcceptTerms" type="checkbox">
                                             <label class="form-check-label" asp-for="RequestModel.AcceptTerms">I agree to Terms &amp; Conditions</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row mb-4">
-                                    <div class="col-md-6 col-xl-5">
-                                        <button class="btn w-100 btn-alt-success g-recaptcha"
+                                    <div class="col-12">
+                                        <button class="btn w-100 btn-lg btn-primary g-recaptcha"
                                                 type="submit"
                                                 name="btnSubmit"
                                                 data-sitekey="@SaalyConfig.Instance.Socials.GoogleRecaptchaSiteKey"

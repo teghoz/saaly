@@ -1,9 +1,10 @@
-﻿using Saaly.Services.Requests;
+﻿using Microsoft.AspNetCore.Identity;
+using Saaly.Services.Requests;
 
 namespace Saaly.Services.Registration
 {
     public interface IRegistrationService
     {
-        Task Register(RegistrationBaseRequest request);
+        Task<IdentityResult?> Register(RegistrationBaseRequest request);
     }
 }

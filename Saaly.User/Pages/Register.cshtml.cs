@@ -6,7 +6,7 @@ using Saaly.Services.Registration;
 using Saaly.Services.Requests;
 using Saaly.Shared.Helpers;
 
-namespace SaalyUser.Pages
+namespace Saaly.User.Pages
 {
     public class RegisterModel : PageModel
     {
@@ -77,9 +77,21 @@ namespace SaalyUser.Pages
                 return Page();
             }
 
-            await _registrationService.Register(RequestModel);
+            var result = await _registrationService.Register(RequestModel);
 
-            return RedirectToAction("Index");
+            if(result is null || !result.Succeeded)
+            {
+                StatusMessage = StatusHelper.Feedbacks(m =>
+                {
+                    m.FeedbackType = eFeedbackType.Custom;
+                    m.Type = eStatusType.Error;
+                    m.Messages = new List<string?>() { "Something Went Wrong" };
+                });
+
+                return Page();
+            }
+
+            return RedirectToPage("Index");
         }
     }
 }
