@@ -1,11 +1,6 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Saaly.Data;
-using Saaly.Infrastructure.Extensions;
-using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
-using Saaly.Shared.Messages;
-using Saaly.User.Pages;
 
 namespace Saaly.User.Pages
 {
