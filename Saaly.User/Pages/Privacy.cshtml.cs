@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace SaalyUser.Pages
+namespace Saaly.User.Pages
 {
     public class PrivacyModel : PageModel
     {

@@ -8,6 +8,16 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Saaly.Data\Saaly.Data.csproj" />
+    <ProjectReference Include="..\Saaly.Infrastructure\Saaly.Infrastructure.csproj" />
+    <ProjectReference Include="..\Saaly.Shared\Saaly.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
   </ItemGroup>
 
 </Project>

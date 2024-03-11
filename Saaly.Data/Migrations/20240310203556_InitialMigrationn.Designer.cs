@@ -12,8 +12,8 @@ using Saaly.Data;
 namespace Saaly.Data.Migrations
 {
     [DbContext(typeof(SaalyContext))]
-    [Migration("20231221235022_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20240310203556_InitialMigrationn")]
+    partial class InitialMigrationn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

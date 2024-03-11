@@ -81,6 +81,5 @@ app.UseSession();
 app.MapRazorPages();
 app.MapControllers();
 
-Console.WriteLine("Connection String: " + SaalyConfig.Instance.Database.ConnectionString);
 await app.SeedUser();
 app.Run();
