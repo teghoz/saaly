@@ -10,6 +10,7 @@ using Saaly.Models;
 using Saaly.Services.Recaptcha;
 using Saaly.Services.Registration;
 using Saaly.Services.Validators;
+using Saaly.User.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
