@@ -79,7 +79,7 @@ namespace Saaly.User.Pages
 
             var result = await _registrationService.Register(RequestModel);
 
-            if(result is null || !result.Succeeded)
+            if (result is null || !result.Succeeded)
             {
                 StatusMessage = StatusHelper.Feedbacks(m =>
                 {

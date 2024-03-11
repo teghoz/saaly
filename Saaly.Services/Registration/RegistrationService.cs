@@ -19,7 +19,7 @@ namespace Saaly.Services.Registration
             IdentityResult? result = null;
             var validationResult = validator.ValidateAsync(request);
 
-            using(var transaction = await _context.Database.BeginTransactionAsync())
+            using (var transaction = await _context.Database.BeginTransactionAsync())
             {
                 try
                 {
