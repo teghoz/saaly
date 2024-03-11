@@ -24,7 +24,6 @@
     <ProjectReference Include="..\Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj" />
     <ProjectReference Include="..\Saaly.Infrastructure\Saaly.Infrastructure.csproj" />
     <ProjectReference Include="..\Saaly.Services\Saaly.Services.csproj" />
-    <ProjectReference Include="..\Saaly\Saaly.csproj" />
   </ItemGroup>
 
 </Project>

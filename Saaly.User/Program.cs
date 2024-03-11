@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Saaly.Data.Interfaces;
 using Saaly.Data.Repositories;
-using Saaly.Extensions;
 using Saaly.Infrastructure.Extensions;
 using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
