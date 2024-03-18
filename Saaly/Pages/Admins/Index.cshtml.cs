@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Saaly.Data;
 using Saaly.Models;
-using Saaly.Services;
+using Saaly.Services.Admin;
 using Saaly.Services.Requests;
 using X.PagedList;
 

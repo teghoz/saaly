@@ -31,6 +31,6 @@ namespace Saaly.Models.Audits
         public bool IsChargable { get; set; }
 
         [DisplayName("Client")]
-        public Guid ClientGuid { get; set; }
+        public Guid? ClientGuid { get; set; }
     }
 }

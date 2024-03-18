@@ -4,15 +4,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Saaly.Data;
 using Saaly.Models;
+using Saaly.Services.Entity;
 using Saaly.Services.Requests;
 
 namespace Saaly.Services.Registration
 {
-    public class RegistrationService(SaalyContext context, UserManager<ApplicationUser> userManager, IValidator<RegistrationBaseRequest> validator, ILogger<RegistrationService> logger) : IRegistrationService
+    public class RegistrationService(SaalyContext context, UserManager<ApplicationUser> userManager,
+        IValidator<RegistrationBaseRequest> validator, IEntityService entityService, ILogger<RegistrationService> logger) : IRegistrationService
     {
         private readonly SaalyContext _context = context;
         private readonly ILogger _logger = logger;
         private readonly UserManager<ApplicationUser> _userManager = userManager;
+        private readonly IEntityService _entityService = entityService;
 
         public async Task<IdentityResult?> Register(RegistrationBaseRequest request)
         {
@@ -25,9 +28,11 @@ namespace Saaly.Services.Registration
                 {
                     if (validationResult.Result.IsValid)
                     {
+                        var user = await _entityService.SetupNewUser(request, request.UserName, true);
                         var applicationUser = new ApplicationUser();
                         applicationUser.Email = request.Email;
                         applicationUser.UserName = request.UserName;
+                        applicationUser.UserGuid = user.Guid;
 
                         result = await _userManager.CreateAsync(applicationUser, request.Password);
                         if (result is not null && result.Succeeded)

@@ -7,12 +7,12 @@ using Saaly.Models;
 
 namespace Saaly.User.Pages
 {
-    public abstract class BaseNonGenericPage : PageModel
+    public abstract class BaseUserNonGenericPage : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private SaalyContext _context;
 
-        public BaseNonGenericPage(UserManager<ApplicationUser> userManager,
+        public BaseUserNonGenericPage(UserManager<ApplicationUser> userManager,
             SaalyContext context)
         {
             _userManager = userManager;
@@ -26,6 +26,12 @@ namespace Saaly.User.Pages
 
         public override async Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
         {
+            if (!context.HttpContext.User.IsInRole("User") ||
+                !context.HttpContext.User.Identity.IsAuthenticated)
+            {
+                RedirectToPage("/Account/Login", new { area = "Identity" });
+            }
+
             BaseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
 
             if (User != null)
@@ -43,15 +49,23 @@ namespace Saaly.User.Pages
         public override async Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
         {
             // Called asynchronously before the handler method is invoked, after model binding is complete.
-            var page = context.HandlerInstance as PageModel;
-            if (page == null) return;
-            if (ApplicationUser is not null)
+            if (!context.HttpContext.User.IsInRole("User") ||
+                !context.HttpContext.User.Identity.IsAuthenticated)
             {
-                page.ViewData["AuthenticatedUser"] = ApplicationUser.UserName;
+                context.Result = RedirectToPage("/Account/Login", new { area = "Identity" });
             }
-            //page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
-            page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
-            var resultContext = await next();
+            else
+            {
+                var page = context.HandlerInstance as PageModel;
+                if (page == null) return;
+                if (ApplicationUser is not null)
+                {
+                    page.ViewData["AuthenticatedUser"] = ApplicationUser.UserName;
+                }
+                //page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
+                page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
+                var resultContext = await next();
+            }
         }
     }
 }

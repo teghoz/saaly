@@ -7,7 +7,7 @@ namespace Saaly.Models.Audits
     public class AuditEntity : SaalyBase
     {
         public Guid EntityGuid { get; set; }
-        public eEntityTypes Types { get; set; }
+        public eEntityTypes Type { get; set; }
         public eAuditChangeType ChangeType { get; set; }
     }
 }

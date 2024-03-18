@@ -19,7 +19,7 @@ namespace Saaly.Models.EntityModels
         [ForeignKey("ClientGuid")]
         public EntityClient? Client { get; set; }
         [ForeignKey("UserId")]
-        public EntityUser? User { get; set; }
+        public User? User { get; set; }
         [ForeignKey("WorkGuid")]
         public EntityWorkAssignment? WorkAssignment { get; set; }
 

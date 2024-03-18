@@ -16,7 +16,7 @@ namespace Saaly.Models.EntityModels
         public string Comments { get; set; }
         public int Amount { get; set; }
         [ForeignKey("UserGuid")]
-        public EntityUser User { get; set; }
+        public User User { get; set; }
         [ForeignKey("ClientGuid")]
         public EntityClient Client { get; set; }
         [ForeignKey("WorkGuid")]

@@ -8,5 +8,6 @@ namespace Saaly.Models.Bases
         public Guid EntityGuid { get; set; }
         [ForeignKey("EntityGuid")]
         public Entity? Entity { get; set; }
+
     }
 }

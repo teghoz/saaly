@@ -15,7 +15,7 @@ namespace Saaly.Models.EntityModels
         public DateTime? AssigmentDate { get; set; }
         public bool IsAssigned { get; set; }
         [ForeignKey("EntityUserGuid")]
-        public EntityUser? EntityUser { get; set; }
+        public User? EntityUser { get; set; }
         [ForeignKey("JobGuid")]
         public virtual EntityJob? EntityJob { get; set; }
     }

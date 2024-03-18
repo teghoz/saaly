@@ -12,7 +12,7 @@ namespace Saaly.Models.Audits
         public string Code { get; set; }
 
         [DisplayName("BillCode")]
-        public Guid BillCodeGuid { get; set; }
+        public Guid? BillCodeGuid { get; set; }
 
         [DisplayName("Department")]
         public Guid? DepartmentGuid { get; set; }

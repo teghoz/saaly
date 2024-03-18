@@ -1,5 +1,5 @@
-﻿using Saaly.User.Claims;
-using Saaly.Infrastructure.Extensions.Requirements;
+﻿using Saaly.Infrastructure.Extensions.Requirements;
+using Saaly.User.Claims;
 
 namespace Saaly.User.Extensions
 {

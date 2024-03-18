@@ -13,6 +13,7 @@ namespace Saaly.Data
         public SaalyContext(DbContextOptions<SaalyContext> options)
         : base(options)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -29,6 +30,17 @@ namespace Saaly.Data
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
                 entity.SetTableName($"tbl{entity.GetTableName()}");
+            }
+
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                foreach (var property in entityType.GetProperties())
+                {
+                    if (property.ClrType == typeof(DateTime))
+                    {
+                        property.SetColumnType("timestamp with time zone");
+                    }
+                }
             }
         }
 

@@ -26,7 +26,6 @@ namespace Saaly.Data.Triggers
                 DeletedByUser = context.Entity.DeletedByUser,
                 Code = context.Entity.Code,
                 BillCodeGuid = context.Entity.BillCodeGuid,
-                ContactGuid = context.Entity.ContactGuid,
                 DepartmentGuid = context.Entity.DepartmentGuid,
                 EntityUserGuid = context.Entity.Guid,
                 ManagerGuid = context.Entity.ManagerGuid,

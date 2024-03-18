@@ -7,6 +7,12 @@ namespace Saaly.Models.Bases
 {
     public class SaalyBase : IAuditable
     {
+        public SaalyBase()
+        {
+            Created = DateTime.UtcNow;
+            Modified = DateTime.UtcNow;
+        }
+
         [ValidateNever]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

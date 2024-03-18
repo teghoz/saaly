@@ -9,13 +9,13 @@ using X.PagedList;
 
 namespace Saaly.User.Pages
 {
-    public abstract class BasePage<T> : BaseUserNonGenericPage where T : SaalyBase
+    public abstract class BaseUserPage<T> : BaseUserNonGenericPage where T : SaalyBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private SaalyContext _context;
         public DbSet<T> _entity;
 
-        public BasePage(UserManager<ApplicationUser> userManager,
+        public BaseUserPage(UserManager<ApplicationUser> userManager,
             SaalyContext context) : base(userManager, context)
         {
             _userManager = userManager;

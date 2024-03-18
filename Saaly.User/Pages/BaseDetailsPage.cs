@@ -8,7 +8,7 @@ using Saaly.Shared.Interfaces;
 
 namespace Saaly.User.Pages
 {
-    public abstract class BaseDetailsPage<T> : BasePage<T>
+    public abstract class BaseDetailsPage<T> : BaseUserPage<T>
         where T : SaalyBase
     {
         private readonly UserManager<ApplicationUser> _userManager;

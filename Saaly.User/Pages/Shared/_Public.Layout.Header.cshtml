@@ -22,9 +22,9 @@
                         </a>
                     </li>
                     <li class="nav-main-item">
-                        <a class="nav-main-link" href="javascript:void(0)">
+                        <a class="nav-main-link" asp-page="/Entities">
                             <i class="nav-main-link-icon si si-rocket"></i>
-                            <span class="nav-main-link-name">Features</span>
+                            <span class="nav-main-link-name">Entities</span>
                         </a>
                     </li>
                     <li class="nav-main-item">
@@ -78,9 +78,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-main-item">
-                                    <a class="nav-main-link" data-toggle="theme" data-theme="~/assets/css/themes/smooth.min.css" href="#">
-                                        <i class="nav-main-link-icon fa fa-square text-smooth"></i>
-                                        <span class="nav-main-link-name">Smooth</span>
+                                    <a class="nav-main-link" href="/Auth/Logout">
+                                        <i class="nav-main-link-icon si si-logout"></i>
+                                        <span class="nav-main-link-name">Logout</span>
                                     </a>
                                 </li>
                             </ul>
@@ -88,7 +88,7 @@
                         else
                         {
                             <a class="nav-main-link" asp-area="Identity" asp-page="Account/Login">
-                                <i class="nav-main-link-icon si si-envelope"></i>
+                                <i class="nav-main-link-icon si si-login"></i>
                                 <span class="nav-main-link-name">Login</span>
                             </a>
                         }                       

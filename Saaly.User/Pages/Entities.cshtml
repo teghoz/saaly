@@ -1,0 +1,145 @@
+﻿@page
+@model EntitiesModel
+@{
+    Layout = "_Public.Layout";
+    ViewData["Title"] = "Home";
+}
+
+<!-- Hero -->
+<div class="bg-image" style="background-image: url('assets/media/photos/photo36@2x.jpg');">
+    <div class="bg-primary-dark-op py-9 overflow-hidden">
+        <div class="content content-full text-center">
+            <h1 class="display-4 fw-semibold text-white mb-2">
+                Hero Title
+            </h1>
+            <p class="fs-4 fw-normal text-white-50 mb-5">
+                Lead paragraph containing a quick description of your product.
+            </p>
+            <div>
+                <a class="btn btn-primary px-3 py-2 m-1" asp-page="Register">
+                    <i class="fa fa-fw fa-link opacity-50 me-1"></i> Join Saaly
+                </a>
+                <a class="btn btn-dark px-3 py-2 m-1" href="javascript:void(0)">
+                    <i class="fa fa-fw fa-link opacity-50 me-1"></i> Call to action
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Hero -->
+<!-- Section 1 -->
+<div class="bg-body-extra-light">
+    <div class="content content-full">
+        @* <div class="py-5 text-center push">
+        <h2 class="h1 mb-2">
+        Title 1
+        </h2>
+        <h3 class="fw-normal text-muted mb-0">
+        Subtitle
+        </h3>
+        </div> *@
+        <div class="text-center">
+            <!-- Partial Table -->
+            <div class="block block-rounded">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">Entities</h3>
+                    <div class="block-options">
+                        <a class="btn btn-outline-primary btn-fix" data-bs-toggle="modal" data-bs-target="#create-entity">
+                            <span class="btn-icon"><i class="la la-plus"></i>Create</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <p class="fs-sm text-muted"></p>
+                    <p class="justify-content-end">
+
+                    </p>
+                    <table class="table table-bordered table-striped table-vcenter">
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Name</th>
+                                <th class="d-none d-md-table-cell" style="width: 20%;">Type</th>
+                                <th class="d-none d-md-table-cell" style="width: 20%;">Created</th>
+                                <th class="text-center" style="width: 100px;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ModelList)
+                            {
+                                <tr>
+                                    <td class="fw-semibold fs-sm">@item.Name</td>
+                                    <td class="d-none d-md-table-cell fs-sm"><em class="text-muted">@item.Type</em></td>
+                                    <td class="fw-semibold fs-sm">@item.Created</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-sm btn-alt-secondary js-bs-tooltip-enabled" asp-page="/App/@item.Guid" aria-label="View">
+                                            <i class="fa fa-fw fa-eye"></i> Manage
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <nav aria-label="Photos Search Navigation">
+                        @Html.PagedListPager(Model.ModelList, page => Url.Page("/App/Entities/Index", new { Skip = page, Take = Model.Take }),
+                                 new PagedListRenderOptions
+                        {
+                            LiElementClasses = new string[] { "page-item" },
+                            UlElementClasses = new string[] { "pagination justify-content-end" },
+                            PageClasses = new string[] { "page-link" },
+                            LinkToNextPageFormat = "Next",
+                            LinkToPreviousPageFormat = "Previous",
+                            MaximumPageNumbersToDisplay = 5,
+                            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                            DisplayLinkToNextPage = PagedListDisplayMode.Always
+                        })
+                    </nav>
+                </div>
+            </div>
+            <!-- END Partial Table -->
+        </div>
+    </div>
+</div>
+<!-- END Section 1 -->
+
+<div class="modal fade" id="create-entity" tabindex="-1" role="dialog" aria-labelledby="create-entity" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="form">
+        <div class="modal-content">
+            <div class="block block-rounded block-transparent">
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">New Entity</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="fa fa-fw fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content fs-sm">
+                    <form method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Entity.Name" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                            <label asp-for="Entity.Name" class="form-label"></label>
+                            <span asp-validation-for="Entity.Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <select asp-for="Entity.Type" class="form-control select-search-1" asp-items="ViewBag.EntityTypes" style="width:100%">
+                                <option value="none" selected disabled hidden></option>
+                            </select>
+                            <label asp-for="Entity.Type" class="form-label"></label>
+                            <span asp-validation-for="Entity.Type" class="text-danger"></span>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" value="" asp-for="Entity.IsActive">
+                            <label asp-for="Entity.IsActive" class="form-check-label">Enable</label>
+                            <span asp-validation-for="Entity.IsActive" class="text-danger"></span>
+                        </div>
+                        <button class="btn w-100 btn-lg btn-primary" type="submit" name="btnSubmit">
+                            <i class="fa fa-fw fa-plus me-1 opacity-50"></i> Add
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
