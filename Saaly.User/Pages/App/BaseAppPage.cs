@@ -7,15 +7,15 @@ using Saaly.Models;
 using Saaly.Models.Bases;
 using X.PagedList;
 
-namespace Saaly.User.Pages
+namespace Saaly.User.Pages.App
 {
-    public abstract class BasePage<T> : BaseNonGenericPage where T : SaalyBase
+    public abstract class BaseAppPage<T> : BaseAppNonGenericPage where T : SaalyBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private SaalyContext _context;
         public DbSet<T> _entity;
 
-        public BasePage(UserManager<ApplicationUser> userManager,
+        public BaseAppPage(UserManager<ApplicationUser> userManager,
             SaalyContext context) : base(userManager, context)
         {
             _userManager = userManager;

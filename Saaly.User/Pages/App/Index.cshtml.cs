@@ -4,7 +4,7 @@ using Saaly.Models;
 
 namespace Saaly.User.Pages.App
 {
-    public class IndexModel : BaseUserNonGenericPage
+    public class IndexModel : BaseAppNonGenericPage
     {
         private readonly SaalyContext _context;
         private readonly ILogger<IndexModel> _logger;
@@ -18,7 +18,7 @@ namespace Saaly.User.Pages.App
 
         public async Task OnGet(Guid entityGuid)
         {
-
+            EntityGuid = entityGuid;
         }
     }
 }

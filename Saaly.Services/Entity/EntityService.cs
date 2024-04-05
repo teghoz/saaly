@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MassTransit.Internals.GraphValidation;
+using Microsoft.EntityFrameworkCore;
 using Saaly.Data;
 using Saaly.Data.Interfaces;
 using Saaly.Data.Specifications;
@@ -72,7 +73,7 @@ namespace Saaly.Services.Entity
         public async Task AddEntity(NewEntityRequest request)
         {
             var entityUser = await _saalyContext.EntityUsers
-                .Where(u => u.Guid == request.EntityUserGuid)
+                .Where(u => u.UserGuid == request.UserGuid)
                 .FirstOrDefaultAsync();
 
             if (entityUser is null)
@@ -81,15 +82,20 @@ namespace Saaly.Services.Entity
             }
 
 
-            var entity = new Models.EntityModels.Entity
+            var entity = new EntityUser
             {
-                Type = request.Type,
-                IsActive = request.Status,
-                Name = request.Name,
-                OwnerGuid = request.OwnerGuid
+                Entity = new Models.EntityModels.Entity
+                {
+                    Type = request.Type,
+                    IsActive = request.Status,
+                    Name = request.Name,
+                    OwnerGuid = request.OwnerGuid,
+                },
+                UserGuid = request.UserGuid,
+                Code = Guid.NewGuid().ToString(),
             };
 
-            await _saalyContext.Entities.AddAsync(entity);
+            await _saalyContext.EntityUsers.AddAsync(entity);
             await _saalyContext.SaveChangesAsync();
         }
     }

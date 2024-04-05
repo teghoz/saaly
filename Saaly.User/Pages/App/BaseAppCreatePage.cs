@@ -5,16 +5,16 @@ using Saaly.Models;
 using Saaly.Models.Bases;
 using Saaly.Shared.Interfaces;
 
-namespace Saaly.User.Pages
+namespace Saaly.User.Pages.App
 {
-    public abstract class BaseCreatePage<T> : BaseUserPage<T>
+    public abstract class BaseAppCreatePage<T> : BaseAppPage<T>
         where T : SaalyBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private SaalyContext _context;
 
 
-        public BaseCreatePage(UserManager<ApplicationUser> userManager,
+        public BaseAppCreatePage(UserManager<ApplicationUser> userManager,
             SaalyContext context) : base(userManager, context)
         {
             _userManager = userManager;

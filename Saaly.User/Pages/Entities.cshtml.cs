@@ -11,7 +11,7 @@ using X.PagedList;
 
 namespace Saaly.User.Pages
 {
-    public class EntitiesModel : BasePage<Models.EntityModels.Entity>
+    public class EntitiesModel : BaseUserPage<Models.EntityModels.Entity>
     {
         private readonly SaalyContext _context;
         private readonly ILogger<IndexModel> _logger;
@@ -39,21 +39,17 @@ namespace Saaly.User.Pages
 
         public virtual async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
             var request = new NewEntityRequest
             {
                 Type = Entity.Type,
                 Name = Entity.Name,
-                Status = Entity.IsActive
+                Status = Entity.IsActive,    
+                UserGuid = Entity.OwnerGuid.Value,
             };
 
             await _entityService.AddEntity(request);
 
-            return RedirectToPage("./Entities");
+            return RedirectToPage("Entities");
         }
 
         private List<SelectListItem> GetEntityTypes()

@@ -9,6 +9,7 @@ namespace Saaly.Data.Specifications
         {
             Query
                 .Include(a => a.Entity)
+                .OrderByDescending(a => a.Created)
                 .Where(a => a.UserGuid == entityUserGuid);
         }
     }
