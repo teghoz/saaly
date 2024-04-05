@@ -11,6 +11,6 @@ namespace Saaly.Models.EntityModels
         [ForeignKey("EntityUserGroupGuid")]
         public virtual EntityUserGroup? EntityUserGroup { get; set; }
         [ForeignKey("EntityUserGroupUserGuid")]
-        public virtual EntityUser? EntityUser { get; set; }
+        public virtual User? EntityUser { get; set; }
     }
 }

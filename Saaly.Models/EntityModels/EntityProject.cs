@@ -11,7 +11,6 @@ namespace Saaly.Models.EntityModels
         [DisplayName("Name")]
         public string Name { get; set; }
 
-        //[Required]
         [RegularExpression("([1-9][0-9]*)", ErrorMessage = "Budget Hours must be a natural number")]
         [DisplayName("Budget Hours")]
         public decimal BudgetHours { get; set; }
@@ -35,15 +34,13 @@ namespace Saaly.Models.EntityModels
 
         [Required]
         [DisplayName("Code")]
-        public string Code { get; set; }
+        public string? Code { get; set; }
 
-        [Required]
         [DisplayName("Chargeable")]
         public bool IsChargable { get; set; }
 
-        [Required]
         [DisplayName("Client")]
-        public Guid ClientGuid { get; set; }
+        public Guid? ClientGuid { get; set; }
         public virtual EntityClient? Client { get; set; }
     }
 }

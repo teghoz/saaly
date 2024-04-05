@@ -1,10 +1,14 @@
 ﻿using Saaly.Models.Interfaces;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models.EntityModels
 {
     public class EntityClientGroupClient : IHistoricalAuditable
     {
+        public int Id { get; set; }
+        [Key]
+        public Guid Guid { get; set; } = Guid.NewGuid();
         public Guid GroupGuid { get; set; }
         public Guid ClientGuid { get; set; }
         [ForeignKey("ClientGuid")]

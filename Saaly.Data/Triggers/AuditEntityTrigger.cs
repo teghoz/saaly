@@ -24,7 +24,7 @@ namespace Saaly.Data.Triggers
                 EntityGuid = context.Entity.Guid,
                 Deleted = context.Entity.Deleted,
                 DeletedByUser = context.Entity.DeletedByUser,
-                Types = context.Entity.Types,
+                Type = context.Entity.Type,
             };
 
             switch (context.ChangeType)

@@ -8,17 +8,16 @@ namespace Saaly.Models.EntityModels
 {
     public class EntityUser : EntityBase, IHistoricalAuditable
     {
-        public Guid? ContactGuid { get; set; }
-        [ForeignKey("ContactGuid")]
-        public Contact? Contact { get; set; }
+        public Guid? UserGuid { get; set; }
+        [ForeignKey("UserGuid")]
+        public User? User { get; set; }
 
         [Required]
         [DisplayName("Employee Code")]
         public string Code { get; set; }
 
-        [Required]
         [DisplayName("BillCode")]
-        public Guid BillCodeGuid { get; set; }
+        public Guid? BillCodeGuid { get; set; }
 
         [DisplayName("Department")]
         public Guid? DepartmentGuid { get; set; }

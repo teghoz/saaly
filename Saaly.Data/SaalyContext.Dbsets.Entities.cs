@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Saaly.Models.Audits;
 using Saaly.Models.EntityModels;
 
 namespace Saaly.Data
@@ -7,27 +6,27 @@ namespace Saaly.Data
     public partial class SaalyContext
     {
         public DbSet<Entity> Entities { get; set; }
-        public DbSet<AuditEntityClient> EntityClients { get; set; }
-        public DbSet<AuditEntityCurrency> EntityCurrencies { get; set; }
-        public DbSet<AuditEntityExpense> EntityExpenses { get; set; }
-        public DbSet<AuditEntityGender> EntityGenders { get; set; }
-        public DbSet<AuditEntityJob> EntityJobs { get; set; }
+        public DbSet<EntityClient> EntityClients { get; set; }
+        public DbSet<EntityCurrency> EntityCurrencies { get; set; }
+        public DbSet<EntityExpense> EntityExpenses { get; set; }
+        public DbSet<EntityGender> EntityGenders { get; set; }
+        public DbSet<EntityJob> EntityJobs { get; set; }
         public DbSet<EntityTask> EntityTasks { get; set; }
-        public DbSet<AuditEntityTaskCurrencyRate> EntityTaskCurrencyRates { get; set; }
-        public DbSet<AuditEntityProject> EntityProjects { get; set; }
-        public DbSet<AuditEntityLocation> EntityLocations { get; set; }
-        public DbSet<AuditEntityUser> EntityUsers { get; set; }
+        public DbSet<EntityTaskCurrencyRate> EntityTaskCurrencyRates { get; set; }
+        public DbSet<EntityProject> EntityProjects { get; set; }
+        public DbSet<EntityLocation> EntityLocations { get; set; }
+        public DbSet<EntityUser> EntityUsers { get; set; }
         public DbSet<EntityUserDepartment> EntityUserDepartments { get; set; }
-        public DbSet<AuditEntityUserDepartmentClaim> EntityUserDepartmentClaims { get; set; }
-        public DbSet<AuditEntityUserGroup> EntityUserGroups { get; set; }
-        public DbSet<AuditEntityUserGroupUser> EntityUserGroupUsers { get; set; }
-        public DbSet<AuditEntityClientBillingInfo> EntityClientBillingInfos { get; set; }
-        public DbSet<AuditEntityClientGroup> EntityClientGroups { get; set; }
-        public DbSet<AuditEntityClientGroupClient> EntityClientGroupClients { get; set; }
-        public DbSet<AuditEntityBillUnit> EntityBillUnits { get; set; }
-        public DbSet<AuditEntityBillCode> EntityBillCodes { get; set; }
-        public DbSet<AuditEntityBillCodeCurrencyRate> EntityBillCodeCurrencyRates { get; set; }
-        public DbSet<AuditEntityTimeSheet> EntityTimeSheets { get; set; }
+        public DbSet<EntityUserDepartmentClaim> EntityUserDepartmentClaims { get; set; }
+        public DbSet<EntityUserGroup> EntityUserGroups { get; set; }
+        public DbSet<EntityUserGroupUser> EntityUserGroupUsers { get; set; }
+        public DbSet<EntityClientBillingInfo> EntityClientBillingInfos { get; set; }
+        public DbSet<EntityClientGroup> EntityClientGroups { get; set; }
+        public DbSet<EntityClientGroupClient> EntityClientGroupClients { get; set; }
+        public DbSet<EntityBillUnit> EntityBillUnits { get; set; }
+        public DbSet<EntityBillCode> EntityBillCodes { get; set; }
+        public DbSet<EntityBillCodeCurrencyRate> EntityBillCodeCurrencyRates { get; set; }
+        public DbSet<EntityTimeSheet> EntityTimeSheets { get; set; }
         public DbSet<EntityWorkAssignment> EntityWorkAssignments { get; set; }
     }
 }

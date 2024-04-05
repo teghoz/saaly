@@ -26,12 +26,6 @@ namespace Saaly.User.Pages
 
         public override async Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
         {
-            if (!context.HttpContext.User.IsInRole("User") ||
-                !context.HttpContext.User.Identity.IsAuthenticated)
-            {
-                RedirectToPage("Account/Login", new { area = "Identity" });
-            }
-
             BaseUrl = $"{Request.Scheme}://{Request.Host}{Request.PathBase}";
 
             if (User != null)
@@ -49,20 +43,15 @@ namespace Saaly.User.Pages
         public override async Task OnPageHandlerExecutionAsync(PageHandlerExecutingContext context, PageHandlerExecutionDelegate next)
         {
             // Called asynchronously before the handler method is invoked, after model binding is complete.
-            if (!context.HttpContext.User.IsInRole("User") ||
-                !context.HttpContext.User.Identity.IsAuthenticated)
+            var page = context.HandlerInstance as PageModel;
+            if (page == null) return;
+            if (ApplicationUser is not null)
             {
-                context.Result = RedirectToPage("Account/Login", new { area = "Identity" });
-            }
-            else
-            {
-                var page = context.HandlerInstance as PageModel;
-                if (page == null) return;
                 page.ViewData["AuthenticatedUser"] = ApplicationUser.UserName;
-                //page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
-                page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
-                var resultContext = await next();
             }
+            //page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
+            page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
+            var resultContext = await next();
         }
     }
 }

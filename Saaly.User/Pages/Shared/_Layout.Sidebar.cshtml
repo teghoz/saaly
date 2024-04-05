@@ -13,11 +13,11 @@
     <!-- Side Header -->
     <div class="content-header">
         <!-- Logo -->
-        <a class="fw-semibold text-dual" href="index.html">
+        <a class="fw-semibold text-dual" asp-page="/Index">
             <span class="smini-visible">
                 <i class="fa fa-circle-notch text-primary"></i>
             </span>
-            <span class="smini-hide fs-5 tracking-wider">OneUI</span>
+            <span class="smini-hide fs-5 tracking-wider">Saaly</span>
         </a>
         <!-- END Logo -->
         <!-- Extra -->
@@ -104,7 +104,7 @@
         <div class="content-side">
             <ul class="nav-main">
                 <li class="nav-main-item">
-                    <a class="nav-main-link @ViewData["IsDashboardActive"]" href="be_pages_dashboard.html">
+                    <a class="nav-main-link @ViewData["IsDashboardActive"]" asp-page="/App/index">
                         <i class="nav-main-link-icon si si-speedometer"></i>
                         <span class="nav-main-link-name">Dashboard</span>
                     </a>
@@ -112,9 +112,9 @@
                 
                 <li class="nav-main-heading">Masters</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link @ViewData["IsAdminActive"]" asp-page="/admins/index">
+                    <a class="nav-main-link @ViewData["IsEntitiesActive"]" asp-page="/App/Entities/Index">
                         <i class="nav-main-link-icon si si-user"></i>
-                        <span class="nav-main-link-name">Admins</span>
+                        <span class="nav-main-link-name">Entities</span>
                     </a>
                 </li>
                 <li class="nav-main-item">

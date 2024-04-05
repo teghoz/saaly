@@ -7,6 +7,8 @@ using Saaly.Data.Repositories;
 using Saaly.Infrastructure.Extensions;
 using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
+using Saaly.Models.EntityModels;
+using Saaly.Services.Entity;
 using Saaly.Services.Recaptcha;
 using Saaly.Services.Registration;
 using Saaly.Services.Validators;
@@ -54,9 +56,12 @@ builder.Services.AddCookieIdentity(options =>
 builder.Services.AddHttpClient();
 builder.Services.AddValidatorsFromAssemblyContaining<RegistrationValidator>();
 builder.Services.AddScoped(typeof(IRepository<Admin>), typeof(AdminEFRepositiory));
+builder.Services.AddScoped(typeof(IRepository<Entity>), typeof(EntityEFRepositiory));
+builder.Services.AddScoped(typeof(IRepository<EntityUser>), typeof(EntityUserEFRepositiory));
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped<ICaptchaService, RecaptchaService>();
+builder.Services.AddScoped<IEntityService, EntityService>();
 builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 builder.Services.AddScoped(x =>
 {
