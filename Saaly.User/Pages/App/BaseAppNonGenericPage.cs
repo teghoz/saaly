@@ -86,6 +86,7 @@ namespace Saaly.User.Pages.App
                     page.ViewData["AuthenticatedUser"] = ApplicationUser.UserName;
                 }
                 //page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
+                page.ViewData["entityGuid"] = EntityGuid;
                 page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
                 var resultContext = await next();
             }

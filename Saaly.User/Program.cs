@@ -1,4 +1,5 @@
 using FluentValidation;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -23,6 +24,28 @@ var mvcBuilder = builder.Services.AddRazorPages(options =>
     options.Conventions.AllowAnonymousToFolder("/Identity/Account");
     options.Conventions.AllowAnonymousToAreaFolder("Identity", "/Account");
     options.Conventions.AuthorizeAreaPage("Identity", "/Accounts/Manage");
+    options.Conventions.AddFolderRouteModelConvention("/App", model =>
+    {
+        var newSelectors = new List<SelectorModel>();
+        foreach (var selector in model.Selectors)
+        {
+            var newSelector = new SelectorModel
+            {
+                AttributeRouteModel = new AttributeRouteModel
+                {
+                    //Template = AttributeRouteModel.CombineTemplates("/App/{entityGuid}/", selector.AttributeRouteModel.Template)
+                    Template = selector.AttributeRouteModel.Template.Replace("App", "App/{entityGuid}")
+                }
+            };
+            newSelectors.Add(newSelector);
+        }
+
+        model.Selectors.Clear();
+        foreach (var newSelector in newSelectors)
+        {
+            model.Selectors.Add(newSelector);
+        }
+    });
 
 }).AddSessionStateTempDataProvider();
 
@@ -96,5 +119,8 @@ app.UseAuthorization();
 app.UseSession();
 app.MapRazorPages();
 app.MapControllers();
+
+app.MapGet("/debug/routes", (IEnumerable<EndpointDataSource> endpointSources) =>
+    string.Join("\n", endpointSources.SelectMany(source => source.Endpoints )));
 
 app.Run();

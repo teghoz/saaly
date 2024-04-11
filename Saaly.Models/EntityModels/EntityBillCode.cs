@@ -11,13 +11,13 @@ namespace Saaly.Models.EntityModels
         [Required]
         [DisplayName("Code Name")]
         public string Name { get; set; }
-        [DisplayName("Descripton")]
+        [DisplayName("Description")]
         public string? Description { get; set; }
         [Required]
         [DisplayName("BillUnit")]
         public Guid BillUnitGuid { get; set; }
         [ForeignKey("BillUnitGuid")]
         public virtual EntityBillUnit? BillUnit { get; set; }
-        public List<EntityBillCodeCurrencyRate>? CurrencyRates { get; set; }
+        public ICollection<EntityBillCodeCurrencyRate>? CurrencyRates { get; set; }
     }
 }
