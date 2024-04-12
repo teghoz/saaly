@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Saaly.Data;
 using Saaly.Models;
 using Saaly.Services.Entity;
+using Saaly.Services.Entity.BillCodes;
 using X.PagedList;
 
 namespace Saaly.User.Pages.App.EntityBillCodes

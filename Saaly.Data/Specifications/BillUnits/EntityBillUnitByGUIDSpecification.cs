@@ -1,7 +1,7 @@
 ﻿using Ardalis.Specification;
 using Saaly.Models.EntityModels;
 
-namespace Saaly.Data.Specifications
+namespace Saaly.Data.Specifications.BillUnits
 {
     public class EntityBillUnitByGUIDSpecification : EntityPagingSpecification<EntityBillUnit>
     {

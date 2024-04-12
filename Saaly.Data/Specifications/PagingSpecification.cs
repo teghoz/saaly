@@ -6,9 +6,12 @@ namespace Saaly.Data.Specifications
     {
         public PagingSpecification(int? skip, int? take)
         {
-            Query
-                .Skip(skip.Value * take.Value)
-                .Take(take.Value);
+            if (skip.HasValue && take.HasValue)
+            {
+                Query
+                    .Skip(skip.Value * take.Value)
+                    .Take(take.Value);
+            }
         }
     }
 }

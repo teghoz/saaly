@@ -36,7 +36,7 @@
 <!-- Floating Labels -->
 <div class="block block-rounded">
     <div class="block-header block-header-default">
-        <h3 class="block-title">Create Billcode</h3>
+        <h3 class="block-title">Create Admin</h3>
     </div>
     <div class="block-content block-content-full">
         <form method="POST">
@@ -44,22 +44,47 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
                     <div class="form-floating mb-4">
-                        <input asp-for="Model.Name" class="form-control" />
-                        <label asp-for="Model.Name" class="control-label"></label>
-                        <span asp-validation-for="Model.Name" class="text-danger"></span>
+                        <input asp-for="Model.Username" class="form-control" readonly />
+                        <label asp-for="Model.Username" class="control-label"></label>
+                        <span asp-validation-for="Model.Username" class="text-danger"></span>
                     </div>
                     <div class="form-floating mb-4">
-                        <input asp-for="Model.Description" class="form-control" />
-                        <label asp-for="Model.Description" class="control-label"></label>
-                        <span asp-validation-for="Model.Description" class="text-danger"></span>
+                        <input asp-for="Model.Contact.FirstName" class="form-control" />
+                        <label asp-for="Model.Contact.FirstName" class="control-label"></label>
+                        <span asp-validation-for="Model.Contact.FirstName" class="text-danger"></span>
                     </div>
                     <div class="form-floating mb-4">
-                        <label asp-for="Model.BillUnitGuid" class="control-label"></label>
-                        <select asp-for="Model.BillUnitGuid" class="form-control select-search-1" asp-items="ViewBag.BillUnits" style="width:100%">
-                            <option value="none" selected disabled hidden></option>
-                        </select>
-                        <span asp-validation-for="Model.BillUnitGuid" class="text-danger"></span>
+                        <input asp-for="Model.Contact.LastName" class="form-control" />
+                        <label asp-for="Model.Contact.LastName" class="control-label"></label>
+                        <span asp-validation-for="Model.Contact.LastName" class="text-danger"></span>
                     </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Contact.Email" class="form-control" />
+                        <label asp-for="Model.Contact.Email" class="control-label"></label>
+                        <span asp-validation-for="Model.Contact.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Contact.PhoneNumber" class="form-control" />
+                        <label asp-for="Model.Contact.PhoneNumber" class="control-label"></label>
+                        <span asp-validation-for="Model.Contact.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Contact.Address" class="form-control" />
+                        <label asp-for="Model.Contact.Address" class="control-label"></label>
+                        <span asp-validation-for="Model.Contact.Address" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Contact.DateOfBirth" class="form-control" />
+                        <label asp-for="Model.Contact.DateOfBirth" class="control-label"></label>
+                        <span asp-validation-for="Model.Contact.DateOfBirth" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.DefaultPassword" class="form-control" />
+                        <label asp-for="Model.DefaultPassword" class="control-label"></label>                      
+                        <span asp-validation-for="Model.DefaultPassword" class="text-danger"></span>
+                    </div>
+
                     <div class="form-floating mb-4">
                         <div class="form-check form-switch">
                             <input asp-for="Model.IsActive" class="form-check-input" />

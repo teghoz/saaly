@@ -27,4 +27,13 @@
     <ProjectReference Include="..\Saaly.Services\Saaly.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="Pages\App\EntityBillUnits\Create.cshtml" />
+    <AdditionalFiles Include="Pages\App\EntityBillUnits\Edit.cshtml" />
+    <AdditionalFiles Include="Pages\App\EntityBillUnits\Index.cshtml" />
+    <AdditionalFiles Include="Pages\App\EntityCurrencies\Create.cshtml" />
+    <AdditionalFiles Include="Pages\App\EntityCurrencies\Edit.cshtml" />
+    <AdditionalFiles Include="Pages\App\EntityCurrencies\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

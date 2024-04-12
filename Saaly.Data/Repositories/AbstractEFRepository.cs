@@ -40,7 +40,7 @@ namespace Saaly.Data.Repositories
 
         public async Task Insert(T entity, CancellationToken cancellationToken = default)
         {
-            await _dbSet.AddAsync(entity);
+            await _dbSet.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
         }
 

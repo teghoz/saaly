@@ -1,10 +1,10 @@
 using Saaly.Data;
 using Saaly.Data.Interfaces;
-using Saaly.Data.Specifications;
+using Saaly.Data.Specifications.BillUnits;
 using Saaly.Models.EntityModels;
 using Saaly.Services.Requests;
 
-namespace Saaly.Services.Entity;
+namespace Saaly.Services.Entity.BillUnits;
 
 public class EntityBillUnitService : IEntityBillUnitService
 {
@@ -44,6 +44,12 @@ public class EntityBillUnitService : IEntityBillUnitService
         await _saalyContext.EntityBillUnits.AddAsync(model);
         await _saalyContext.SaveChangesAsync();
         return model;
+    }
+
+    public async Task UpdateBillUnit(EntityBillUnit billUnit)
+    {
+        _saalyContext.EntityBillUnits.Update(billUnit);
+        await _saalyContext.SaveChangesAsync();
     }
     
     public async Task RemoveBillUnit(EntityBillUnit billUnit)

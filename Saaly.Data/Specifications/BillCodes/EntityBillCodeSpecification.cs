@@ -1,6 +1,6 @@
 ﻿using Saaly.Models.EntityModels;
 
-namespace Saaly.Data.Specifications
+namespace Saaly.Data.Specifications.BillCodes
 {
     public class EntityBillCodeSpecification : EntityPagingSpecification<EntityBillCode>
     {

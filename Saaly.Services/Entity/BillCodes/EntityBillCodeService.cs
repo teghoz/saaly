@@ -1,10 +1,11 @@
 using Saaly.Data;
 using Saaly.Data.Interfaces;
 using Saaly.Data.Specifications;
+using Saaly.Data.Specifications.BillCodes;
 using Saaly.Models.EntityModels;
 using Saaly.Services.Requests;
 
-namespace Saaly.Services.Entity;
+namespace Saaly.Services.Entity.BillCodes;
 
 public class EntityBillCodeService : IEntityBillCodeService
 {
@@ -26,7 +27,7 @@ public class EntityBillCodeService : IEntityBillCodeService
     
     public async Task<EntityBillCode?> GetBillCode(Guid entityGuid, Guid billCodeGuid)
     {
-        var spec = new EntityBillCodeByGUIDSpecification(entityGuid, billCodeGuid);
+        var spec = new EntityBillCodeByGUIDSpecification(entityGuid, billCodeGuid, null, null);
         var model = await _entityBillCodeRepository.GetAll(spec);
         return model.FirstOrDefault();
     }
@@ -45,6 +46,12 @@ public class EntityBillCodeService : IEntityBillCodeService
         await _saalyContext.EntityBillCodes.AddAsync(model);
         await _saalyContext.SaveChangesAsync();
         return model;
+    }
+
+    public async Task UpdateBillCode(EntityBillCode billCode)
+    {
+        _saalyContext.EntityBillCodes.Update(billCode);
+        await _saalyContext.SaveChangesAsync();
     }
     
     public async Task RemoveBillCode(EntityBillCode billCode)
