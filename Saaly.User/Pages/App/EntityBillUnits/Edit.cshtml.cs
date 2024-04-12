@@ -5,9 +5,9 @@ using Saaly.Data;
 using Saaly.Models;
 using Saaly.Models.EntityModels;
 
-namespace Saaly.User.Pages.App.Entities
+namespace Saaly.User.Pages.App.EntityBillUnits
 {
-    public class EditModel : BaseEditPage<Entity>
+    public class EditModel : BaseAppEditPage<Entity>
     {
         private readonly ILogger _logger;
         private readonly SaalyContext _context;

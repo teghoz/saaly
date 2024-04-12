@@ -1,0 +1,73 @@
+﻿@page
+@model EditModel
+@{
+    ViewData["Title"] = "Edit Admin";
+    ViewData["IsEntitiesActive"] = "active";
+}
+
+@section Hero
+{
+    <div class="bg-body-light">
+        <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+                <div class="flex-grow-1">
+                    <h1 class="h3 fw-bold mb-1">
+                        Admins
+                    </h1>
+                    <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                        Mobile friendly tables that work across all screen sizes.
+                    </h2>
+                </div>
+                <nav class="flex-shrink-0 mt-3 mt-sm-0 ms-sm-3" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-alt">
+                        <li class="breadcrumb-item">
+                            <a class="link-fx" asp-page="Index">Admins</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page">
+                            Edit
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Floating Labels -->
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Edit @Model.Model.Name</h3>
+    </div>
+    <div class="block-content block-content-full">
+        <form method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Name" class="form-control" readonly />
+                        <label asp-for="Model.Name" class="control-label"></label>
+                        <span asp-validation-for="Model.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Type" class="form-control" />
+                        <label asp-for="Model.Type" class="control-label"></label>
+                        <span asp-validation-for="Model.Type" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-floating mb-4">
+                        <div class="form-check form-switch">
+                            <input asp-for="Model.IsActive" class="form-check-input" />
+                            <label asp-for="Model.IsActive" class="control-label">Enable</label>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END Floating Labels -->

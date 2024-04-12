@@ -16,9 +16,8 @@ namespace Saaly.User.Pages.App
             _logger = logger;
         }
 
-        public async Task OnGet(Guid entityGuid)
+        public async Task OnGet()
         {
-            EntityGuid = entityGuid;
         }
     }
 }

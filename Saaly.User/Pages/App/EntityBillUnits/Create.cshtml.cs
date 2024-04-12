@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
 using Saaly.Models;
 
-namespace Saaly.User.Pages.App.Entities
+namespace Saaly.User.Pages.App.EntityBillUnits
 {
-    public class CreateModel : BaseCreatePage<Admin>
+    public class CreateModel : BaseAppCreatePage<Admin>
     {
         private readonly ILogger _logger;
         private readonly SaalyContext _context;
