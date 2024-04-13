@@ -36,9 +36,13 @@ namespace Saaly.Data.Tests.AuditTests
                 historicalAuditableModels.Add(type.Name);
             }
 
-            var check = historicalAuditableTypes.Except(historicalAuditableModels).ToList().Count();
+            var differences = historicalAuditableTypes.Except(historicalAuditableModels).ToList();
 
-            Assert.That(check == 0, Is.True, "1 should not be prime");
+            var check = differences.Count();
+
+            var messages = string.Join(",", differences);
+
+            Assert.That(check == 0, Is.True, messages + " should have audit table(s)");
         }
     }
 }
