@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Saaly.Models
 {
-    public class User : SaalyBase, IHistoricalAuditable
+    public class User : SaalyBase
     {
         public Guid? ContactGuid { get; set; }
         [ForeignKey("ContactGuid")]
