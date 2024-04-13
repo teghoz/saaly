@@ -48,6 +48,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: 'saaly-user'
+      PORT: 5082
     needs: build
     environment:
       name: 'STAGE'
@@ -65,9 +68,10 @@ jobs:
         script: |
           cp /etc/nginx/sites-available/site-template /etc/nginx/sites-available/${{secrets.SAALY_USER_DOMAIN}}
           sed -i "s|{{PLACEHOLDER_DOMAIN}}|${{secrets.SAALY_USER_DOMAIN}}|g" /etc/nginx/sites-available/${{secrets.SAALY_USER_DOMAIN}}
-          sed -i "s|{{PLACEHOLDER_PORT}}|5082|g" /etc/nginx/sites-available/${{secrets.SAALY_USER_DOMAIN}}
+          sed -i "s|{{PLACEHOLDER_PORT}}|${{ env.PORT }}|g" /etc/nginx/sites-available/${{secrets.SAALY_USER_DOMAIN}}
           certbot certonly --nginx --keep -d ${{secrets.SAALY_USER_DOMAIN}}
           cp /etc/nginx/sites-available/${{secrets.SAALY_USER_DOMAIN}} /etc/nginx/sites-enabled/${{secrets.SAALY_USER_DOMAIN}}
           if docker ps -a --format '{{.Names}}' | grep -q 'saaly-user'; then docker stop saaly-user; docker rm saaly-user; fi
-          docker run -d -p 5082:8080 --name saaly-user -e ConnectionString='${{ secrets.DATABASE_CONNECTION }}' teghoz/saaly-user:develop
+          docker pull teghoz/${{ env.DOCKER_IMAGE }}:develop
+          docker rm -f ${{ env.DOCKER_IMAGE }} && docker run --restart=always -d -p ${{ env.PORT }}:8080 --name saaly-user -e ConnectionString='${{ secrets.DATABASE_CONNECTION }}' teghoz/${{ env.DOCKER_IMAGE }}:develop
           systemctl reload nginx
