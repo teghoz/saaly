@@ -14,6 +14,7 @@ COPY ["./Saaly.Shared/Saaly.Shared.csproj", "Saaly.Shared/"]
 COPY ["./Saaly/connection.example.json", "Saaly/connection.json"]
 COPY ["./Saaly/wwwroot", "Saaly/wwwroot/"]
 COPY ["./Saaly.User/Saaly.User.csproj", "Saaly.User/"]
+COPY ["./Saaly.User/connection.example.json", "Saaly.User/connection.json"]
 
 RUN dotnet restore "Saaly.User/Saaly.User.csproj"
 COPY ./ ./
