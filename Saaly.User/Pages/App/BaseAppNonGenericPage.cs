@@ -88,8 +88,48 @@ namespace Saaly.User.Pages.App
                 //page.ViewData["AuthenticatedUserLastName"] = Admin?.Contact?.LastName ?? "";
                 page.ViewData["entityGuid"] = EntityGuid;
                 page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
+                SetTitleAndActivePage(page);
                 var resultContext = await next();
             }
+        }
+
+        private string GetPageName(string pagePath)
+        {
+            var pathSplits = pagePath.Split("/").ToList();
+            if (pathSplits.Contains("App") && pathSplits.Count >= 3)
+            {
+                return pathSplits[2];
+            }
+
+            return string.Empty;
+        }
+
+        private void SetTitleAndActivePage(PageModel page)
+        {
+            switch (page.PageContext.ActionDescriptor.DisplayName)
+            {
+                case var name when name.Contains("Index"):
+                    page.ViewData["Title"] = GetPageName(name) + " List";
+                    page.ViewData[$"Is{GetPageName(name)}Active"] = "active";
+                    break;
+                case var name when name.Contains("Create"):
+                    page.ViewData["Title"] = $@"Create {GetPageName(name)}";
+                    page.ViewData[$"Is{GetPageName(name)}Active"] = "active";
+                    break;
+                case var name when name.Contains("Edit"):
+                    page.ViewData["Title"] = $@"Edit {GetPageName(name)}";
+                    page.ViewData[$"Is{GetPageName(name)}Active"] = "active";
+                    break;
+                case var name when name.Contains("Delete"):
+                    page.ViewData["Title"] = $@"Delete {GetPageName(name)}";
+                    page.ViewData[$"Is{GetPageName(name)}Active"] = "active";
+                    break;
+                case var name when name.Contains("Details"):
+                    page.ViewData["Title"] = $@"{GetPageName(name)} Details";
+                    page.ViewData[$"Is{GetPageName(name)}Active"] = "active";
+                    break;
+            }
+            
         }
     }
 }
