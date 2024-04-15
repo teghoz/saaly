@@ -12,7 +12,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-1">
-                        Entities
+                        Currencies
                     </h1>
                     <h2 class="fs-base lh-base fw-medium text-muted mb-0">
                         Mobile friendly tables that work across all screen sizes.
@@ -38,7 +38,7 @@
     <div class="block-header block-header-default">
         <h3 class="block-title">Currencies</h3>
         <div class="block-options">
-            <a asp-page="Create" class="btn btn-outline-primary btn-fix">
+            <a asp-page="/App/EntityCurrencies/Create" asp-route-entityGuid="@Model.EntityGuid" class="btn btn-outline-primary btn-fix">
                 <span class="btn-icon"><i class="la la-plus"></i>Create</span>
             </a>
         </div>
