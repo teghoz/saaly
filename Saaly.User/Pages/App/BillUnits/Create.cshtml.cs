@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
 using Saaly.Models;
 
-namespace Saaly.User.Pages.App.EntityBillUnits
+namespace Saaly.User.Pages.App.BillUnits
 {
     public class CreateModel : BaseAppCreatePage<Admin>
     {

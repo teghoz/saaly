@@ -5,7 +5,7 @@ using Saaly.Data;
 using Saaly.Models;
 using Saaly.Models.EntityModels;
 
-namespace Saaly.User.Pages.App.EntityBillUnits
+namespace Saaly.User.Pages.App.BillUnits
 {
     public class EditModel : BaseAppEditPage<Entity>
     {

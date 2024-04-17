@@ -1,8 +1,8 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Entities";
-    ViewData["IsAdminActive"] = "active";
+    //ViewData["Title"] = "Entities";
+    //ViewData["IsAdminActive"] = "active";
 }
 
 @section Hero
@@ -12,7 +12,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-1">
-                        Currencies
+                        @ViewData["Title"]
                     </h1>
                     <h2 class="fs-base lh-base fw-medium text-muted mb-0">
                         Mobile friendly tables that work across all screen sizes.
@@ -36,9 +36,9 @@
 <!-- Partial Table -->
 <div class="block block-rounded">
     <div class="block-header block-header-default">
-        <h3 class="block-title">Currencies</h3>
+        <h3 class="block-title">Entities</h3>
         <div class="block-options">
-            <a asp-page="/App/EntityCurrencies/Create" asp-route-entityGuid="@Model.EntityGuid" class="btn btn-outline-primary btn-fix">
+            <a asp-page="/App/BillUnits/Create" asp-route-entityGuid="@Model.EntityGuid" class="btn btn-outline-primary btn-fix">
                 <span class="btn-icon"><i class="la la-plus"></i>Create</span>
             </a>
         </div>
@@ -53,7 +53,6 @@
                 <tr>
                     <th style="width: 25%;">Name</th>
                     <th class="d-none d-md-table-cell" style="width: 20%;">Type</th>
-                    <th class="d-none d-md-table-cell" style="width: 20%;">Symbol</th>
                     <th class="d-none d-md-table-cell" style="width: 20%;">Created</th>
                     <th class="text-center" style="width: 100px;">Actions</th>
                 </tr>
@@ -63,7 +62,7 @@
                 {
                     <tr>
                         <td class="fw-semibold fs-sm">@item.Name</td>
-                        <td class="d-none d-md-table-cell fs-sm"><em class="text-muted">@item.Symbol</em></td>
+                        <td class="d-none d-md-table-cell fs-sm"><em class="text-muted">@item.Description</em></td>
                         <td class="fw-semibold fs-sm">@item.Created</td>
                         <td class="text-center">
                             <div class="btn-group">

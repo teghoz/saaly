@@ -112,19 +112,19 @@
                 
                 <li class="nav-main-heading">Masters</li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link @ViewData["IsEntityCurrenciesActive"]" asp-page="/App/EntityCurrencies/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
+                    <a class="nav-main-link @ViewData["IsCurrenciesActive"]" asp-page="/App/Currencies/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
                         <i class="nav-main-link-icon si si-user"></i>
                         <span class="nav-main-link-name">Currencies</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link @ViewData["IsEntityBillUnitsActive"]" asp-page="/App/EntityBillUnits/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
+                    <a class="nav-main-link @ViewData["IsBillUnitsActive"]" asp-page="/App/BillUnits/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
                         <i class="nav-main-link-icon si si-user"></i>
                         <span class="nav-main-link-name">Bill Units</span>
                     </a>
                 </li>
                 <li class="nav-main-item">
-                    <a class="nav-main-link @ViewData["IsEntityBillCodesActive"]" asp-page="/App/EntityBillCodes/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
+                    <a class="nav-main-link @ViewData["IsBillCodesActive"]" asp-page="/App/BillCodes/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
                         <i class="nav-main-link-icon si si-user"></i>
                         <span class="nav-main-link-name">Bill Codes</span>
                     </a>
