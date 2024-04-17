@@ -5,7 +5,7 @@ using Saaly.Services.Entity;
 using Saaly.Services.Entity.BillUnits;
 using X.PagedList;
 
-namespace Saaly.User.Pages.App.EntityBillUnits
+namespace Saaly.User.Pages.App.BillUnits
 {
     public class IndexModel : BaseAppPage<Models.EntityModels.EntityBillUnit>
     {

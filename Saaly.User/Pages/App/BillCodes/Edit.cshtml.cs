@@ -4,23 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using Saaly.Data;
 using Saaly.Models;
 using Saaly.Models.EntityModels;
-using Saaly.Services.Entity.Currencies;
 
-namespace Saaly.User.Pages.App.EntityCurrencies
+namespace Saaly.User.Pages.App.BillCodes
 {
-    public class EditModel : BaseAppEditPage<EntityCurrency>
+    public class EditModel : BaseAppEditPage<Entity>
     {
         private readonly ILogger _logger;
         private readonly SaalyContext _context;
-        private readonly IEntityCurrencyService _entityCurrencyService;
 
-        public EditModel(ILogger<EditModel> logger, SaalyContext context, IEntityCurrencyService entityCurrencyService,
-            UserManager<ApplicationUser> userManager)
+        public EditModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager)
             : base(userManager, context)
         {
             _logger = logger;
             _context = context;
-            _entityCurrencyService = entityCurrencyService;
         }
 
         public override async Task<IActionResult> OnGetAsync(Guid? guid)
@@ -30,7 +26,8 @@ namespace Saaly.User.Pages.App.EntityCurrencies
                 return NotFound();
             }
 
-            Model = await _entityCurrencyService.GetCurrency(EntityGuid, guid.Value);
+            Model = await _context.Entities
+                .FirstOrDefaultAsync(m => m.Guid == guid);
 
             if (Model == null)
             {

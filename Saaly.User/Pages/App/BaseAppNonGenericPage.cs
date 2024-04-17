@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Primitives;
 using Saaly.Data;
 using Saaly.Models;
+using Saaly.Shared.TagHelpers;
 
 namespace Saaly.User.Pages.App
 {
@@ -25,6 +26,7 @@ namespace Saaly.User.Pages.App
         [TempData]
         public string MessageStr { get; set; }
         public Guid EntityGuid { get; set; }
+        public CrumbList BreadCrumbs { get; set; }
 
         public override async Task OnPageHandlerSelectionAsync(PageHandlerSelectedContext context)
         {

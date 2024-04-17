@@ -28,12 +28,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="Pages\App\EntityBillUnits\Create.cshtml" />
-    <AdditionalFiles Include="Pages\App\EntityBillUnits\Edit.cshtml" />
-    <AdditionalFiles Include="Pages\App\EntityBillUnits\Index.cshtml" />
-    <AdditionalFiles Include="Pages\App\EntityCurrencies\Create.cshtml" />
-    <AdditionalFiles Include="Pages\App\EntityCurrencies\Edit.cshtml" />
-    <AdditionalFiles Include="Pages\App\EntityCurrencies\Index.cshtml" />
+    <AdditionalFiles Include="Pages\App\BillUnits\Create.cshtml" />
+    <AdditionalFiles Include="Pages\App\BillUnits\Edit.cshtml" />
+    <AdditionalFiles Include="Pages\App\BillUnits\Index.cshtml" />
+    <AdditionalFiles Include="Pages\App\Currencies\Create.cshtml" />
+    <AdditionalFiles Include="Pages\App\Currencies\Edit.cshtml" />
+    <AdditionalFiles Include="Pages\App\Currencies\Index.cshtml" />
   </ItemGroup>
 
 </Project>

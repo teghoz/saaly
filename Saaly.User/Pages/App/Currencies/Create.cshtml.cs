@@ -7,7 +7,7 @@ using Saaly.Services.Entity.BillCodes;
 using Saaly.Services.Entity.Currencies;
 using Saaly.Services.Requests;
 
-namespace Saaly.User.Pages.App.EntityCurrencies
+namespace Saaly.User.Pages.App.Currencies
 {
     public class CreateModel : BaseAppCreatePage<EntityCurrency>
     {
