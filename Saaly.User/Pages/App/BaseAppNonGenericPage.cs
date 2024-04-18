@@ -12,12 +12,14 @@ namespace Saaly.User.Pages.App
     public abstract class BaseAppNonGenericPage : BaseUserNonGenericPage
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUrlHelper _urlHelper;
         private SaalyContext _context;
 
         public BaseAppNonGenericPage(UserManager<ApplicationUser> userManager,
-            SaalyContext context): base(userManager, context)
+            IUrlHelper urlHelper, SaalyContext context): base(userManager, context)
         {
             _userManager = userManager;
+            _urlHelper = urlHelper;
             _context = context;
         }
         public ApplicationUser? ApplicationUser { get; set; }
@@ -93,6 +95,18 @@ namespace Saaly.User.Pages.App
                 SetTitleAndActivePage(page);
                 var resultContext = await next();
             }
+            
+            BreadCrumbs = new CrumbList();
+            BreadCrumbs.Items = new List<ListItem>
+            {
+                new ListItem
+                {
+                    Label = "Dashboard",
+                    HasLink = true,
+                    Order = 0,
+                    Url = _urlHelper.Page($"/App/Index", new { entityGuid = EntityGuid})
+                }
+            };
         }
 
         private string GetPageName(string pagePath)

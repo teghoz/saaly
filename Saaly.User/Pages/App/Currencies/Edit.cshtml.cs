@@ -15,8 +15,8 @@ namespace Saaly.User.Pages.App.Currencies
         private readonly IEntityCurrencyService _entityCurrencyService;
 
         public EditModel(ILogger<EditModel> logger, SaalyContext context, IEntityCurrencyService entityCurrencyService,
-            UserManager<ApplicationUser> userManager)
-            : base(userManager, context)
+            UserManager<ApplicationUser> userManager, IUrlHelper urlHelper)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;

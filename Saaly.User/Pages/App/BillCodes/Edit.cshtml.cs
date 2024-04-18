@@ -12,8 +12,9 @@ namespace Saaly.User.Pages.App.BillCodes
         private readonly ILogger _logger;
         private readonly SaalyContext _context;
 
-        public EditModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager)
-            : base(userManager, context)
+        public EditModel(ILogger<IndexModel> logger, SaalyContext context,
+            UserManager<ApplicationUser> userManager, IUrlHelper urlHelper)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;

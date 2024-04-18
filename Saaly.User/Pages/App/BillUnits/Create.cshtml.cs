@@ -10,8 +10,9 @@ namespace Saaly.User.Pages.App.BillUnits
         private readonly ILogger _logger;
         private readonly SaalyContext _context;
 
-        public CreateModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager)
-            : base(userManager, context)
+        public CreateModel(ILogger<IndexModel> logger, SaalyContext context,
+            UserManager<ApplicationUser> userManager, IUrlHelper urlHelper)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;

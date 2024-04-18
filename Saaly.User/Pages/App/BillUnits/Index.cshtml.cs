@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
 using Saaly.Models;
 using Saaly.Services.Entity;
@@ -13,8 +14,9 @@ namespace Saaly.User.Pages.App.BillUnits
         private readonly SaalyContext _context;
         private readonly IEntityBillUnitService _entityBillUnitService;
 
-        public IndexModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager, IEntityBillUnitService entityBillUnitService)
-            : base(userManager, context)
+        public IndexModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager,
+            IEntityBillUnitService entityBillUnitService, IUrlHelper urlHelper)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;
