@@ -15,8 +15,8 @@ namespace Saaly.User.Pages.App
         private SaalyContext _context;
 
 
-        public BaseAppDeletePage(UserManager<ApplicationUser> userManager,
-            SaalyContext context) : base(userManager, context)
+        public BaseAppDeletePage(UserManager<ApplicationUser> userManager, IUrlHelper urlHelper,
+            SaalyContext context) : base(userManager, urlHelper, context)
         {
             _userManager = userManager;
             _context = context;

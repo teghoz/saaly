@@ -14,8 +14,8 @@ namespace Saaly.User.Pages.App
         private SaalyContext _context;
 
 
-        public BaseAppCreatePage(UserManager<ApplicationUser> userManager,
-            SaalyContext context) : base(userManager, context)
+        public BaseAppCreatePage(UserManager<ApplicationUser> userManager, IUrlHelper urlHelper,
+            SaalyContext context) : base(userManager, urlHelper, context)
         {
             _userManager = userManager;
             _context = context;

@@ -14,8 +14,8 @@ namespace Saaly.User.Pages.App
         private readonly UserManager<ApplicationUser> _userManager;
         private SaalyContext _context;
 
-        public BaseAppDetailsPage(UserManager<ApplicationUser> userManager,
-            SaalyContext context) : base(userManager, context)
+        public BaseAppDetailsPage(UserManager<ApplicationUser> userManager, IUrlHelper urlHelper,
+            SaalyContext context) : base(userManager, urlHelper, context)
         {
             _userManager = userManager;
             _context = context;

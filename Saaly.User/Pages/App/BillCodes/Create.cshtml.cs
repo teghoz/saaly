@@ -19,10 +19,10 @@ namespace Saaly.User.Pages.App.BillCodes
         private readonly IEntityBillUnitService _entityBillUnitService;
         private readonly IEntityCurrencyService _entityCurrencyService;
 
-        public CreateModel(ILogger<IndexModel> logger, SaalyContext context, 
+        public CreateModel(ILogger<IndexModel> logger, SaalyContext context, IUrlHelper urlHelper,
             UserManager<ApplicationUser> userManager, IEntityBillCodeService entityBillCodeService,
             IEntityBillUnitService entityBillUnitService, IEntityCurrencyService entityCurrencyService)
-            : base(userManager, context)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;

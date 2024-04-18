@@ -38,7 +38,7 @@ namespace Saaly.Shared.TagHelpers
                 {
                     if (item.HasLink)
                     {
-                        var link = $"<a class='{item.LinkClass}' asp-page='{item.Url}'>{item.Label}</a>";
+                        var link = $"<a class='{item.LinkClass}' href='{item.Url}'>{item.Label}</a>";
                         builder.Append(MakeListItem(item, link));
                     }
                     else

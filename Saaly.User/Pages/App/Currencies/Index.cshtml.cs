@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
 using Saaly.Models;
 using Saaly.Models.EntityModels;
@@ -15,8 +16,9 @@ namespace Saaly.User.Pages.App.Currencies
         private readonly SaalyContext _context;
         private readonly IEntityCurrencyService _entityCurrencyService;
 
-        public IndexModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager, IEntityCurrencyService entityCurrencyService)
-            : base(userManager, context)
+        public IndexModel(ILogger<IndexModel> logger, SaalyContext context, UserManager<ApplicationUser> userManager,
+            IEntityCurrencyService entityCurrencyService, IUrlHelper urlHelper)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;

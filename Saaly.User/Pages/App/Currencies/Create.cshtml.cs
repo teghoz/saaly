@@ -15,9 +15,9 @@ namespace Saaly.User.Pages.App.Currencies
         private readonly SaalyContext _context;
         private readonly IEntityCurrencyService _entityCurrencyService;
 
-        public CreateModel(ILogger<IndexModel> logger, SaalyContext context, 
+        public CreateModel(ILogger<IndexModel> logger, SaalyContext context, IUrlHelper urlHelper, 
             UserManager<ApplicationUser> userManager, IEntityCurrencyService entityCurrencyService)
-            : base(userManager, context)
+            : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;

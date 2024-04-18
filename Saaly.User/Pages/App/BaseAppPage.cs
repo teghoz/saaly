@@ -16,7 +16,7 @@ namespace Saaly.User.Pages.App
         public DbSet<T> _entity;
 
         public BaseAppPage(UserManager<ApplicationUser> userManager,
-            SaalyContext context) : base(userManager, context)
+            IUrlHelper urlHelper, SaalyContext context) : base(userManager, urlHelper, context)
         {
             _userManager = userManager;
             _context = context;
