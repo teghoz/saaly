@@ -24,9 +24,10 @@ namespace Saaly.User.Pages.App
 
         [BindProperty]
         public T Model { get; set; }
-
-        public virtual IActionResult OnGet()
+        
+        public virtual async Task<IActionResult> OnGetAsync()
         {
+            await Task.FromResult(0);
             return Page();
         }
 
