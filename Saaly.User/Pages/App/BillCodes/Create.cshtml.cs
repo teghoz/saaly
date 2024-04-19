@@ -31,7 +31,7 @@ namespace Saaly.User.Pages.App.BillCodes
             _entityCurrencyService = entityCurrencyService;
         }
         
-        public async Task<IActionResult> OnGetAsync()
+        public override async Task<IActionResult> OnGetAsync()
         {
             var billUnits = await _entityBillUnitService.GetBillUnits(EntityGuid, null, null);
             ViewData["BillUnits"] = billUnits.MorphToDropdownOptions(b => b.Guid, u => u.Name);

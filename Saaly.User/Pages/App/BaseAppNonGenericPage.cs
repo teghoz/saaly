@@ -23,10 +23,10 @@ namespace Saaly.User.Pages.App
             _context = context;
         }
         public ApplicationUser? ApplicationUser { get; set; }
-        public string BaseUrl { get; set; }
-        public string ShareMessage { get; set; }
+        public string? BaseUrl { get; set; }
+        public string? ShareMessage { get; set; }
         [TempData]
-        public string MessageStr { get; set; }
+        public string? MessageStr { get; set; }
         public Guid EntityGuid { get; set; }
         public CrumbList BreadCrumbs { get; set; }
 
@@ -93,20 +93,27 @@ namespace Saaly.User.Pages.App
                 page.ViewData["entityGuid"] = EntityGuid;
                 page.ViewData["Host"] = context.HttpContext.Request.Host.Host;
                 SetTitleAndActivePage(page);
+                
+                BreadCrumbs = new CrumbList();
+                BreadCrumbs.Items = new List<ListItem>
+                {
+                    new ListItem
+                    {
+                        Label = "Dashboard",
+                        HasLink = true,
+                        Order = 0,
+                        Url = _urlHelper.Page($"/App/Index", new { entityGuid = EntityGuid})
+                    },
+                    new ListItem
+                    {
+                        Label = GetPageName(page.PageContext.ActionDescriptor.DisplayName),
+                        HasLink = true,
+                        Order = 1,
+                        Url = _urlHelper.Page(page.PageContext.ActionDescriptor.DisplayName, new { entityGuid = EntityGuid})
+                    }
+                };
                 var resultContext = await next();
             }
-            
-            BreadCrumbs = new CrumbList();
-            BreadCrumbs.Items = new List<ListItem>
-            {
-                new ListItem
-                {
-                    Label = "Dashboard",
-                    HasLink = true,
-                    Order = 0,
-                    Url = _urlHelper.Page($"/App/Index", new { entityGuid = EntityGuid})
-                }
-            };
         }
 
         private string GetPageName(string pagePath)

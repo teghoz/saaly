@@ -44,63 +44,21 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
                     <div class="form-floating mb-4">
-                        <input asp-for="Model.Username" class="form-control" readonly />
-                        <label asp-for="Model.Username" class="control-label"></label>
-                        <span asp-validation-for="Model.Username" class="text-danger"></span>
+                        <input asp-for="Model.Name" class="form-control" />
+                        <label asp-for="Model.Name" class="control-label"></label>
+                        <span asp-validation-for="Model.Name" class="text-danger"></span>
                     </div>
                     <div class="form-floating mb-4">
-                        <input asp-for="Model.Contact.FirstName" class="form-control" />
-                        <label asp-for="Model.Contact.FirstName" class="control-label"></label>
-                        <span asp-validation-for="Model.Contact.FirstName" class="text-danger"></span>
+                        <input asp-for="Model.Description" class="form-control" />
+                        <label asp-for="Model.Description" class="control-label"></label>
+                        <span asp-validation-for="Model.Description" class="text-danger"></span>
                     </div>
-                    <div class="form-floating mb-4">
-                        <input asp-for="Model.Contact.LastName" class="form-control" />
-                        <label asp-for="Model.Contact.LastName" class="control-label"></label>
-                        <span asp-validation-for="Model.Contact.LastName" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input asp-for="Model.Contact.Email" class="form-control" />
-                        <label asp-for="Model.Contact.Email" class="control-label"></label>
-                        <span asp-validation-for="Model.Contact.Email" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input asp-for="Model.Contact.PhoneNumber" class="form-control" />
-                        <label asp-for="Model.Contact.PhoneNumber" class="control-label"></label>
-                        <span asp-validation-for="Model.Contact.PhoneNumber" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input asp-for="Model.Contact.Address" class="form-control" />
-                        <label asp-for="Model.Contact.Address" class="control-label"></label>
-                        <span asp-validation-for="Model.Contact.Address" class="text-danger"></span>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input asp-for="Model.Contact.DateOfBirth" class="form-control" />
-                        <label asp-for="Model.Contact.DateOfBirth" class="control-label"></label>
-                        <span asp-validation-for="Model.Contact.DateOfBirth" class="text-danger"></span>
-                    </div>
-
-                    <div class="form-floating mb-4">
-                        <input asp-for="Model.DefaultPassword" class="form-control" />
-                        <label asp-for="Model.DefaultPassword" class="control-label"></label>                      
-                        <span asp-validation-for="Model.DefaultPassword" class="text-danger"></span>
-                    </div>
-
                     <div class="form-floating mb-4">
                         <div class="form-check form-switch">
                             <input asp-for="Model.IsActive" class="form-check-input" />
                             <label asp-for="Model.IsActive" class="control-label">Enable</label>
                         </div>
                     </div>
-                    
-                    
-                    @* <div class="form-floating mb-4">
-                        <input type="email" class="form-control" id="example-email-input-floating" name="example-email-input-floating" placeholder="john.doe@example.com">
-                        <label for="example-email-input-floating">Email address</label>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input type="password" class="form-control" id="example-password-input-floating" name="example-password-input-floating" placeholder="Password">
-                        <label for="example-password-input-floating">Password</label>
-                    </div> *@
                     <div class="mb-4">
                         <button type="submit" class="btn btn-lg btn-primary">Save</button>
                     </div>
