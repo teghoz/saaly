@@ -5,6 +5,7 @@ using Saaly.Data;
 using Saaly.Models;
 using Saaly.Models.Bases;
 using Saaly.Shared.Interfaces;
+using Saaly.Shared.TagHelpers;
 
 namespace Saaly.User.Pages.App
 {
@@ -12,6 +13,7 @@ namespace Saaly.User.Pages.App
         where T : SaalyBase
     {
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUrlHelper _urlHelper;
         private SaalyContext _context;
 
 
@@ -19,6 +21,7 @@ namespace Saaly.User.Pages.App
             SaalyContext context) : base(userManager, urlHelper, context)
         {
             _userManager = userManager;
+            _urlHelper = urlHelper;
             _context = context;
 
         }
@@ -39,6 +42,32 @@ namespace Saaly.User.Pages.App
             {
                 return NotFound();
             }
+            
+            BreadCrumbs = new CrumbList();
+            BreadCrumbs.Items = new List<ListItem>
+            {
+                new()
+                {
+                    Label = "Dashboard",
+                    HasLink = true,
+                    Order = 0,
+                    Url = _urlHelper.Page("/App/Index", new { entityGuid = EntityGuid })
+                },
+                new()
+                {
+                    Label = GetPageName(PageContext.ActionDescriptor.DisplayName),
+                    HasLink = true,
+                    Order = 1,
+                    Url = _urlHelper.Page($"/App/{GetPageName(PageContext.ActionDescriptor.DisplayName)}/Index", new { EntityGuid })
+                },
+                new()
+                {
+                    Label = "Edit",
+                    HasAriaCurrent = true,
+                    Order = 2
+                }
+            };
+            
             return Page();
         }
 
@@ -59,7 +88,7 @@ namespace Saaly.User.Pages.App
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModelExists(Model.Guid))
+                if (!(await ModelExists(Model.Guid)))
                 {
                     return NotFound();
                 }
@@ -69,12 +98,12 @@ namespace Saaly.User.Pages.App
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { EntityGuid });
         }
 
-        public bool ModelExists(Guid guid)
+        public async Task<bool> ModelExists(Guid guid)
         {
-            return _entity.Any(e => e.Guid == guid);
+            return await _entity.AnyAsync(e => e.Guid == guid);
         }
 
         public IWebUIRequest AdminRequest { get; set; }

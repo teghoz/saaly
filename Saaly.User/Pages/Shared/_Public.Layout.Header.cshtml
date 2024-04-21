@@ -21,12 +21,16 @@
                             <span class="nav-main-link-name">Home</span>
                         </a>
                     </li>
-                    <li class="nav-main-item">
-                        <a class="nav-main-link" asp-page="/Entities">
-                            <i class="nav-main-link-icon si si-rocket"></i>
-                            <span class="nav-main-link-name">Entities</span>
-                        </a>
-                    </li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" asp-page="/Entities">
+                                <i class="nav-main-link-icon si si-rocket"></i>
+                                <span class="nav-main-link-name">Entities</span>
+                            </a>
+                        </li>
+                    }
+                    
                     <li class="nav-main-item">
                         <a class="nav-main-link" href="javascript:void(0)">
                             <i class="nav-main-link-icon si si-wallet"></i>

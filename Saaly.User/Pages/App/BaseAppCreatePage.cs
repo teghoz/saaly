@@ -40,7 +40,7 @@ namespace Saaly.User.Pages.App
             await _entity.AddAsync(Model);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { EntityGuid });
         }
 
         public IWebUIRequest AdminRequest { get; set; }

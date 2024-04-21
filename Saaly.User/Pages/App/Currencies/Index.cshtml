@@ -42,7 +42,7 @@
             <thead>
                 <tr>
                     <th style="width: 25%;">Name</th>
-                    <th class="d-none d-md-table-cell" style="width: 20%;">Type</th>
+                    <th class="d-none d-md-table-cell" style="width: 20%;">Short Name</th>
                     <th class="d-none d-md-table-cell" style="width: 20%;">Symbol</th>
                     <th class="d-none d-md-table-cell" style="width: 20%;">Created</th>
                     <th class="text-center" style="width: 100px;">Actions</th>
@@ -53,11 +53,12 @@
                 {
                     <tr>
                         <td class="fw-semibold fs-sm">@item.Name</td>
+                        <td class="fw-semibold fs-sm">@item.ShortName</td>
                         <td class="d-none d-md-table-cell fs-sm"><em class="text-muted">@item.Symbol</em></td>
                         <td class="fw-semibold fs-sm">@item.Created</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <crud-action guid="@item.Guid"></crud-action>
+                                <entity-crud-action guid="@item.Guid" entity-guid="Model.EntityGuid"></entity-crud-action>
                             </div>
                         </td>
                     </tr>

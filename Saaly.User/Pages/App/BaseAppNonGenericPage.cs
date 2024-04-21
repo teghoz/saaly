@@ -102,21 +102,21 @@ namespace Saaly.User.Pages.App
                         Label = "Dashboard",
                         HasLink = true,
                         Order = 0,
-                        Url = _urlHelper.Page($"/App/Index", new { entityGuid = EntityGuid})
+                        Url = _urlHelper.Page("/App/Index", new { entityGuid = EntityGuid})
                     },
                     new ListItem
                     {
                         Label = GetPageName(page.PageContext.ActionDescriptor.DisplayName),
                         HasLink = true,
                         Order = 1,
-                        Url = _urlHelper.Page(page.PageContext.ActionDescriptor.DisplayName, new { entityGuid = EntityGuid})
+                        Url = _urlHelper.Page(page.PageContext.ActionDescriptor.DisplayName, new { EntityGuid })
                     }
                 };
                 var resultContext = await next();
             }
         }
 
-        private string GetPageName(string pagePath)
+        public string GetPageName(string pagePath)
         {
             var pathSplits = pagePath.Split("/").ToList();
             if (pathSplits.Contains("App") && pathSplits.Count >= 3)

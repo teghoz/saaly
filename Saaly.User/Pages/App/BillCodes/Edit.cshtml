@@ -44,24 +44,40 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-8">
                     <div class="form-floating mb-4">
-                        <input asp-for="Model.Name" class="form-control" readonly />
+                        <input asp-for="Model.Name" class="form-control" />
                         <label asp-for="Model.Name" class="control-label"></label>
                         <span asp-validation-for="Model.Name" class="text-danger"></span>
                     </div>
                     <div class="form-floating mb-4">
-                        <input asp-for="Model.Type" class="form-control" />
-                        <label asp-for="Model.Type" class="control-label"></label>
-                        <span asp-validation-for="Model.Type" class="text-danger"></span>
+                        <input asp-for="Model.Description" class="form-control" />
+                        <label asp-for="Model.Description" class="control-label"></label>
+                        <span asp-validation-for="Model.Description" class="text-danger"></span>
                     </div>
-
-
+                    <div class="form-floating mb-4">
+                        <label asp-for="Model.BillUnitGuid" class="control-label"></label>
+                        <select asp-for="Model.BillUnitGuid" class="form-control select-search-1" asp-items="ViewBag.BillUnits" style="width:100%">
+                            <option value="none" selected disabled hidden></option>
+                        </select>
+                        <span asp-validation-for="Model.BillUnitGuid" class="text-danger"></span>
+                    </div>
                     <div class="form-floating mb-4">
                         <div class="form-check form-switch">
                             <input asp-for="Model.IsActive" class="form-check-input" />
                             <label asp-for="Model.IsActive" class="control-label">Enable</label>
+                            <input type="hidden" asp-for="Model.Guid"/>
+                            <input type="hidden" asp-for="Model.EntityGuid"/>
                         </div>
                     </div>
                     
+                    
+                    @* <div class="form-floating mb-4">
+                        <input type="email" class="form-control" id="example-email-input-floating" name="example-email-input-floating" placeholder="john.doe@example.com">
+                        <label for="example-email-input-floating">Email address</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="password" class="form-control" id="example-password-input-floating" name="example-password-input-floating" placeholder="Password">
+                        <label for="example-password-input-floating">Password</label>
+                    </div> *@
                     <div class="mb-4">
                         <button type="submit" class="btn btn-lg btn-primary">Save</button>
                     </div>
