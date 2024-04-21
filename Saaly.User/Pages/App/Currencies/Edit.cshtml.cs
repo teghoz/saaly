@@ -23,24 +23,6 @@ namespace Saaly.User.Pages.App.Currencies
             _entityCurrencyService = entityCurrencyService;
         }
 
-        public override async Task<IActionResult> OnGetAsync(Guid? guid)
-        {
-            if (guid == Guid.Empty)
-            {
-                return NotFound();
-            }
-
-            Model = await _entityCurrencyService.GetCurrency(EntityGuid, guid.Value);
-
-            if (Model == null)
-            {
-                return NotFound();
-            }
-
-
-            return Page();
-        }
-
         public override async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -56,7 +38,7 @@ namespace Saaly.User.Pages.App.Currencies
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModelExists(Model.Guid))
+                if (!(await ModelExists(Model.Guid)))
                 {
                     return NotFound();
                 }

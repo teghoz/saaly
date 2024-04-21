@@ -7,7 +7,7 @@ using Saaly.Models.EntityModels;
 
 namespace Saaly.User.Pages.App.BillCodes
 {
-    public class EditModel : BaseAppEditPage<Entity>
+    public class EditModel : BaseAppEditPage<EntityBillCode>
     {
         private readonly ILogger _logger;
         private readonly SaalyContext _context;
@@ -27,7 +27,7 @@ namespace Saaly.User.Pages.App.BillCodes
                 return NotFound();
             }
 
-            Model = await _context.Entities
+            Model = await _context.EntityBillCodes
                 .FirstOrDefaultAsync(m => m.Guid == guid);
 
             if (Model == null)
@@ -54,7 +54,7 @@ namespace Saaly.User.Pages.App.BillCodes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ModelExists(Model.Guid))
+                if (!(await ModelExists(Model.Guid)))
                 {
                     return NotFound();
                 }

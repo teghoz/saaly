@@ -41,7 +41,7 @@ namespace Saaly.User.Pages.App.Currencies
                 ShortName = Model.ShortName,
             };
             await _entityCurrencyService.AddCurrency(currencyRequest);
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { EntityGuid });
         }
     }
 }

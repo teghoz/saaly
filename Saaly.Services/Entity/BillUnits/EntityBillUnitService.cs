@@ -38,7 +38,8 @@ public class EntityBillUnitService : IEntityBillUnitService
             EntityGuid = request.EntityGuid,
             IsActive = request.IsActive,
             Created = DateTime.UtcNow,
-            Name = request.Name
+            Name = request.Name,
+            Description = request.Description
         };
 
         await _saalyContext.EntityBillUnits.AddAsync(model);

@@ -2,13 +2,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
 using Saaly.Models;
-using Saaly.Services.Entity;
+using Saaly.Models.EntityModels;
 using Saaly.Services.Entity.BillCodes;
 using X.PagedList;
 
 namespace Saaly.User.Pages.App.BillCodes
 {
-    public class IndexModel : BaseAppPage<Models.EntityModels.EntityBillCode>
+    public class IndexModel : BaseAppPage<EntityBillCode>
     {
         private readonly ILogger _logger;
         private readonly SaalyContext _context;

@@ -36,10 +36,11 @@ namespace Saaly.User.Pages.App.BillUnits
                 EntityGuid = EntityGuid,
                 IsActive = Model.IsActive,
                 Name = Model.Name,
+                Description = Model.Description
             };
 
             await _entityBillUnitService.AddBillUnit(billUnitRequest);
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { entityGuid = EntityGuid });
         }
     }
 }
