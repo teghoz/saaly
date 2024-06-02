@@ -52,12 +52,14 @@ namespace Saaly.User.Pages.App.BillCodes
             var billCodeRequest = new EntityBillCodeRequest
             {
                 EntityGuid = EntityGuid,
+                BillUnitGuid = Model.BillUnitGuid,
                 IsActive = Model.IsActive,
                 Name = Model.Name,
+                Description = Model.Description,
                 CurrencyRates = Model.CurrencyRates
             };
             await _entityBillCodeService.AddBillCode(billCodeRequest);
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { entityGuid = EntityGuid });
         }
     }
 }

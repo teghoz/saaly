@@ -8,5 +8,6 @@
         public string? FractionalUnit { get; set; }
         public string? FullName { get; set; }
         public string? ShortName { get; set; }
+        public string? Symbol { get; set; }
     }
 }

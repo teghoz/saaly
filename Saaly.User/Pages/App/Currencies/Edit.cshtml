@@ -1,8 +1,6 @@
 ﻿@page
 @model EditModel
 @{
-    ViewData["Title"] = "Edit Admin";
-    ViewData["IsEntitiesActive"] = "active";
 }
 
 @section Hero
@@ -12,7 +10,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
                 <div class="flex-grow-1">
                     <h1 class="h3 fw-bold mb-1">
-                        Admins
+                        @ViewData["Title"]
                     </h1>
                     <h2 class="fs-base lh-base fw-medium text-muted mb-0">
                         Mobile friendly tables that work across all screen sizes.

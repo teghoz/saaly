@@ -20,25 +20,6 @@ namespace Saaly.User.Pages.App.BillCodes
             _context = context;
         }
 
-        public override async Task<IActionResult> OnGetAsync(Guid? guid)
-        {
-            if (guid == Guid.Empty)
-            {
-                return NotFound();
-            }
-
-            Model = await _context.EntityBillCodes
-                .FirstOrDefaultAsync(m => m.Guid == guid);
-
-            if (Model == null)
-            {
-                return NotFound();
-            }
-
-
-            return Page();
-        }
-
         public override async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
