@@ -44,6 +44,7 @@ public class EntityCurrencyService : IEntityCurrencyService
             FractionalUnit = request.FractionalUnit,
             FullName = request.FullName,
             ShortName = request.ShortName,
+            Symbol = request.Symbol,
         };
 
         await _saalyContext.EntityCurrencies.AddAsync(model);

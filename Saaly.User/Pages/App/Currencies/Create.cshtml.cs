@@ -39,6 +39,7 @@ namespace Saaly.User.Pages.App.Currencies
                 FractionalUnit = Model.FractionalUnit,
                 FullName = Model.FullName,
                 ShortName = Model.ShortName,
+                Symbol = Model.Symbol,
             };
             await _entityCurrencyService.AddCurrency(currencyRequest);
             return RedirectToPage("./Index", new { EntityGuid });

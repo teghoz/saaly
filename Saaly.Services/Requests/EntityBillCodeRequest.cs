@@ -9,5 +9,6 @@ namespace Saaly.Services.Requests
         public string? Description { get; set; }
         public bool IsActive { get; set; }
         public ICollection<EntityBillCodeCurrencyRate>? CurrencyRates { get; set; }
+        public required Guid BillUnitGuid { get; set; }
     }
 }

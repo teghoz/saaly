@@ -37,9 +37,11 @@ public class EntityBillCodeService : IEntityBillCodeService
         var model = new EntityBillCode
         {
             EntityGuid = request.EntityGuid,
+            BillUnitGuid = request.BillUnitGuid,
             IsActive = request.IsActive,
             Created = DateTime.UtcNow,
             Name = request.Name,
+            Description = request.Description,
             CurrencyRates = request.CurrencyRates
         };
 

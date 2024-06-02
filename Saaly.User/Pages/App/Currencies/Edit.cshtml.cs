@@ -48,7 +48,7 @@ namespace Saaly.User.Pages.App.Currencies
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Index", new { EntityGuid });
         }
     }
 }
