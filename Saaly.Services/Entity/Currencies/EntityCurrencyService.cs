@@ -33,7 +33,7 @@ public class EntityCurrencyService : IEntityCurrencyService
         return model.FirstOrDefault();
     }
 
-    public async Task<EntityCurrency> AddCurrency(EntityCurrencyRequest request)
+    public async Task<EntityCurrency> AddCurrency(EntityCurrencyRequest request, CancellationToken cancellationToken)
     {
         var model = new EntityCurrency
         {
@@ -47,20 +47,20 @@ public class EntityCurrencyService : IEntityCurrencyService
             Symbol = request.Symbol,
         };
 
-        await _saalyContext.EntityCurrencies.AddAsync(model);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.EntityCurrencies.AddAsync(model, cancellationToken);
+        await _saalyContext.SaveChangesAsync(cancellationToken);
         return model;
     }
 
-    public async Task UpdateCurrency(EntityCurrency currency)
+    public async Task UpdateCurrency(EntityCurrency currency, CancellationToken cancellationToken)
     {
         _saalyContext.EntityCurrencies.Update(currency);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
     
-    public async Task RemoveCurrency(EntityCurrency currency)
+    public async Task RemoveCurrency(EntityCurrency currency, CancellationToken cancellationToken)
     {
         _saalyContext.EntityCurrencies.Remove(currency);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
 }

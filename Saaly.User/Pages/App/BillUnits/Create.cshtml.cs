@@ -24,7 +24,7 @@ namespace Saaly.User.Pages.App.BillUnits
             _entityBillUnitService = entityBillUnitService;
         }
 
-        public override async Task<IActionResult> OnPostAsync()
+        public override async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid || _entity == null || Model == null)
             {
@@ -39,7 +39,7 @@ namespace Saaly.User.Pages.App.BillUnits
                 Description = Model.Description
             };
 
-            await _entityBillUnitService.AddBillUnit(billUnitRequest);
+            await _entityBillUnitService.AddBillUnit(billUnitRequest, cancellationToken);
             return RedirectToPage("./Index", new { entityGuid = EntityGuid });
         }
     }

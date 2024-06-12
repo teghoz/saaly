@@ -32,30 +32,32 @@ public class EntityClientService : IEntityClientService
         return model.FirstOrDefault();
     }
 
-    public async Task<EntityClient> AddClient(EntityClientRequest request)
+    public async Task<EntityClient> AddClient(EntityClientRequest request, CancellationToken cancellationToken)
     {
         var model = new EntityClient
         {
             EntityGuid = request.EntityGuid,
             IsActive = request.IsActive,
             Created = DateTime.UtcNow,
-            Name = request.Name
+            Name = request.Name,
+            Contact = request.Contact,
+            ManagementCompany = request.ManagementCompany
         };
 
-        await _saalyContext.EntityClients.AddAsync(model);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.EntityClients.AddAsync(model, cancellationToken);
+        await _saalyContext.SaveChangesAsync(cancellationToken);
         return model;
     }
 
-    public async Task UpdateClient(EntityClient client)
+    public async Task UpdateClient(EntityClient client, CancellationToken cancellationToken)
     {
         _saalyContext.EntityClients.Update(client);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
     
-    public async Task RemoveClient(EntityClient client)
+    public async Task RemoveClient(EntityClient client, CancellationToken cancellationToken)
     {
         _saalyContext.EntityClients.Remove(client);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
 }

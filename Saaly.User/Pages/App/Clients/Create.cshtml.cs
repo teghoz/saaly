@@ -5,6 +5,7 @@ using Saaly.Models;
 using Saaly.Models.EntityModels;
 using Saaly.Services.Entity.Clients;
 using Saaly.Services.Requests;
+using Saaly.Shared.Helpers.Forms;
 
 namespace Saaly.User.Pages.App.Clients
 {
@@ -34,21 +35,25 @@ namespace Saaly.User.Pages.App.Clients
             return Page();
         }
 
-        public override async Task<IActionResult> OnPostAsync()
+        public override async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid || _entity == null || Model == null)
             {
                 return Page();
             }
+            
+            var form = await HttpContext.Request.ReadFormAsync(cancellationToken);
 
             var clientRequest = new EntityClientRequest
             {
                 EntityGuid = EntityGuid,
                 IsActive = Model.IsActive,
-                Name = Model.Name
+                Name = Model.Name,
+                Contact = Model.Contact,
+                ManagementCompany = Model.ManagementCompany
             };
 
-            await _entityClientService.AddClient(clientRequest);
+            await _entityClientService.AddClient(clientRequest, cancellationToken);
             return RedirectToPage("./Index", new { entityGuid = EntityGuid });
         }
     }

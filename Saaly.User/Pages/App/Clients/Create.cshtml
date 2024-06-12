@@ -44,7 +44,11 @@
                         <label asp-for="Model.ManagementCompany" class="control-label"></label>
                         <span asp-validation-for="Model.ManagementCompany" class="text-danger"></span>
                     </div>
-                    <partial name="Components/Contact" model="@Model.Model.Contact" />
+                    
+                    @await Html.PartialAsync("Components/Contact", Model.Model.Contact, new ViewDataDictionary(ViewData)
+                    {
+                        TemplateInfo = { HtmlFieldPrefix = "Model.Contact" }
+                    })
                     <div class="form-floating mb-4">
                         <div class="form-check form-switch">
                             <input asp-for="Model.IsActive" class="form-check-input" />
