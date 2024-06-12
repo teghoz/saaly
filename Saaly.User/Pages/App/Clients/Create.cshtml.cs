@@ -3,25 +3,36 @@ using Microsoft.AspNetCore.Mvc;
 using Saaly.Data;
 using Saaly.Models;
 using Saaly.Models.EntityModels;
-using Saaly.Services.Entity.BillUnits;
+using Saaly.Services.Entity.Clients;
 using Saaly.Services.Requests;
+using Saaly.Shared.Helpers.Forms;
 
-namespace Saaly.User.Pages.App.BillUnits
+namespace Saaly.User.Pages.App.Clients
 {
-    public class CreateModel : BaseAppCreatePage<EntityBillUnit>
+    public class CreateModel : BaseAppCreatePage<EntityClient>
     {
         private readonly ILogger _logger;
         private readonly SaalyContext _context;
-        private readonly IEntityBillUnitService _entityBillUnitService;
+        private readonly IEntityClientService _entityClientService;
 
         public CreateModel(ILogger<IndexModel> logger, SaalyContext context,
             UserManager<ApplicationUser> userManager, IUrlHelper urlHelper,
-            IEntityBillUnitService entityBillUnitService)
+            IEntityClientService entityClientService)
             : base(userManager, urlHelper, context)
         {
             _logger = logger;
             _context = context;
-            _entityBillUnitService = entityBillUnitService;
+            _entityClientService = entityClientService;
+        }
+        
+        public override async Task<IActionResult> OnGetAsync()
+        {
+            Model = new EntityClient
+            {
+                Contact = new Contact(),
+                Name = null
+            };
+            return Page();
         }
 
         public override async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
@@ -30,16 +41,19 @@ namespace Saaly.User.Pages.App.BillUnits
             {
                 return Page();
             }
+            
+            var form = await HttpContext.Request.ReadFormAsync(cancellationToken);
 
-            var billUnitRequest = new EntityBillUnitRequest
+            var clientRequest = new EntityClientRequest
             {
                 EntityGuid = EntityGuid,
                 IsActive = Model.IsActive,
                 Name = Model.Name,
-                Description = Model.Description
+                Contact = Model.Contact,
+                ManagementCompany = Model.ManagementCompany
             };
 
-            await _entityBillUnitService.AddBillUnit(billUnitRequest, cancellationToken);
+            await _entityClientService.AddClient(clientRequest, cancellationToken);
             return RedirectToPage("./Index", new { entityGuid = EntityGuid });
         }
     }

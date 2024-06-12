@@ -31,14 +31,14 @@ namespace Saaly.User.Pages.App
             return Page();
         }
 
-        public virtual async Task<IActionResult> OnPostAsync()
+        public virtual async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            await _entity.AddAsync(Model);
-            await _context.SaveChangesAsync();
+            await _entity.AddAsync(Model, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
 
             return RedirectToPage("./Index", new { EntityGuid });
         }

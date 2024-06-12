@@ -3,11 +3,11 @@ using Saaly.Models.EntityModels;
 
 namespace Saaly.Data.Repositories
 {
-    public class EntityBillCodeEFRepositiory : AbstractEFRepository<EntityBillCode>
+    public class EntityClientEFRepository : AbstractEFRepository<EntityClient>
     {
         private readonly SaalyContext _context;
 
-        public EntityBillCodeEFRepositiory(SaalyContext context) : base(context)
+        public EntityClientEFRepository(SaalyContext context) : base(context)
         {
             _context = context;
         }

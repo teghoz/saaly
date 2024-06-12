@@ -32,7 +32,7 @@ public class EntityBillCodeService : IEntityBillCodeService
         return model.FirstOrDefault();
     }
     
-    public async Task<EntityBillCode> AddBillCode(EntityBillCodeRequest request)
+    public async Task<EntityBillCode> AddBillCode(EntityBillCodeRequest request, CancellationToken cancellationToken)
     {
         var model = new EntityBillCode
         {
@@ -45,20 +45,20 @@ public class EntityBillCodeService : IEntityBillCodeService
             CurrencyRates = request.CurrencyRates
         };
 
-        await _saalyContext.EntityBillCodes.AddAsync(model);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.EntityBillCodes.AddAsync(model, cancellationToken);
+        await _saalyContext.SaveChangesAsync(cancellationToken);
         return model;
     }
 
-    public async Task UpdateBillCode(EntityBillCode billCode)
+    public async Task UpdateBillCode(EntityBillCode billCode, CancellationToken cancellationToken)
     {
         _saalyContext.EntityBillCodes.Update(billCode);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
     
-    public async Task RemoveBillCode(EntityBillCode billCode)
+    public async Task RemoveBillCode(EntityBillCode billCode, CancellationToken cancellationToken)
     {
         _saalyContext.EntityBillCodes.Remove(billCode);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
 }

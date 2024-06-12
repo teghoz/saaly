@@ -24,7 +24,7 @@ namespace Saaly.User.Pages.App.Currencies
             _entityCurrencyService = entityCurrencyService;
         }
 
-        public override async Task<IActionResult> OnPostAsync()
+        public override async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid || _entity == null || Model == null)
             {
@@ -41,7 +41,7 @@ namespace Saaly.User.Pages.App.Currencies
                 ShortName = Model.ShortName,
                 Symbol = Model.Symbol,
             };
-            await _entityCurrencyService.AddCurrency(currencyRequest);
+            await _entityCurrencyService.AddCurrency(currencyRequest, cancellationToken);
             return RedirectToPage("./Index", new { EntityGuid });
         }
     }

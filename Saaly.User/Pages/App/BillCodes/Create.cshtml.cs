@@ -42,7 +42,7 @@ namespace Saaly.User.Pages.App.BillCodes
             return Page();
         }
 
-        public override async Task<IActionResult> OnPostAsync()
+        public override async Task<IActionResult> OnPostAsync(CancellationToken cancellationToken)
         {
             if (!ModelState.IsValid || _entity == null || Model == null)
             {
@@ -58,7 +58,7 @@ namespace Saaly.User.Pages.App.BillCodes
                 Description = Model.Description,
                 CurrencyRates = Model.CurrencyRates
             };
-            await _entityBillCodeService.AddBillCode(billCodeRequest);
+            await _entityBillCodeService.AddBillCode(billCodeRequest, cancellationToken);
             return RedirectToPage("./Index", new { entityGuid = EntityGuid });
         }
     }

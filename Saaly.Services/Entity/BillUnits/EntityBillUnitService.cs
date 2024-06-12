@@ -31,7 +31,7 @@ public class EntityBillUnitService : IEntityBillUnitService
         return model.FirstOrDefault();
     }
 
-    public async Task<EntityBillUnit> AddBillUnit(EntityBillUnitRequest request)
+    public async Task<EntityBillUnit> AddBillUnit(EntityBillUnitRequest request, CancellationToken cancellationToken)
     {
         var model = new EntityBillUnit
         {
@@ -42,20 +42,20 @@ public class EntityBillUnitService : IEntityBillUnitService
             Description = request.Description
         };
 
-        await _saalyContext.EntityBillUnits.AddAsync(model);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.EntityBillUnits.AddAsync(model, cancellationToken);
+        await _saalyContext.SaveChangesAsync(cancellationToken);
         return model;
     }
 
-    public async Task UpdateBillUnit(EntityBillUnit billUnit)
+    public async Task UpdateBillUnit(EntityBillUnit billUnit, CancellationToken cancellationToken)
     {
         _saalyContext.EntityBillUnits.Update(billUnit);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
     
-    public async Task RemoveBillUnit(EntityBillUnit billUnit)
+    public async Task RemoveBillUnit(EntityBillUnit billUnit, CancellationToken cancellationToken)
     {
         _saalyContext.EntityBillUnits.Remove(billUnit);
-        await _saalyContext.SaveChangesAsync();
+        await _saalyContext.SaveChangesAsync(cancellationToken);
     }
 }

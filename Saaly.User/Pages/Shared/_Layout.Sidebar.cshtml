@@ -123,12 +123,18 @@
                         <span class="nav-main-link-name">Bill Units</span>
                     </a>
                 </li>
-                <li class="nav-main-item">
-                    <a class="nav-main-link @ViewData["IsBillCodesActive"]" asp-page="/App/BillCodes/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
-                        <i class="nav-main-link-icon si si-user"></i>
-                        <span class="nav-main-link-name">Bill Codes</span>
-                    </a>
-                </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link @ViewData["IsBillCodesActive"]" asp-page="/App/BillCodes/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
+                    <i class="nav-main-link-icon si si-user"></i>
+                    <span class="nav-main-link-name">Bill Codes</span>
+                </a>
+            </li>
+            <li class="nav-main-item">
+                <a class="nav-main-link @ViewData["IsClientsActive"]" asp-page="/App/Clients/Index" asp-route-entityGuid="@ViewData["EntityGuid"]" data-guid="@ViewData["EntityGuid"]">
+                    <i class="nav-main-link-icon si si-user"></i>
+                    <span class="nav-main-link-name">Clients </span>
+                </a>
+            </li>
                 <li class="nav-main-item">
                     <a class="nav-main-link nav-main-link-submenu" data-toggle="submenu" aria-haspopup="true" aria-expanded="false" href="#">
                         <i class="nav-main-link-icon si si-fire"></i>

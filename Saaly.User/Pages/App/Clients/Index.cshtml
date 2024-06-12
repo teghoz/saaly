@@ -1,0 +1,84 @@
+﻿@page
+@model IndexModel
+@{
+    //ViewData["Title"] = "Entities";
+    //ViewData["IsAdminActive"] = "active";
+}
+
+@section Hero
+{
+    <div class="bg-body-light">
+        <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+                <div class="flex-grow-1">
+                    <h1 class="h3 fw-bold mb-1">
+                        @ViewData["Title"]
+                    </h1>
+                    <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                        Mobile friendly tables that work across all screen sizes.
+                    </h2>
+                </div>
+                <breadcrumb crumbs="Model.BreadCrumbs"></breadcrumb>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Partial Table -->
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Clients</h3>
+        <div class="block-options">
+            <a asp-page="/App/Clients/Create" asp-route-entityGuid="@Model.EntityGuid" class="btn btn-outline-primary btn-fix">
+                <span class="btn-icon"><i class="la la-plus"></i>Create</span>
+            </a>
+        </div>
+    </div>
+    <div class="block-content">
+        <p class="fs-sm text-muted"></p>
+        <p class="justify-content-end">
+            
+        </p>
+        <table class="table table-bordered table-striped table-vcenter">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Name</th>
+                    <th class="d-none d-md-table-cell" style="width: 20%;">Management Company</th>
+                    <th class="d-none d-md-table-cell" style="width: 20%;">Created</th>
+                    <th class="text-center" style="width: 100px;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ModelList)
+                {
+                    <tr>
+                        <td class="fw-semibold fs-sm">@item.Name</td>
+                        <td class="d-none d-md-table-cell fs-sm"><em class="text-muted">@item.ManagementCompany</em></td>
+                        <td class="fw-semibold fs-sm">@item.Created</td>
+                        <td class="text-center">
+                            <div class="btn-group">
+                                <entity-crud-action guid="@item.Guid" entity-guid="Model.EntityGuid"></entity-crud-action>
+                            </div>
+                        </td>
+                    </tr>
+                }                
+            </tbody>
+        </table>
+
+        <nav aria-label="Photos Search Navigation">
+            @Html.PagedListPager(Model.ModelList, page => Url.Page("/App/Entities/Index", new { Skip = page, Take = Model.Take }),
+                     new PagedListRenderOptions
+            {                
+                LiElementClasses = new string[] { "page-item" },
+                UlElementClasses = new string[] { "pagination justify-content-end" },
+                PageClasses = new string[] { "page-link" },
+                LinkToNextPageFormat = "Next",
+                LinkToPreviousPageFormat = "Previous",
+                MaximumPageNumbersToDisplay = 5,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always
+            })
+        </nav>
+    </div>
+</div>
+<!-- END Partial Table -->

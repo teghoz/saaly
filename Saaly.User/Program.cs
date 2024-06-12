@@ -12,6 +12,7 @@ using Saaly.Models.EntityModels;
 using Saaly.Services.Entity;
 using Saaly.Services.Entity.BillCodes;
 using Saaly.Services.Entity.BillUnits;
+using Saaly.Services.Entity.Clients;
 using Saaly.Services.Entity.Currencies;
 using Saaly.Services.Recaptcha;
 using Saaly.Services.Registration;
@@ -85,8 +86,9 @@ builder.Services.AddScoped(typeof(IRepository<Admin>), typeof(AdminEFRepositiory
 builder.Services.AddScoped(typeof(IRepository<Entity>), typeof(EntityEFRepositiory));
 builder.Services.AddScoped(typeof(IRepository<EntityUser>), typeof(EntityUserEFRepositiory));
 builder.Services.AddScoped(typeof(IRepository<EntityCurrency>), typeof(EntityCurrencyEFRepositiory));
-builder.Services.AddScoped(typeof(IRepository<EntityBillUnit>), typeof(EntityBillUnitEFRepositiory));
-builder.Services.AddScoped(typeof(IRepository<EntityBillCode>), typeof(EntityBillCodeEFRepositiory));
+builder.Services.AddScoped(typeof(IRepository<EntityBillUnit>), typeof(EntityBillUnitEFRepository));
+builder.Services.AddScoped(typeof(IRepository<EntityBillCode>), typeof(EntityBillCodeEFRepository));
+builder.Services.AddScoped(typeof(IRepository<EntityClient>), typeof(EntityClientEFRepository));
 
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -96,6 +98,7 @@ builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 builder.Services.AddScoped<IEntityCurrencyService, EntityCurrencyService>();
 builder.Services.AddScoped<IEntityBillUnitService, EntityBillUnitService>();
 builder.Services.AddScoped<IEntityBillCodeService, EntityBillCodeService>();
+builder.Services.AddScoped<IEntityClientService, EntityClientService>();
 builder.Services.AddScoped(x =>
 {
     var actionContext = x.GetRequiredService<IActionContextAccessor>().ActionContext;
