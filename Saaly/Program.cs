@@ -7,7 +7,7 @@ using Saaly.Extensions;
 using Saaly.Infrastructure.Extensions;
 using Saaly.Infrastucture.Configurations;
 using Saaly.Models;
-using Saaly.Services;
+using Saaly.Services.Admin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,5 +82,4 @@ app.MapRazorPages();
 app.MapControllers();
 
 await app.SeedUser();
-
 app.Run();

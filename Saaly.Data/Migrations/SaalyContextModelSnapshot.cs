@@ -193,7 +193,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -249,9 +249,6 @@ namespace Saaly.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<Guid?>("EntityUserGuid")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
@@ -293,6 +290,9 @@ namespace Saaly.Data.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
 
+                    b.Property<Guid?>("UserGuid")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -301,14 +301,14 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("AdminGuid");
 
-                    b.HasIndex("EntityUserGuid");
-
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
+
+                    b.HasIndex("UserGuid");
 
                     b.ToTable("tblAspNetUsers", (string)null);
                 });
@@ -329,7 +329,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -352,7 +352,7 @@ namespace Saaly.Data.Migrations
                     b.Property<Guid?>("ModifiedByUser")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Types")
+                    b.Property<int>("Type")
                         .HasColumnType("integer");
 
                     b.HasKey("Guid");
@@ -379,7 +379,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -416,7 +416,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityBillCode");
+                    b.ToTable("tblAuditEntityBillCodes");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillCodeCurrencyRate", b =>
@@ -443,7 +443,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -479,7 +479,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityBillCodeCurrencyRate");
+                    b.ToTable("tblAuditEntityBillCodeCurrencyRates");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityBillUnit", b =>
@@ -498,7 +498,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -535,7 +535,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityBillUnit");
+                    b.ToTable("tblAuditEntityBillUnits");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClient", b =>
@@ -557,7 +557,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -599,7 +599,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityClient");
+                    b.ToTable("tblAuditEntityClients");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientBillingInfo", b =>
@@ -621,7 +621,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -656,7 +656,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityClientBillingInfo");
+                    b.ToTable("tblAuditEntityClientBillingInfos");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientGroup", b =>
@@ -679,7 +679,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -722,7 +722,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityClientGroup");
+                    b.ToTable("tblAuditEntityClientGroups");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityClientGroupClient", b =>
@@ -744,7 +744,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -772,7 +772,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasKey("Guid");
 
-                    b.ToTable("tblAuditEntityClientGroupClient");
+                    b.ToTable("tblAuditEntityClientGroupClients");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityCurrency", b =>
@@ -791,7 +791,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -839,7 +839,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityCurrency");
+                    b.ToTable("tblAuditEntityCurrencies");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityExpense", b =>
@@ -875,7 +875,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -915,7 +915,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityExpense");
+                    b.ToTable("tblAuditEntityExpenses");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityGender", b =>
@@ -934,7 +934,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -970,7 +970,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityGender");
+                    b.ToTable("tblAuditEntityGenders");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityJob", b =>
@@ -989,7 +989,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1026,7 +1026,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityJob");
+                    b.ToTable("tblAuditEntityJobs");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityLocation", b =>
@@ -1045,7 +1045,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1093,7 +1093,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityLocation");
+                    b.ToTable("tblAuditEntityLocations");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityProject", b =>
@@ -1109,7 +1109,7 @@ namespace Saaly.Data.Migrations
                     b.Property<int>("ChangeType")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("ClientGuid")
+                    b.Property<Guid?>("ClientGuid")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Code")
@@ -1123,7 +1123,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1170,7 +1170,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityProject");
+                    b.ToTable("tblAuditEntityProjects");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTask", b =>
@@ -1204,7 +1204,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1278,7 +1278,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1319,7 +1319,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityTaskCurrencyRate");
+                    b.ToTable("tblAuditEntityTaskCurrencyRates");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityTimeSheet", b =>
@@ -1329,7 +1329,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("AssigmentDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("ChangeType")
                         .HasColumnType("integer");
@@ -1354,7 +1354,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("text");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1405,7 +1405,7 @@ namespace Saaly.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("BillCodeGuid")
+                    b.Property<Guid?>("BillCodeGuid")
                         .HasColumnType("uuid");
 
                     b.Property<int>("ChangeType")
@@ -1425,7 +1425,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1461,7 +1461,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityUser");
+                    b.ToTable("tblAuditEntityUsers");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserDepartment", b =>
@@ -1484,7 +1484,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1540,7 +1540,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1576,7 +1576,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityUserDepartmentClaim");
+                    b.ToTable("tblAuditEntityUserDepartmentClaims");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserGroup", b =>
@@ -1599,7 +1599,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1642,7 +1642,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityUserGroup");
+                    b.ToTable("tblAuditEntityUserGroups");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityUserGroupUser", b =>
@@ -1661,7 +1661,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1694,7 +1694,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblAuditEntityUserGroupUser");
+                    b.ToTable("tblAuditEntityUserGroupUsers");
                 });
 
             modelBuilder.Entity("Saaly.Models.Audits.AuditEntityWorkAssignment", b =>
@@ -1704,7 +1704,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("AssigmentDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<decimal>("AssignedHours")
                         .HasPrecision(18, 6)
@@ -1720,13 +1720,13 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("EndDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid>("EntityGuid")
                         .HasColumnType("uuid");
@@ -1763,7 +1763,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("StartDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Guid");
 
@@ -1788,7 +1788,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1853,10 +1853,10 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1927,7 +1927,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -1947,10 +1947,18 @@ namespace Saaly.Data.Migrations
                     b.Property<Guid?>("ModifiedByUser")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Types")
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("OwnerGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Type")
                         .HasColumnType("integer");
 
                     b.HasKey("Guid");
+
+                    b.HasIndex("OwnerGuid");
 
                     b.ToTable("tblEntities");
                 });
@@ -1971,7 +1979,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2007,7 +2015,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityBillCode");
+                    b.ToTable("tblEntityBillCodes");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCodeCurrencyRate", b =>
@@ -2031,7 +2039,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2068,7 +2076,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityBillCodeCurrencyRate");
+                    b.ToTable("tblEntityBillCodeCurrencyRates");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillUnit", b =>
@@ -2084,7 +2092,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2119,7 +2127,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityBillUnit");
+                    b.ToTable("tblEntityBillUnits");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityClient", b =>
@@ -2138,7 +2146,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2179,7 +2187,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityClient");
+                    b.ToTable("tblEntityClients");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientBillingInfo", b =>
@@ -2198,7 +2206,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2232,7 +2240,109 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityClientBillingInfo");
+                    b.ToTable("tblEntityClientBillingInfos");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientGroup", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<bool>("HasMaximumCapacity")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("MaximumCapacity")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.ToTable("tblEntityClientGroups");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientGroupClient", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("GroupGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ClientGuid");
+
+                    b.HasIndex("GroupGuid");
+
+                    b.ToTable("tblEntityClientGroupClients");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityCurrency", b =>
@@ -2248,7 +2358,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2293,7 +2403,86 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityCurrency");
+                    b.ToTable("tblEntityCurrencies");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityExpense", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Comments")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("ID")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("UserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("WorkGuid")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ClientGuid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.HasIndex("UserGuid");
+
+                    b.HasIndex("WorkGuid");
+
+                    b.ToTable("tblEntityExpenses");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityGender", b =>
@@ -2309,7 +2498,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2342,7 +2531,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityGender");
+                    b.ToTable("tblEntityGenders");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityJob", b =>
@@ -2358,7 +2547,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2393,7 +2582,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityJob");
+                    b.ToTable("tblEntityJobs");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityLocation", b =>
@@ -2409,7 +2598,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2456,7 +2645,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("ParentGuid");
 
-                    b.ToTable("tblEntityLocation");
+                    b.ToTable("tblEntityLocations");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityProject", b =>
@@ -2469,7 +2658,7 @@ namespace Saaly.Data.Migrations
                         .HasPrecision(18, 6)
                         .HasColumnType("numeric(18,6)");
 
-                    b.Property<Guid>("ClientGuid")
+                    b.Property<Guid?>("ClientGuid")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Code")
@@ -2483,7 +2672,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2529,7 +2718,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityProject");
+                    b.ToTable("tblEntityProjects");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityTask", b =>
@@ -2560,7 +2749,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2633,7 +2822,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2675,7 +2864,84 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("TaskGuid");
 
-                    b.ToTable("tblEntityTaskCurrencyRate");
+                    b.ToTable("tblEntityTaskCurrencyRates");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTimeSheet", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("AssigmentDate")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("ClientGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Day")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("EntityGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("WorkGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<double>("WorkedHours")
+                        .HasColumnType("double precision");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ClientGuid");
+
+                    b.HasIndex("EntityGuid");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("WorkGuid");
+
+                    b.ToTable("tblEntityTimeSheets");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityUser", b =>
@@ -2684,15 +2950,12 @@ namespace Saaly.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("BillCodeGuid")
+                    b.Property<Guid?>("BillCodeGuid")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<Guid?>("ContactGuid")
-                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -2701,7 +2964,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2730,11 +2993,12 @@ namespace Saaly.Data.Migrations
                     b.Property<Guid?>("ModifiedByUser")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("UserGuid")
+                        .HasColumnType("uuid");
+
                     b.HasKey("Guid");
 
                     b.HasIndex("BillCodeGuid");
-
-                    b.HasIndex("ContactGuid");
 
                     b.HasIndex("DepartmentGuid");
 
@@ -2742,7 +3006,9 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("ManagerGuid");
 
-                    b.ToTable("tblEntityUser");
+                    b.HasIndex("UserGuid");
+
+                    b.ToTable("tblEntityUsers");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartment", b =>
@@ -2762,7 +3028,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2812,7 +3078,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2847,7 +3113,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityUserDepartmentGuid");
 
-                    b.ToTable("tblEntityUserDepartmentClaim");
+                    b.ToTable("tblEntityUserDepartmentClaims");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserGroup", b =>
@@ -2867,7 +3133,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2907,7 +3173,7 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityGuid");
 
-                    b.ToTable("tblEntityUserGroup");
+                    b.ToTable("tblEntityUserGroups");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserGroupUser", b =>
@@ -2923,7 +3189,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -2935,6 +3201,9 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("EntityUserGroupUserGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid?>("EntityUserGuid")
                         .HasColumnType("uuid");
 
                     b.Property<int>("Id")
@@ -2960,7 +3229,9 @@ namespace Saaly.Data.Migrations
 
                     b.HasIndex("EntityUserGroupUserGuid");
 
-                    b.ToTable("tblEntityUserGroupUser");
+                    b.HasIndex("EntityUserGuid");
+
+                    b.ToTable("tblEntityUserGroupUsers");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityWorkAssignment", b =>
@@ -2970,7 +3241,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("AssigmentDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<decimal>("AssignedHours")
                         .HasPrecision(18, 6)
@@ -2983,13 +3254,13 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("EndDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid>("EntityGuid")
                         .HasColumnType("uuid");
@@ -3023,7 +3294,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("StartDate")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.HasKey("Guid");
 
@@ -3049,7 +3320,7 @@ namespace Saaly.Data.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("Deleted")
-                        .HasColumnType("timestamp with time zone");
+                        .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("DeletedByUser")
                         .HasColumnType("uuid");
@@ -3092,6 +3363,53 @@ namespace Saaly.Data.Migrations
                     b.HasIndex("ParentGuid");
 
                     b.ToTable("tblLocation");
+                });
+
+            modelBuilder.Entity("Saaly.Models.User", b =>
+                {
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("ContactGuid")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("CreatedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("Deleted")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid?>("DeletedByUser")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("Modified")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid?>("ModifiedByUser")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Guid");
+
+                    b.HasIndex("ContactGuid");
+
+                    b.ToTable("tblUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -3160,9 +3478,9 @@ namespace Saaly.Data.Migrations
                         .WithMany()
                         .HasForeignKey("AdminGuid");
 
-                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "User")
+                    b.HasOne("Saaly.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("EntityUserGuid");
+                        .HasForeignKey("UserGuid");
 
                     b.Navigation("Admin");
 
@@ -3433,6 +3751,15 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Location");
                 });
 
+            modelBuilder.Entity("Saaly.Models.EntityModels.Entity", b =>
+                {
+                    b.HasOne("Saaly.Models.User", "Owner")
+                        .WithMany()
+                        .HasForeignKey("OwnerGuid");
+
+                    b.Navigation("Owner");
+                });
+
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>
                 {
                     b.HasOne("Saaly.Models.EntityModels.EntityBillUnit", "BillUnit")
@@ -3538,6 +3865,36 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityClient");
                 });
 
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientGroup", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientGroupClient", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.EntityClient", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityClientGroup", "Group")
+                        .WithMany("Clients")
+                        .HasForeignKey("GroupGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Group");
+                });
+
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityCurrency", b =>
                 {
                     b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
@@ -3547,6 +3904,39 @@ namespace Saaly.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Entity");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityExpense", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.EntityClient", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityWorkAssignment", "WorkAssignment")
+                        .WithMany()
+                        .HasForeignKey("WorkGuid");
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Entity");
+
+                    b.Navigation("User");
+
+                    b.Navigation("WorkAssignment");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityGender", b =>
@@ -3592,9 +3982,7 @@ namespace Saaly.Data.Migrations
                 {
                     b.HasOne("Saaly.Models.EntityModels.EntityClient", "Client")
                         .WithMany()
-                        .HasForeignKey("ClientGuid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClientGuid");
 
                     b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
                         .WithMany()
@@ -3659,24 +4047,53 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Task");
                 });
 
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityTimeSheet", b =>
+                {
+                    b.HasOne("Saaly.Models.EntityModels.EntityClient", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
+                        .WithMany()
+                        .HasForeignKey("EntityGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityWorkAssignment", "WorkAssignment")
+                        .WithMany()
+                        .HasForeignKey("WorkGuid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Entity");
+
+                    b.Navigation("User");
+
+                    b.Navigation("WorkAssignment");
+                });
+
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityUser", b =>
                 {
                     b.HasOne("Saaly.Models.EntityModels.EntityBillCode", "EntityBillCode")
                         .WithMany()
-                        .HasForeignKey("BillCodeGuid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Saaly.Models.Contact", "Contact")
-                        .WithMany()
-                        .HasForeignKey("ContactGuid");
+                        .HasForeignKey("BillCodeGuid");
 
                     b.HasOne("Saaly.Models.EntityModels.EntityUserDepartment", "EntityUserDepartment")
                         .WithMany()
                         .HasForeignKey("DepartmentGuid");
 
                     b.HasOne("Saaly.Models.EntityModels.Entity", "Entity")
-                        .WithMany()
+                        .WithMany("Users")
                         .HasForeignKey("EntityGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -3685,7 +4102,9 @@ namespace Saaly.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ManagerGuid");
 
-                    b.Navigation("Contact");
+                    b.HasOne("Saaly.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserGuid");
 
                     b.Navigation("Entity");
 
@@ -3694,6 +4113,8 @@ namespace Saaly.Data.Migrations
                     b.Navigation("EntityUserDepartment");
 
                     b.Navigation("Manager");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityUserDepartment", b =>
@@ -3751,11 +4172,15 @@ namespace Saaly.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "EntityUser")
-                        .WithMany("Groups")
+                    b.HasOne("Saaly.Models.User", "EntityUser")
+                        .WithMany()
                         .HasForeignKey("EntityUserGroupUserGuid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Saaly.Models.EntityModels.EntityUser", null)
+                        .WithMany("Groups")
+                        .HasForeignKey("EntityUserGuid");
 
                     b.Navigation("Entity");
 
@@ -3772,7 +4197,7 @@ namespace Saaly.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Saaly.Models.EntityModels.EntityUser", "EntityUser")
+                    b.HasOne("Saaly.Models.User", "EntityUser")
                         .WithMany()
                         .HasForeignKey("EntityUserGuid")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -3800,9 +4225,28 @@ namespace Saaly.Data.Migrations
                     b.Navigation("Parent");
                 });
 
+            modelBuilder.Entity("Saaly.Models.User", b =>
+                {
+                    b.HasOne("Saaly.Models.Contact", "Contact")
+                        .WithMany()
+                        .HasForeignKey("ContactGuid");
+
+                    b.Navigation("Contact");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.Entity", b =>
+                {
+                    b.Navigation("Users");
+                });
+
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityBillCode", b =>
                 {
                     b.Navigation("CurrencyRates");
+                });
+
+            modelBuilder.Entity("Saaly.Models.EntityModels.EntityClientGroup", b =>
+                {
+                    b.Navigation("Clients");
                 });
 
             modelBuilder.Entity("Saaly.Models.EntityModels.EntityTask", b =>

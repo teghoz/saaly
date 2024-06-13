@@ -10,7 +10,7 @@ namespace Saaly.Models.EntityModels
     {
         [Required]
         [DisplayName("Client Name")]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
         [DisplayName("Mngt. Company")]
         [RegularExpression("^[a-zA-Z -][a-zA-Z0-9 -]*$", ErrorMessage = "Management Company only accepts Alphanumeric inputs")]

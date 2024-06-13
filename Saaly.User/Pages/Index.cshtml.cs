@@ -1,17 +1,22 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Identity;
+using Saaly.Data;
+using Saaly.Models;
 
-namespace SaalyUser.Pages
+namespace Saaly.User.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel : BaseNonGenericPage
     {
-        private readonly ILogger _logger;
+        private readonly SaalyContext _context;
+        private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IndexModel(UserManager<ApplicationUser> userManager,
+            SaalyContext context, ILogger<IndexModel> logger) : base(userManager, context)
         {
+            _context = context;
             _logger = logger;
         }
 
-        public void OnGet()
+        public async Task OnGet()
         {
 
         }

@@ -1,0 +1,76 @@
+﻿@page
+@model EditModel
+@{
+}
+
+@section Hero
+{
+    <div class="bg-body-light">
+        <div class="content content-full">
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center py-2">
+                <div class="flex-grow-1">
+                    <h1 class="h3 fw-bold mb-1">
+                        @ViewData["Title"]
+                    </h1>
+                    <h2 class="fs-base lh-base fw-medium text-muted mb-0">
+                        Mobile friendly tables that work across all screen sizes.
+                    </h2>
+                </div>
+                <breadcrumb crumbs="Model.BreadCrumbs"></breadcrumb>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Floating Labels -->
+<div class="block block-rounded">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Edit @Model.Model.Name</h3>
+    </div>
+    <div class="block-content block-content-full">
+        <form method="POST">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-8">
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Name" class="form-control" />
+                        <label asp-for="Model.Name" class="control-label"></label>
+                        <span asp-validation-for="Model.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.FullName" class="form-control" />
+                        <label asp-for="Model.FullName" class="control-label"></label>
+                        <span asp-validation-for="Model.FullName" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.ShortName" class="form-control" />
+                        <label asp-for="Model.ShortName" class="control-label"></label>
+                        <span asp-validation-for="Model.ShortName" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.Symbol" class="form-control" />
+                        <label asp-for="Model.Symbol" class="control-label"></label>
+                        <span asp-validation-for="Model.Symbol" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.FractionalUnit" class="form-control" />
+                        <label asp-for="Model.FractionalUnit" class="control-label"></label>
+                        <span asp-validation-for="Model.FractionalUnit" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input asp-for="Model.IsActive" class="form-control" />
+                        <label asp-for="Model.IsActive" class="control-label"></label>
+                        <input type="hidden" asp-for="Model.Guid"/>
+                        <input type="hidden" asp-for="Model.EntityGuid"/>
+                        <span asp-validation-for="Model.IsActive" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <button type="submit" class="btn btn-lg btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- END Floating Labels -->

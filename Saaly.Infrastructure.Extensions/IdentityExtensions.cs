@@ -41,6 +41,8 @@ namespace Saaly.Infrastructure.Extensions
                     .AddEntityFrameworkStores<SaalyContext>()
                     .AddDefaultTokenProviders();
 
+            services.AddAssemblyTriggers();
+
             return services;
         }
         public static IServiceCollection AddCookieIdentity(this IServiceCollection services, Action<CustomIdentityOption> customIdentityOptions, Action<IServiceCollection> extraRegistrations)

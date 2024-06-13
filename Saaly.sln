@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Saaly.Infrastructure.Extens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saaly.Tasks", "Saaly.Tasks\Saaly.Tasks.csproj", "{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saaly.API", "Saaly.API\Saaly.API.csproj", "{17B40B14-7D65-4C34-9108-409F6D15E17A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BE25AC0-82D1-4ED1-ABE4-D884C4498FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B40B14-7D65-4C34-9108-409F6D15E17A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B40B14-7D65-4C34-9108-409F6D15E17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B40B14-7D65-4C34-9108-409F6D15E17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B40B14-7D65-4C34-9108-409F6D15E17A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

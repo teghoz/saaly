@@ -28,6 +28,11 @@ namespace Saaly.Data.Repositories
             return await efSpec.ToListAsync(cancellationToken);
         }
 
+        public async Task<T?> GetByGuid(Guid guid, CancellationToken cancellationToken = default)
+        {
+            return await _dbSet.FindAsync(guid, cancellationToken);
+        }
+        
         public async Task<T?> GetById(int id, CancellationToken cancellationToken = default)
         {
             return await _dbSet.FindAsync(id, cancellationToken);
@@ -35,7 +40,7 @@ namespace Saaly.Data.Repositories
 
         public async Task Insert(T entity, CancellationToken cancellationToken = default)
         {
-            await _dbSet.AddAsync(entity);
+            await _dbSet.AddAsync(entity, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
         }
 

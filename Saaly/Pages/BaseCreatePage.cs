@@ -36,7 +36,7 @@ namespace Saaly.Pages
             {
                 return Page();
             }
-            _entity.Add(Model);
+            await _entity.AddAsync(Model);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

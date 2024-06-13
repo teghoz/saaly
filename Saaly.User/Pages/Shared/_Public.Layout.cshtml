@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-    <title>@ViewData["Title"] - Saaly</title>
+    <title>Saaly | @ViewData["Title"] </title>
 
     <meta name="description" content="OneUI - Bootstrap 5 Admin Template &amp; UI Framework created by pixelcave">
     <meta name="author" content="pixelcave">
@@ -34,6 +34,7 @@
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="~/assets/css/themes/amethyst.min.css"> -->
     <!-- END Stylesheets -->
+    @await RenderSectionAsync("Heads", required: false)
 </head>
 
 <body>

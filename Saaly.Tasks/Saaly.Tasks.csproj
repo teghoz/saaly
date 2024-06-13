@@ -12,4 +12,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Saaly.Infrastructure.Extensions\Saaly.Infrastructure.Extensions.csproj" />
+    <ProjectReference Include="..\Saaly.Shared\Saaly.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
