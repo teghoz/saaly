@@ -1,4 +1,10 @@
-﻿<header id="page-header">
+﻿<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<header id="page-header">
     <!-- Header Content -->
     <div class="content-header">
         <!-- Left Section -->
@@ -15,18 +21,12 @@
             <!-- Menu -->
             <div class="d-none d-lg-block">
                 <ul class="nav-main nav-main-horizontal nav-main-hover">
-                    <li class="nav-main-item">
-                        <a class="nav-main-link active" href="/">
-                            <i class="nav-main-link-icon si si-home"></i>
-                            <span class="nav-main-link-name">Home</span>
-                        </a>
-                    </li>
                     @if (User.Identity.IsAuthenticated)
                     {
                         <li class="nav-main-item">
-                            <a class="nav-main-link" asp-page="/Entities">
+                            <a class="nav-main-link" asp-page="/App">
                                 <i class="nav-main-link-icon si si-rocket"></i>
-                                <span class="nav-main-link-name">Entities</span>
+                                <span class="nav-main-link-name">App</span>
                             </a>
                         </li>
                     }
@@ -41,6 +41,12 @@
                         <a class="nav-main-link" href="javascript:void(0)">
                             <i class="nav-main-link-icon si si-envelope"></i>
                             <span class="nav-main-link-name">Contact</span>
+                        </a>
+                    </li>
+                    <li class="nav-main-item">
+                        <a class="nav-main-link" href="javascript:void(0)">
+                            <i class="nav-main-link-icon fa fa-building"></i>
+                            <span class="nav-main-link-name">Enterprise</span>
                         </a>
                     </li>
                     <li class="nav-main-heading">Extra</li>
